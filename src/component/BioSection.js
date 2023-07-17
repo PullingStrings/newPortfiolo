@@ -33,7 +33,7 @@ const BioSection = () => {
    <Section>
       <Figure/>
       <p className="bio text-white text-lg md:text-2xl font-light">
-        I’m a web developer that  loves working together with  creative and digital teams and all-round nice guy. I like  other things besides tech 😊  Open and available for  opportunities in London
+       I&#39;m a front-end developer with over a decade of experience crafting digital solutions in tech-driven environments. Specializing in React, TypeScript, HTML/CSS, and JavaScript, I&#39;ve delivered impactful results to clients across diverse sectors. Known for my creative approach to troubleshooting, I bring a unique blend of analytical prowess and artistic intuition to the tech landscape.
       </p>
     </Section>
   )

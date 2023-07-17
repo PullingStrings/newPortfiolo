@@ -17,7 +17,7 @@ const Footer = () => {
       </a>
       {showResume && (
         <ResumePopup
-          url="https://codeberry.net/demo/comet/assets/resume.pdf"
+          url="UpdatedResume.pdf"
           onClose={handleCloseResumePopup}
         />
       )}

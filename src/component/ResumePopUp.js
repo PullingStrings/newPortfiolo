@@ -32,7 +32,7 @@ function ResumePopup(props) {
   return (
     <PopUp>
       <Button onClick={props.onClose}>Close</Button>
-      <Iframe src={props.url} title="Resume" />
+      <embed src={props.url}  type="application/pdf" />
     </PopUp>
   );
 }

@@ -20,12 +20,12 @@ export default function Navbar() {
           </Link>
           <Link legacyBehavior href="/resume">
             <a className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
-              Lets See
+              Resume
             </a>
           </Link>
           <Link legacyBehavior href="/projects">
             <a className="block mt-4 lg:inline-block lg:mt-0 text-gray-200 hover:text-white mr-4">
-              Projects
+              See Work
             </a>
           </Link>
         </div>

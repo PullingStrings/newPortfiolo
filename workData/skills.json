@@ -1,0 +1,12 @@
+[
+    { "title": "HTML", "videoSrc": "codingOnScreen.mp4" },
+    { "title": "CSS", "videoSrc": "moreCoding.mp4"  },
+    { "title": "JavaScript", "videoSrc": "moreCodingFour.mp4"  },
+    { "title": "TypeScript", "videoSrc": "codingOnScreen.mp4"  },
+    { "title": "React", "videoSrc": "moreCodingOne.mp4"  },
+    { "title": "Next.js", "videoSrc": "moreCodingThree.mp4"  },
+    { "title": "Node.js", "videoSrc": "codingOnScreen.mp4"  },
+    { "title": "Git", "videoSrc": "moreCodingTwo.mp4"  },
+    { "title": "AWS", "videoSrc": "codingOnScreen.mp4"  },
+    { "title": "jQuery", "videoSrc": "codingOnScreen.mp4"  }
+]
