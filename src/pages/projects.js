@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Navbar from '@/component/NavBar'
 import styled from 'styled-components';
+import workData from '../../workData/work.json';
 
 const Card = styled.div`
   height: 254px;
@@ -27,38 +28,29 @@ const CardTwo = styled.div`
 
 
 export default function Projects() {
-const work = [
-  { title: "Samsung", link: "https://www.samsung.com/uk/smartphones/galaxy-z-foldable/", linkName: "Galaxy Z Foldable"},
-  { title: "Samsung", link: "https://www.samsung.com/uk/smartphones/galaxy-s23/purchase/", linkName: "Galaxy S23"},
-  { title: "Samsung", link: "https://www.samsung.com/uk/smartphones/galaxy-z-fold4/purchase/", linkName: "Galaxy Z Fold4"},
-  { title: "Samsung", link: "https://www.samsung.com/uk/smartphones/galaxy-s22/purchase/", linkName: "Galaxy S22"},
-  { title: "Samsung", link: "https://www.samsung.com/uk/trade-in/", linkName: "Trade In Tool"},
-  { title: "Samsung", link: "https://www.samsung.com/uk/mobile/galaxygifts/", linkName: "Galaxy Gifts"  },
-  { title: "Samsung", link: "https://www.samsung.com/uk/laptop-buying-guide/", linkName: "Laptop Buying Guide"},
-  { title: "Samsung", link: "https://www.samsung.com/uk/pay-monthly-contract/", linkName: "Pay Monthly Contract"},
-  { title: "Samsung", link: "https://www.samsung.com/uk/students-offers/", linkName: "Students Offers"},
-  { title: "Vingt Paris", link: "https://vingtparis.com/", linkName: "Vingt Paris"},
-  { title: "IOPC", link: "https://www.policeconduct.gov.uk/", linkName: "Independent Office for Police Conduct"},
-  { title: "Nafasi", link: "https://www.nafasiartspace.org/", linkName: "Nafasi Arts Space"},
-  { title: "Care", link: "https://www.care.ca/", linkName: "Care International"},
-];
-
 
   return (
   <>
   <Navbar />
     <div className="grid grid-cols-3 gap-4 p-8">
 
-      {work.map((item, index) => (
+      {workData.map((item, index) => (
         <Card key={index}>
-
           <CardTwo
           className="rounded-lg shadow-md p-4 transition-transform duration-200 ease-in-out transform hover:scale-105"
+          style={{ backgroundImage: `url(${item.bg})`, backgroundSize: 'cover', backgroundPosition: 'center'}}
         >
-          <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-center">
+          <div style={{
+            background:'#0000008a',
+            padding:'7px',
+            borderRadius: '6px'
+          }}>
+             <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-center">
             <h2 className="text-white">{item.title}</h2>
             <p className="text-white">{item.linkName}</p>
           </a>
+          </div>
+
           </CardTwo>
         </Card>
       ))}

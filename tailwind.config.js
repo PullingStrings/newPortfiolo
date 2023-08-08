@@ -9,7 +9,12 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: {},
+    extend: {
+       fontSize: {
+        'tiny': '0.75rem', // 12px
+        '7xl': '1.75rem'   // 28px
+      },
+    },
   },
   plugins: [],
 }
