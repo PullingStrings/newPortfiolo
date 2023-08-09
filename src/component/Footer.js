@@ -1,5 +1,25 @@
 import React, { useState } from 'react'
 import ResumePopup from './ResumePopUp'
+import Link from 'next/link'
+import styled from 'styled-components'
+
+const FooterDiv = styled.footer`
+  display: flex;
+  right: 3rem;
+  bottom: 3rem;
+  flex-direction: column;
+  align-items: flex-end;
+  position: fixed;
+  padding: 5px;
+
+  @media (max-width: 768px) {
+    background: #fff;
+    color: #000;
+    border-radius: 5px;
+  }
+`
+
+
 
 const Footer = () => {
   const [showResume, setShowResume] = useState(false)
@@ -11,16 +31,10 @@ const Footer = () => {
     setShowResume(false)
   }
   return (
-    <footer className="fixed right-12 bottom-12 flex flex-col items-end text-white">
-      <a onClick={handleResumeClick} href="#">
+    <FooterDiv>
+      <Link href="/resume">
         Resume
-      </a>
-      {showResume && (
-        <ResumePopup
-          url="UpdatedResume.pdf"
-          onClose={handleCloseResumePopup}
-        />
-      )}
+      </Link>
       <a className="footer-links link-facebook hover:border-yellow-500" href="https://github.com/PullingStrings">
         GitHub
       </a>
@@ -32,7 +46,7 @@ const Footer = () => {
       </a>
 
       <div className="scrunch" aria-hidden="true"></div>
-    </footer>
+    </FooterDiv>
 
   )
 }

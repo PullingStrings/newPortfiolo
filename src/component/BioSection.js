@@ -27,7 +27,12 @@ const Section = styled.section`
   display: -webkit-box;
   display: flex;
   box-sizing: border-box;
-  min-height: 100vh;
+  min-height: 65vh;
+
+  @media (max-width: 768px) {
+    padding: 0px 0 96px 30px;
+    width: calc(100vw - 96px - 0em);
+  }
 `
 
 const TypingText = styled.pre`
@@ -37,20 +42,22 @@ const TypingText = styled.pre`
   font-size: 18px;
 `;
 
-const BioSection = () => {
-
-const bio = [
+    const bio = [
     "I'm a front-end developer with over a decade of experience crafting digital solutions in tech-driven environments. Specializing in React, TypeScript, HTML/CSS, and JavaScript.",
     "I've delivered impactful results to clients across diverse sectors.",
     "Known for my creative approach to troubleshooting, I bring a unique blend of analytical prowess and artistic intuition to the tech landscape."
   ];
 
+const BioSection = () => {
 
   const [line, setLine] = useState(0);
   const [char, setChar] = useState(0);
   const [currentText, setCurrentText] = useState("");
+  const [isClient, setIsClient] = useState(false)
+
 
   useEffect(() => {
+    setIsClient(true)
     const timer = setInterval(() => {
       setCurrentText((prev) => prev + bio[line][char]);
       if (char < bio[line].length - 1) {
@@ -71,10 +78,14 @@ const bio = [
   }, [line, char]);
 
   return (
+  <>
+    {isClient && (
     <Section>
-       <Figure/>
+      <Figure/>
       <TypingText>{currentText}</TypingText>
     </Section>
+    )}
+  </>
   );
 };
 

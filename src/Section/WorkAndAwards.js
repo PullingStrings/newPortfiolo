@@ -17,6 +17,11 @@ z-index: 1;
   display: flex;
   box-sizing: border-box;
   // min-height: 100vh;
+
+  @media (max-width: 768px) {
+    padding: 0px 0 96px 0px;
+    width: calc(100vw - 96px - 0em);
+  }
 `
 
 const List = styled.ul`

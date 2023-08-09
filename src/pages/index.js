@@ -6,9 +6,6 @@ import WorkAndAwards from '@/Section/WorkAndAwards'
 import Footer from '@/component/Footer'
 import BioSection from '@/component/BioSection'
 
-
-
-
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -19,12 +16,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <div style={{
-        // height: '100vh',
-      }}>
         <BioSection/>
         <WorkAndAwards />
-      </div>
         <Footer />
     </div>
   );

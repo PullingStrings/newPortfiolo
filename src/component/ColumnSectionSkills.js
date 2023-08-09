@@ -8,13 +8,19 @@ const ColSection = styled.div`
     display: flex;
     flex-direction: row;
     gap: 10px;
-    padding: 10px 0px
+    padding: 0px 0 96px 30px;
+
+    @media (max-width: 768px) {
+      max-width: 100%;
+      padding: 10px 0 96px 30px;
+      flex-wrap: wrap;
+    }
 `
 
 const ColumnSectionSkills = ({ title, items }) => {
   return (
   <div>
-  <h2 className="main-text ">{title}</h2>
+  <h2 className="main-text px-[30px]">{title}</h2>
     <ColSection>
       {items.map((item, index) => (
         <React.Fragment key={index}>

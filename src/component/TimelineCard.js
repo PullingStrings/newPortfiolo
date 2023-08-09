@@ -37,6 +37,7 @@ const TimelineCard = ({
   at,
   period,
   description,
+  bulletPoint,
 }) => {
   return (
     <Card>
@@ -45,9 +46,14 @@ const TimelineCard = ({
           {title} <span>{at}</span>
         </h5>
       </Title>
-      <Body className="flex flex-col h-[16vh] justify-center">
+      <Body className="flex flex-col h-full justify-center">
         <small>{period}</small>
-        <p className="text-[10px] sm:text-[15px]">{description}</p>
+        <p className="text-[11px] sm:text-[15px] py-3">{description}</p>
+        <ul className="list-disc pl-5 text-[10px] sm:text-[15px]">
+          {bulletPoint.map((point, index) => (
+            <li key={index}>{point}</li>
+          ))}
+        </ul>
       </Body>
     </Card>
   )

@@ -2,6 +2,9 @@ import Image from 'next/image'
 import Navbar from '@/component/NavBar'
 import styled from 'styled-components';
 import workData from '../../workData/work.json';
+import { useState, useEffect } from 'react';
+
+
 
 const Card = styled.div`
   height: 254px;
@@ -28,12 +31,18 @@ const CardTwo = styled.div`
 
 
 export default function Projects() {
+ const [isClient, setIsClient] = useState(false)
+
+ useEffect(() => {
+    setIsClient(true)
+  }, [])
+
 
   return (
   <>
   <Navbar />
-    <div className="grid grid-cols-3 gap-4 p-8">
-
+  {isClient && (
+    <div className="grid sm:grid-cols-3 gap-4 p-8">
       {workData.map((item, index) => (
         <Card key={index}>
           <CardTwo
@@ -45,7 +54,7 @@ export default function Projects() {
             padding:'7px',
             borderRadius: '6px'
           }}>
-             <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-center">
+            <a href={item.link} target="_blank" rel="noopener noreferrer" className="text-center">
             <h2 className="text-white">{item.title}</h2>
             <p className="text-white">{item.linkName}</p>
           </a>
@@ -55,6 +64,7 @@ export default function Projects() {
         </Card>
       ))}
     </div>
+  )}
   </>
   )
 }
