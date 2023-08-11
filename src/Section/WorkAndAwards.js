@@ -5,6 +5,7 @@ import styled from "styled-components";
 import workData from "../../workData/work.json"
 import skillsData from "../../workData/skills.json"
 import experienceData from "../../workData/exp.json"
+import { useState, useEffect } from 'react';
 
 
 
@@ -31,11 +32,20 @@ const List = styled.ul`
 
 const WorkAndAwards = () => {
 
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  },[])
 
   return (
-    <Section>
+    <>
+    {isClient && (
+      <Section>
         <ColumnSectionSkills title="Skills" items={skillsData} />
     </Section>
+    )}
+    </>
   );
 }
 

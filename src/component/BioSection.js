@@ -32,6 +32,7 @@ const Section = styled.section`
   @media (max-width: 768px) {
     padding: 0px 0 96px 30px;
     width: calc(100vw - 96px - 0em);
+    min-height: 40vh;
   }
 `
 

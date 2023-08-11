@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ResumePopup from './ResumePopUp'
 import Link from 'next/link'
 import styled from 'styled-components'
@@ -22,16 +22,17 @@ const FooterDiv = styled.footer`
 
 
 const Footer = () => {
-  const [showResume, setShowResume] = useState(false)
+  const [isClient, setIsClient] = useState(false)
 
-  const handleResumeClick = () => {
-    setShowResume(true)
-  }
-  const handleCloseResumePopup = () => {
-    setShowResume(false)
-  }
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+
   return (
-    <FooterDiv>
+    <>
+     {isClient && (
+      <FooterDiv>
       <Link href="/resume">
         Resume
       </Link>
@@ -47,7 +48,8 @@ const Footer = () => {
 
       <div className="scrunch" aria-hidden="true"></div>
     </FooterDiv>
-
+    )}
+    </>
   )
 }
 
