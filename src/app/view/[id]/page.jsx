@@ -10,7 +10,7 @@ export default function ViewPage() {
   const { id } = useParams();
   const [bgImage, setBgImage] = useState('/happyme.jpg');
   const [content, setContent] = useState(null);
-  const [audioSrc, setAudioSrc] = useState('/audio/TownshipWinds.wav')
+  const [audioSrc, setAudioSrc] = useState('/audio/TownshipWinds.mp3')
 
   const menuLinks = [
     { href: '/', label: 'Home' },

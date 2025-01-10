@@ -4,13 +4,13 @@
     "title": "Samsung Flagship Project",
     "desc": "This is where the desc will sit",
     "content": "<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui, alias! Dolores corporis sapiente sint ab doloribus, adipisci non voluptas illum consequuntur eum minus possimus, inventore debitis esse ullam vel sit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui, alias! Dolores corporis sapiente sint ab doloribus, adipisci non voluptas illum consequuntur eum minus possimus, inventore debitis esse ullam vel sit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui, alias! Dolores corporis sapiente sint ab doloribus, adipisci non voluptas illum consequuntur eum minus possimus, inventore debitis esse ullam vel sit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui, alias! Dolores corporis sapiente sint ab doloribus, adipisci non voluptas illum consequuntur eum minus possimus, inventore debitis esse ullam vel sit.</p>",
-    "audioSrc": "/audio/SpazaBeach.wav"
+    "audioSrc": "/audio/SpazaBeach.mp3"
   },
   "samsung-galaxy-gifts-project": {
     "bgImage": "/GalaxyGifts.png",
     "title": "Samsung Galaxy Gifts Project",
     "desc": "This is where the desc will sit",
     "content": "<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui, alias! Dolores corporis sapiente sint ab doloribus, adipisci non voluptas illum consequuntur eum minus possimus, inventore debitis esse ullam vel sit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui, alias! Dolores corporis sapiente sint ab doloribus, adipisci non voluptas illum consequuntur eum minus possimus, inventore debitis esse ullam vel sit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui, alias! Dolores corporis sapiente sint ab doloribus, adipisci non voluptas illum consequuntur eum minus possimus, inventore debitis esse ullam vel sit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui, alias! Dolores corporis sapiente sint ab doloribus, adipisci non voluptas illum consequuntur eum minus possimus, inventore debitis esse ullam vel sit.</p>",
-    "audioSrc": "/audio/WindsContinued.wav"
+    "audioSrc": "/audio/WindsContinued.mp3"
   }
 }
