@@ -171,7 +171,7 @@ export default function Player({ audioSrc }) {
     }
 
     const onTimeUpdate = () => {
-      console.log('Time update loaded:', audioEl.currentTime)
+      // console.log('Time update loaded:', audioEl.currentTime)
       setCurrentTime(audioEl.currentTime);
     };
 

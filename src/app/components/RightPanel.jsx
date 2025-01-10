@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import Link from 'next/link';
+import projects from '@/data/projects.json'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Scrollbar } from 'swiper/modules';
@@ -38,21 +39,6 @@ const SliderWrapper = styled.div`
 `;
 
 
-const projects = [
-  { slug: 'samsung-flagship-project', image: '/FlagshipSamsung.png' },
-  { slug: 'samsung-galaxy-gifts-project', image: '/GalaxyGifts.png' },
-  { slug: 'samsung-galaxy-gifts-project', image: '/GalaxyGifts.png' },
-  { slug: 'samsung-galaxy-gifts-project', image: '/GalaxyGifts.png' },
-  { slug: 'samsung-galaxy-gifts-project', image: '/GalaxyGifts.png' },
-  { slug: 'samsung-galaxy-gifts-project', image: '/GalaxyGifts.png' },
-  { slug: 'samsung-galaxy-gifts-project', image: '/GalaxyGifts.png' },
-  { slug: 'samsung-galaxy-gifts-project', image: '/GalaxyGifts.png' },
-  { slug: 'samsung-galaxy-gifts-project', image: '/GalaxyGifts.png' },
-  { slug: 'samsung-galaxy-gifts-project', image: '/GalaxyGifts.png' },
-  { slug: 'samsung-galaxy-gifts-project', image: '/GalaxyGifts.png' },
-  { slug: 'samsung-galaxy-gifts-project', image: '/GalaxyGifts.png' },
-  // ... add more projects as needed
-];
 
 
 export default function RightPanel() {
@@ -66,7 +52,7 @@ export default function RightPanel() {
         modules={[Scrollbar]}
         style={{ width: '100%' }}
       >
-       {projects.map((project, index) => (
+       {Object.values(projects).map((project, index) => (
         <SwiperSlide key={index} style={{ width: 'auto' }}>
          <Link key={index} href={`/view/${project.slug}`} passHref>
              <Image
