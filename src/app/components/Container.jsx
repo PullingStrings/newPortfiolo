@@ -10,6 +10,11 @@ const ContainerSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-position: bottom;
+
+  @media (max-width: 768px) {
+    background-position: bottom;
+  }
 `;
 
 export default function Container({ bgImage, children }) {
