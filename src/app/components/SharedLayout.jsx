@@ -24,12 +24,14 @@ const Menu = styled.nav`
 
 export default function SharedLayout({ bgImage, menuLinks, content, audioSrc, children }) {
   return (
+    <>
+    <Menu>
+    {menuLinks.map(({ href, label }, idx) => (
+      <a key={idx} href={href}>{label}</a>
+    ))}
+  </Menu>
     <Container bgImage={bgImage}>
-      <Menu>
-        {menuLinks.map(({ href, label }, idx) => (
-          <a key={idx} href={href}>{label}</a>
-        ))}
-      </Menu>
+
       {content && <Content content={content} />}
       <div className='player-section'>
         <PlayerPanelsSection>
@@ -40,5 +42,7 @@ export default function SharedLayout({ bgImage, menuLinks, content, audioSrc, ch
       </div>
       {children}
     </Container>
+    </>
+
   );
 }
