@@ -1,0 +1,524 @@
+[
+  {
+    "name": "multi-step-form-main",
+    "description": "Mulit Step Form Main is a web application built with Next.js and TypeScript, featuring a multi-step form with responsive design, tailored to handle user inputs across various stages including personal information, plan selection, add-on features, and a summary confirmation step.",
+    "url": "https://github.com/PullingStrings/multi-step-form-main",
+    "language": "TypeScript",
+    "updated_at": "2025-08-12T12:10:32Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "quick-upgrade-template",
+    "description": "A slick, modern website template that you can rebrand in minutes for clients, especially small businesses.",
+    "url": "https://github.com/PullingStrings/quick-upgrade-template",
+    "language": "JavaScript",
+    "updated_at": "2025-08-01T11:30:49Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "kuluma-lightweight",
+    "description": null,
+    "url": "https://github.com/PullingStrings/kuluma-lightweight",
+    "language": "TypeScript",
+    "updated_at": "2025-06-11T12:55:14Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "newPortfiolo",
+    "description": null,
+    "url": "https://github.com/PullingStrings/newPortfiolo",
+    "language": "JavaScript",
+    "updated_at": "2025-01-31T11:47:50Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "ecomerce-product-page",
+    "description": null,
+    "url": "https://github.com/PullingStrings/ecomerce-product-page",
+    "language": "TypeScript",
+    "updated_at": "2024-05-12T10:41:32Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "launch-counter-timer",
+    "description": null,
+    "url": "https://github.com/PullingStrings/launch-counter-timer",
+    "language": "CSS",
+    "updated_at": "2024-01-11T13:45:05Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "nyc-chanel-test",
+    "description": null,
+    "url": "https://github.com/PullingStrings/nyc-chanel-test",
+    "language": "SCSS",
+    "updated_at": "2023-12-12T17:38:01Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "my-music-trends-app",
+    "description": "This project aims to demonstrate the correlation between music trends and data on racial injustice for a specific locale and time frame. It's built using Vite, Superbase, and TypeScript.",
+    "url": "https://github.com/PullingStrings/my-music-trends-app",
+    "language": "TypeScript",
+    "updated_at": "2023-10-04T09:54:40Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "hubspot-exercise",
+    "description": null,
+    "url": "https://github.com/PullingStrings/hubspot-exercise",
+    "language": "JavaScript",
+    "updated_at": "2023-06-16T12:27:10Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "gatsbyTestRepo",
+    "description": null,
+    "url": "https://github.com/PullingStrings/gatsbyTestRepo",
+    "language": null,
+    "updated_at": "2022-08-03T15:36:04Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "commerce",
+    "description": null,
+    "url": "https://github.com/PullingStrings/commerce",
+    "language": "TypeScript",
+    "updated_at": "2022-06-07T16:11:33Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "commerce-1",
+    "description": "Next.js Commerce",
+    "url": "https://github.com/PullingStrings/commerce-1",
+    "language": null,
+    "updated_at": "2022-06-01T08:48:15Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "interactive-comments",
+    "description": null,
+    "url": "https://github.com/PullingStrings/interactive-comments",
+    "language": "CSS",
+    "updated_at": "2022-03-01T18:47:08Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "my-ar-app",
+    "description": null,
+    "url": "https://github.com/PullingStrings/my-ar-app",
+    "language": "HTML",
+    "updated_at": "2021-10-01T16:17:38Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "ARtito",
+    "description": null,
+    "url": "https://github.com/PullingStrings/ARtito",
+    "language": "HTML",
+    "updated_at": "2021-09-30T16:00:01Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "bongi-portfolio",
+    "description": null,
+    "url": "https://github.com/PullingStrings/bongi-portfolio",
+    "language": "CSS",
+    "updated_at": "2021-03-16T09:05:59Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "easybank-landing-page-master",
+    "description": null,
+    "url": "https://github.com/PullingStrings/easybank-landing-page-master",
+    "language": "HTML",
+    "updated_at": "2021-02-15T19:11:17Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "dare-git-repo",
+    "description": null,
+    "url": "https://github.com/PullingStrings/dare-git-repo",
+    "language": "CSS",
+    "updated_at": "2020-09-29T16:02:51Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "Cheil-Site",
+    "description": null,
+    "url": "https://github.com/PullingStrings/Cheil-Site",
+    "language": "HTML",
+    "updated_at": "2020-09-16T06:45:05Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "cheil-challage",
+    "description": null,
+    "url": "https://github.com/PullingStrings/cheil-challage",
+    "language": "HTML",
+    "updated_at": "2020-09-16T06:38:41Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "canonical-test",
+    "description": null,
+    "url": "https://github.com/PullingStrings/canonical-test",
+    "language": "JavaScript",
+    "updated_at": "2020-09-01T09:08:55Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "chat-app-css",
+    "description": null,
+    "url": "https://github.com/PullingStrings/chat-app-css",
+    "language": "CSS",
+    "updated_at": "2020-08-19T15:56:05Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "MenuJS",
+    "description": null,
+    "url": "https://github.com/PullingStrings/MenuJS",
+    "language": "JavaScript",
+    "updated_at": "2020-07-28T16:19:42Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "vueproject",
+    "description": null,
+    "url": "https://github.com/PullingStrings/vueproject",
+    "language": "Vue",
+    "updated_at": "2020-07-20T08:01:44Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "article-preview-component-master",
+    "description": null,
+    "url": "https://github.com/PullingStrings/article-preview-component-master",
+    "language": "HTML",
+    "updated_at": "2020-07-08T12:02:00Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "fylo-data-storage-component-master",
+    "description": null,
+    "url": "https://github.com/PullingStrings/fylo-data-storage-component-master",
+    "language": "CSS",
+    "updated_at": "2020-06-30T13:54:10Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "CSSGrid-fylo",
+    "description": null,
+    "url": "https://github.com/PullingStrings/CSSGrid-fylo",
+    "language": "CSS",
+    "updated_at": "2020-06-23T14:54:55Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "sibusisozwane",
+    "description": "After discovering the various paths in web development, I learn and admire the fact that you can work in teams as a developer (like joining a band again). Getting my feet wet in front-end development is where I would like to start my journey with the possibility to later on jump back into back-end development to become a well rounded full-stack developer.",
+    "url": "https://github.com/PullingStrings/sibusisozwane",
+    "language": "JavaScript",
+    "updated_at": "2020-04-21T12:34:35Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "movies-crud-MERN",
+    "description": null,
+    "url": "https://github.com/PullingStrings/movies-crud-MERN",
+    "language": "JavaScript",
+    "updated_at": "2020-04-16T15:08:11Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "simplechat",
+    "description": null,
+    "url": "https://github.com/PullingStrings/simplechat",
+    "language": "JavaScript",
+    "updated_at": "2020-03-27T16:01:39Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "shopifytheme",
+    "description": null,
+    "url": "https://github.com/PullingStrings/shopifytheme",
+    "language": "Liquid",
+    "updated_at": "2020-03-13T14:09:02Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "wordpressvuejs",
+    "description": null,
+    "url": "https://github.com/PullingStrings/wordpressvuejs",
+    "language": "Vue",
+    "updated_at": "2020-03-09T19:55:42Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "wordpress_theme_with_gulp",
+    "description": null,
+    "url": "https://github.com/PullingStrings/wordpress_theme_with_gulp",
+    "language": "PHP",
+    "updated_at": "2020-03-09T15:37:59Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "newtheme",
+    "description": null,
+    "url": "https://github.com/PullingStrings/newtheme",
+    "language": "JavaScript",
+    "updated_at": "2020-02-19T11:49:54Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "vue.js-authentication-part-2",
+    "description": "Vue.js - Simple authentication using Nuxt.js",
+    "url": "https://github.com/PullingStrings/vue.js-authentication-part-2",
+    "language": null,
+    "updated_at": "2020-01-17T14:05:22Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "pinkcoder.github.io",
+    "description": null,
+    "url": "https://github.com/PullingStrings/pinkcoder.github.io",
+    "language": "HTML",
+    "updated_at": "2019-04-29T19:09:54Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "starterthemem",
+    "description": null,
+    "url": "https://github.com/PullingStrings/starterthemem",
+    "language": "PHP",
+    "updated_at": "2018-10-08T15:23:30Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "FizzBuzz",
+    "description": null,
+    "url": "https://github.com/PullingStrings/FizzBuzz",
+    "language": "JavaScript",
+    "updated_at": "2018-10-04T11:23:16Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "blog-react-tito",
+    "description": null,
+    "url": "https://github.com/PullingStrings/blog-react-tito",
+    "language": "JavaScript",
+    "updated_at": "2018-09-18T15:17:32Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "pwa-react-app",
+    "description": "testing and using pwa with react",
+    "url": "https://github.com/PullingStrings/pwa-react-app",
+    "language": "JavaScript",
+    "updated_at": "2018-09-10T09:29:11Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "redesign",
+    "description": "Fuse Afrika update",
+    "url": "https://github.com/PullingStrings/redesign",
+    "language": "JavaScript",
+    "updated_at": "2018-07-13T13:27:18Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "youthProduct",
+    "description": "GitHub Pages",
+    "url": "https://github.com/PullingStrings/youthProduct",
+    "language": "JavaScript",
+    "updated_at": "2018-07-05T15:52:06Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "react-boilerplate",
+    "description": "starting with the fuse personal blog",
+    "url": "https://github.com/PullingStrings/react-boilerplate",
+    "language": "JavaScript",
+    "updated_at": "2018-06-27T15:32:42Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "phplearning",
+    "description": null,
+    "url": "https://github.com/PullingStrings/phplearning",
+    "language": "HTML",
+    "updated_at": "2018-01-23T17:14:18Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "copyOfYouthProduct",
+    "description": null,
+    "url": "https://github.com/PullingStrings/copyOfYouthProduct",
+    "language": "HTML",
+    "updated_at": "2018-01-13T15:02:28Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "PowerAfricaNewSite",
+    "description": "Trying to modify the old Power Africa website",
+    "url": "https://github.com/PullingStrings/PowerAfricaNewSite",
+    "language": "JavaScript",
+    "updated_at": "2017-12-11T16:33:05Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "websiteTest",
+    "description": "Don't explore please...just practice with jQuery",
+    "url": "https://github.com/PullingStrings/websiteTest",
+    "language": "HTML",
+    "updated_at": "2017-12-04T20:05:48Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "screen-loopr",
+    "description": null,
+    "url": "https://github.com/57656E6474/screen-loopr",
+    "language": "JavaScript",
+    "updated_at": "2017-11-27T18:22:10Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "wdi-project4",
+    "description": "A web app that lets you find playlists from people around you.",
+    "url": "https://github.com/PullingStrings/wdi-project4",
+    "language": "JavaScript",
+    "updated_at": "2017-11-24T14:31:34Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "site",
+    "description": "Experimenting with react and express",
+    "url": "https://github.com/PullingStrings/site",
+    "language": "JavaScript",
+    "updated_at": "2017-11-24T10:53:14Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "The-game-wdi-project-1",
+    "description": "Simple exciting game where you get to pop some balloons on your way home.",
+    "url": "https://github.com/PullingStrings/The-game-wdi-project-1",
+    "language": "JavaScript",
+    "updated_at": "2017-11-24T10:50:30Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "project-2",
+    "description": "A fun web app that teaches you how to dance on different styles of music from all around the world starting with Southern Africa.",
+    "url": "https://github.com/PullingStrings/project-2",
+    "language": "JavaScript",
+    "updated_at": "2017-11-24T10:48:31Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "wdi-fundamentals-memorygame",
+    "description": "This was a memory card. First feet at using js, css, and html",
+    "url": "https://github.com/PullingStrings/wdi-fundamentals-memorygame",
+    "language": "CSS",
+    "updated_at": "2017-11-22T09:23:27Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "website",
+    "description": "Online portfoilo with react",
+    "url": "https://github.com/PullingStrings/website",
+    "language": "JavaScript",
+    "updated_at": "2017-11-16T12:18:02Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "PullingStrings.github.io",
+    "description": null,
+    "url": "https://github.com/PullingStrings/PullingStrings.github.io",
+    "language": "JavaScript",
+    "updated_at": "2017-11-16T11:31:39Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "Youth-product",
+    "description": "GitHub Pages",
+    "url": "https://github.com/PullingStrings/Youth-product",
+    "language": "JavaScript",
+    "updated_at": "2017-11-16T11:31:10Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "wdi-project-3",
+    "description": null,
+    "url": "https://github.com/GuyHarperDay/wdi-project-3",
+    "language": "JavaScript",
+    "updated_at": "2017-09-28T10:22:58Z",
+    "type": "github",
+    "visibility": "public"
+  },
+  {
+    "name": "carePowerAfrica",
+    "description": "GitHub Pages",
+    "url": "https://github.com/PullingStrings/carePowerAfrica",
+    "language": "JavaScript",
+    "updated_at": "2017-09-26T17:31:53Z",
+    "type": "github",
+    "visibility": "public"
+  }
+]

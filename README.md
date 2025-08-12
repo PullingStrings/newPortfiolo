@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Gotcha — here’s a clean, recruiter-friendly `README.md` you can drop in your portfolio repo:
 
-## Getting Started
+````markdown
+# Sibusiso Zwane | Creative Developer
 
-First, run the development server:
+> **Building experiences at the intersection of code, art, and music.**
+
+![Portfolio Screenshot](./public/portfolio-screenshot.png) <!-- Replace with an actual screenshot -->
+
+## 🌟 Overview
+
+This is my personal portfolio site, built to showcase my work, skills, and creative projects.
+It’s designed with **modern, minimal, and bold aesthetics** to leave a strong first impression for recruiters and potential clients.
+
+**Live Site:** [View Portfolio](https://www.titozwane.com/)
+
+---
+
+## 🖥 Tech Stack
+
+- **React + Vite** – Fast and lightweight SPA setup
+- **Styled Components** – Component-scoped styling with theme support
+- **GitHub API Integration** – Fetches latest public & private repositories (via token)
+- **Formspree** – Contact form with validation + toast notifications
+- **Responsive & Mobile-Friendly** – Optimized across devices
+
+---
+
+## 📂 Features
+
+- **Hero Section** – Bold animated background + tagline
+- **About Section** – Personal story & unique value proposition
+- **Projects Highlight** – Live data from GitHub + JSON for non-repo projects, “Show More” lazy load
+- **Resume Page** – Animated vertical timeline of experience
+- **Contact Page** – Formspree-powered form with feedback messages
+- **Smooth Navigation** – Mobile dropdown with animation, scroll to sections
+
+---
+
+## 📸 Screenshots
+
+### Hero
+![Hero Screenshot](./public/screenshot-hero.png)
+
+### Projects
+![Projects Screenshot](./public/screenshot-projects.png)
+
+---
+
+## 🚀 Getting Started
+
+**Clone & Install**
+```bash
+git clone https://github.com/PullingStrings/portfolio.git
+cd portfolio
+npm install   # or yarn install
+````
+
+**Run Development Server**
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev   # or yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Build for Production**
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📬 Contact Me
 
-To learn more about Next.js, take a look at the following resources:
+📧 Email: [titozwane28@gmail.com](mailto:titozwane28@gmail.com)
+🔗 LinkedIn: [linkedin.com/in/titozwane](https://linkedin.com/in/titozwane)
+💻 GitHub: [github.com/PullingStrings](https://github.com/PullingStrings)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**© 2025 Sibusiso Zwane**
+Designed & developed with ❤️
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
