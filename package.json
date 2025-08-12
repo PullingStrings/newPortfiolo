@@ -3,8 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=22.16.0"
+  },
   "scripts": {
     "dev": "vite",
+    "prebuild": "node -r dotenv/config src/utils/fetchProjects.js",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
