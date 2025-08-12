@@ -1,11 +1,9 @@
-Gotcha — here’s a clean, recruiter-friendly `README.md` you can drop in your portfolio repo:
-
 ````markdown
 # Sibusiso Zwane | Creative Developer
 
 > **Building experiences at the intersection of code, art, and music.**
 
-![Portfolio Screenshot](./public/portfolio-screenshot.png) <!-- Replace with an actual screenshot -->
+![Portfolio Screenshot](./public/portfolio-screenshot.png)
 
 ## 🌟 Overview
 
