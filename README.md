@@ -3,7 +3,7 @@
 
 > **Building experiences at the intersection of code, art, and music.**
 
-![Portfolio Screenshot](./public/portfolio-screenshot.png)
+![Portfolio Screenshot](/public/portfolio-screenshot.png)
 
 ## 🌟 Overview
 
