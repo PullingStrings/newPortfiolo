@@ -79,7 +79,14 @@ export default function ProjectsHighlight() {
             <p>{proj.description || "No description available"}</p>
             {proj.url && (
               <a href={proj.url} target="_blank" rel="noopener noreferrer">
-                View Project →
+                View Project on Github →
+              </a>
+            )}
+            <br/>
+            <br/>
+            {proj.homepage && (
+              <a href={proj.homepage} target="_blank" rel="noopener noreferrer">
+                View Live Demo →
               </a>
             )}
           </ProjectCard>

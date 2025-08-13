@@ -17,6 +17,7 @@ const fetchOwnedRepos = async () => {
     description: r.description,
     url: r.html_url,
     language: r.language,
+    homepage: r.homepage || null,
     updated_at: r.updated_at,
     type: "github",
     visibility: r.private ? "private" : "public",

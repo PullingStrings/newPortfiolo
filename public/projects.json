@@ -1,10 +1,11 @@
 [
   {
     "name": "newPortfiolo",
-    "description": null,
+    "description": "This is my personal portfolio site, built to showcase my work, skills, and creative projects. It’s designed with **modern, minimal, and bold aesthetics** to leave a strong first impression for recruiters and potential clients.",
     "url": "https://github.com/PullingStrings/newPortfiolo",
     "language": "JavaScript",
-    "updated_at": "2025-08-12T14:32:59Z",
+    "homepage": "https://www.titozwane.com/",
+    "updated_at": "2025-08-13T08:48:10Z",
     "type": "github",
     "visibility": "public"
   },
@@ -13,6 +14,7 @@
     "description": "Mulit Step Form Main is a web application built with Next.js and TypeScript, featuring a multi-step form with responsive design, tailored to handle user inputs across various stages including personal information, plan selection, add-on features, and a summary confirmation step.",
     "url": "https://github.com/PullingStrings/multi-step-form-main",
     "language": "TypeScript",
+    "homepage": "https://multi-step-form-main-pearl.vercel.app",
     "updated_at": "2025-08-12T12:10:32Z",
     "type": "github",
     "visibility": "public"
@@ -22,6 +24,7 @@
     "description": "A slick, modern website template that you can rebrand in minutes for clients, especially small businesses.",
     "url": "https://github.com/PullingStrings/quick-upgrade-template",
     "language": "JavaScript",
+    "homepage": "https://quick-upgrade-template.vercel.app",
     "updated_at": "2025-08-01T11:30:49Z",
     "type": "github",
     "visibility": "public"
@@ -31,6 +34,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/kuluma-lightweight",
     "language": "TypeScript",
+    "homepage": null,
     "updated_at": "2025-06-11T12:55:14Z",
     "type": "github",
     "visibility": "public"
@@ -40,6 +44,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/ecomerce-product-page",
     "language": "TypeScript",
+    "homepage": "https://ecomerce-product-page-ten.vercel.app",
     "updated_at": "2024-05-12T10:41:32Z",
     "type": "github",
     "visibility": "public"
@@ -49,6 +54,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/launch-counter-timer",
     "language": "CSS",
+    "homepage": null,
     "updated_at": "2024-01-11T13:45:05Z",
     "type": "github",
     "visibility": "public"
@@ -58,6 +64,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/nyc-chanel-test",
     "language": "SCSS",
+    "homepage": "https://nyc-chanel-test.vercel.app",
     "updated_at": "2023-12-12T17:38:01Z",
     "type": "github",
     "visibility": "public"
@@ -67,6 +74,7 @@
     "description": "This project aims to demonstrate the correlation between music trends and data on racial injustice for a specific locale and time frame. It's built using Vite, Superbase, and TypeScript.",
     "url": "https://github.com/PullingStrings/my-music-trends-app",
     "language": "TypeScript",
+    "homepage": null,
     "updated_at": "2023-10-04T09:54:40Z",
     "type": "github",
     "visibility": "public"
@@ -76,6 +84,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/hubspot-exercise",
     "language": "JavaScript",
+    "homepage": null,
     "updated_at": "2023-06-16T12:27:10Z",
     "type": "github",
     "visibility": "public"
@@ -85,6 +94,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/gatsbyTestRepo",
     "language": null,
+    "homepage": null,
     "updated_at": "2022-08-03T15:36:04Z",
     "type": "github",
     "visibility": "public"
@@ -94,6 +104,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/commerce",
     "language": "TypeScript",
+    "homepage": null,
     "updated_at": "2022-06-07T16:11:33Z",
     "type": "github",
     "visibility": "public"
@@ -103,6 +114,7 @@
     "description": "Next.js Commerce",
     "url": "https://github.com/PullingStrings/commerce-1",
     "language": null,
+    "homepage": "https://demo.vercel.store",
     "updated_at": "2022-06-01T08:48:15Z",
     "type": "github",
     "visibility": "public"
@@ -112,6 +124,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/interactive-comments",
     "language": "CSS",
+    "homepage": null,
     "updated_at": "2022-03-01T18:47:08Z",
     "type": "github",
     "visibility": "public"
@@ -121,6 +134,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/my-ar-app",
     "language": "HTML",
+    "homepage": "my-ar-app.vercel.app",
     "updated_at": "2021-10-01T16:17:38Z",
     "type": "github",
     "visibility": "public"
@@ -130,6 +144,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/ARtito",
     "language": "HTML",
+    "homepage": null,
     "updated_at": "2021-09-30T16:00:01Z",
     "type": "github",
     "visibility": "public"
@@ -139,6 +154,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/bongi-portfolio",
     "language": "CSS",
+    "homepage": "bongi-portfolio-git-main-pullingstrings.vercel.app",
     "updated_at": "2021-03-16T09:05:59Z",
     "type": "github",
     "visibility": "public"
@@ -148,6 +164,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/easybank-landing-page-master",
     "language": "HTML",
+    "homepage": null,
     "updated_at": "2021-02-15T19:11:17Z",
     "type": "github",
     "visibility": "public"
@@ -157,6 +174,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/dare-git-repo",
     "language": "CSS",
+    "homepage": null,
     "updated_at": "2020-09-29T16:02:51Z",
     "type": "github",
     "visibility": "public"
@@ -166,6 +184,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/Cheil-Site",
     "language": "HTML",
+    "homepage": null,
     "updated_at": "2020-09-16T06:45:05Z",
     "type": "github",
     "visibility": "public"
@@ -175,6 +194,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/cheil-challage",
     "language": "HTML",
+    "homepage": null,
     "updated_at": "2020-09-16T06:38:41Z",
     "type": "github",
     "visibility": "public"
@@ -184,6 +204,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/canonical-test",
     "language": "JavaScript",
+    "homepage": null,
     "updated_at": "2020-09-01T09:08:55Z",
     "type": "github",
     "visibility": "public"
@@ -193,6 +214,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/chat-app-css",
     "language": "CSS",
+    "homepage": null,
     "updated_at": "2020-08-19T15:56:05Z",
     "type": "github",
     "visibility": "public"
@@ -202,6 +224,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/MenuJS",
     "language": "JavaScript",
+    "homepage": null,
     "updated_at": "2020-07-28T16:19:42Z",
     "type": "github",
     "visibility": "public"
@@ -211,6 +234,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/vueproject",
     "language": "Vue",
+    "homepage": null,
     "updated_at": "2020-07-20T08:01:44Z",
     "type": "github",
     "visibility": "public"
@@ -220,6 +244,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/article-preview-component-master",
     "language": "HTML",
+    "homepage": null,
     "updated_at": "2020-07-08T12:02:00Z",
     "type": "github",
     "visibility": "public"
@@ -229,6 +254,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/fylo-data-storage-component-master",
     "language": "CSS",
+    "homepage": "https://fylo-data-storage-component-master-orpin.now.sh",
     "updated_at": "2020-06-30T13:54:10Z",
     "type": "github",
     "visibility": "public"
@@ -238,6 +264,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/CSSGrid-fylo",
     "language": "CSS",
+    "homepage": null,
     "updated_at": "2020-06-23T14:54:55Z",
     "type": "github",
     "visibility": "public"
@@ -247,6 +274,7 @@
     "description": "After discovering the various paths in web development, I learn and admire the fact that you can work in teams as a developer (like joining a band again). Getting my feet wet in front-end development is where I would like to start my journey with the possibility to later on jump back into back-end development to become a well rounded full-stack developer.",
     "url": "https://github.com/PullingStrings/sibusisozwane",
     "language": "JavaScript",
+    "homepage": "http://tito.makhazwakale.co.za/",
     "updated_at": "2020-04-21T12:34:35Z",
     "type": "github",
     "visibility": "public"
@@ -256,6 +284,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/movies-crud-MERN",
     "language": "JavaScript",
+    "homepage": null,
     "updated_at": "2020-04-16T15:08:11Z",
     "type": "github",
     "visibility": "public"
@@ -265,6 +294,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/simplechat",
     "language": "JavaScript",
+    "homepage": null,
     "updated_at": "2020-03-27T16:01:39Z",
     "type": "github",
     "visibility": "public"
@@ -274,6 +304,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/shopifytheme",
     "language": "Liquid",
+    "homepage": null,
     "updated_at": "2020-03-13T14:09:02Z",
     "type": "github",
     "visibility": "public"
@@ -283,6 +314,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/wordpressvuejs",
     "language": "Vue",
+    "homepage": null,
     "updated_at": "2020-03-09T19:55:42Z",
     "type": "github",
     "visibility": "public"
@@ -292,6 +324,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/wordpress_theme_with_gulp",
     "language": "PHP",
+    "homepage": null,
     "updated_at": "2020-03-09T15:37:59Z",
     "type": "github",
     "visibility": "public"
@@ -301,6 +334,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/newtheme",
     "language": "JavaScript",
+    "homepage": null,
     "updated_at": "2020-02-19T11:49:54Z",
     "type": "github",
     "visibility": "public"
@@ -310,6 +344,7 @@
     "description": "Vue.js - Simple authentication using Nuxt.js",
     "url": "https://github.com/PullingStrings/vue.js-authentication-part-2",
     "language": null,
+    "homepage": "https://overflowjs.com/posts/Vuejs-Structuring-and-Authentication-In-2019-Part-2",
     "updated_at": "2020-01-17T14:05:22Z",
     "type": "github",
     "visibility": "public"
@@ -319,6 +354,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/pinkcoder.github.io",
     "language": "HTML",
+    "homepage": null,
     "updated_at": "2019-04-29T19:09:54Z",
     "type": "github",
     "visibility": "public"
@@ -328,6 +364,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/starterthemem",
     "language": "PHP",
+    "homepage": null,
     "updated_at": "2018-10-08T15:23:30Z",
     "type": "github",
     "visibility": "public"
@@ -337,6 +374,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/FizzBuzz",
     "language": "JavaScript",
+    "homepage": null,
     "updated_at": "2018-10-04T11:23:16Z",
     "type": "github",
     "visibility": "public"
@@ -346,6 +384,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/blog-react-tito",
     "language": "JavaScript",
+    "homepage": null,
     "updated_at": "2018-09-18T15:17:32Z",
     "type": "github",
     "visibility": "public"
@@ -355,6 +394,7 @@
     "description": "testing and using pwa with react",
     "url": "https://github.com/PullingStrings/pwa-react-app",
     "language": "JavaScript",
+    "homepage": null,
     "updated_at": "2018-09-10T09:29:11Z",
     "type": "github",
     "visibility": "public"
@@ -364,6 +404,7 @@
     "description": "Fuse Afrika update",
     "url": "https://github.com/PullingStrings/redesign",
     "language": "JavaScript",
+    "homepage": null,
     "updated_at": "2018-07-13T13:27:18Z",
     "type": "github",
     "visibility": "public"
@@ -373,6 +414,7 @@
     "description": "GitHub Pages",
     "url": "https://github.com/PullingStrings/youthProduct",
     "language": "JavaScript",
+    "homepage": "github.com",
     "updated_at": "2018-07-05T15:52:06Z",
     "type": "github",
     "visibility": "public"
@@ -382,6 +424,7 @@
     "description": "starting with the fuse personal blog",
     "url": "https://github.com/PullingStrings/react-boilerplate",
     "language": "JavaScript",
+    "homepage": null,
     "updated_at": "2018-06-27T15:32:42Z",
     "type": "github",
     "visibility": "public"
@@ -391,6 +434,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/phplearning",
     "language": "HTML",
+    "homepage": null,
     "updated_at": "2018-01-23T17:14:18Z",
     "type": "github",
     "visibility": "public"
@@ -400,6 +444,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/copyOfYouthProduct",
     "language": "HTML",
+    "homepage": null,
     "updated_at": "2018-01-13T15:02:28Z",
     "type": "github",
     "visibility": "public"
@@ -409,6 +454,7 @@
     "description": "Trying to modify the old Power Africa website",
     "url": "https://github.com/PullingStrings/PowerAfricaNewSite",
     "language": "JavaScript",
+    "homepage": null,
     "updated_at": "2017-12-11T16:33:05Z",
     "type": "github",
     "visibility": "public"
@@ -418,6 +464,7 @@
     "description": "Don't explore please...just practice with jQuery",
     "url": "https://github.com/PullingStrings/websiteTest",
     "language": "HTML",
+    "homepage": null,
     "updated_at": "2017-12-04T20:05:48Z",
     "type": "github",
     "visibility": "public"
@@ -427,6 +474,7 @@
     "description": null,
     "url": "https://github.com/57656E6474/screen-loopr",
     "language": "JavaScript",
+    "homepage": null,
     "updated_at": "2017-11-27T18:22:10Z",
     "type": "github",
     "visibility": "public"
@@ -436,6 +484,7 @@
     "description": "A web app that lets you find playlists from people around you.",
     "url": "https://github.com/PullingStrings/wdi-project4",
     "language": "JavaScript",
+    "homepage": "https://playgenfinder.herokuapp.com/",
     "updated_at": "2017-11-24T14:31:34Z",
     "type": "github",
     "visibility": "public"
@@ -445,6 +494,7 @@
     "description": "Experimenting with react and express",
     "url": "https://github.com/PullingStrings/site",
     "language": "JavaScript",
+    "homepage": null,
     "updated_at": "2017-11-24T10:53:14Z",
     "type": "github",
     "visibility": "public"
@@ -454,6 +504,7 @@
     "description": "Simple exciting game where you get to pop some balloons on your way home.",
     "url": "https://github.com/PullingStrings/The-game-wdi-project-1",
     "language": "JavaScript",
+    "homepage": "https://pop-the-balloons.herokuapp.com/",
     "updated_at": "2017-11-24T10:50:30Z",
     "type": "github",
     "visibility": "public"
@@ -463,6 +514,7 @@
     "description": "A fun web app that teaches you how to dance on different styles of music from all around the world starting with Southern Africa.",
     "url": "https://github.com/PullingStrings/project-2",
     "language": "JavaScript",
+    "homepage": "https://learndancemzansi.herokuapp.com/",
     "updated_at": "2017-11-24T10:48:31Z",
     "type": "github",
     "visibility": "public"
@@ -472,6 +524,7 @@
     "description": "This was a memory card. First feet at using js, css, and html",
     "url": "https://github.com/PullingStrings/wdi-fundamentals-memorygame",
     "language": "CSS",
+    "homepage": null,
     "updated_at": "2017-11-22T09:23:27Z",
     "type": "github",
     "visibility": "public"
@@ -481,6 +534,7 @@
     "description": "Online portfoilo with react",
     "url": "https://github.com/PullingStrings/website",
     "language": "JavaScript",
+    "homepage": null,
     "updated_at": "2017-11-16T12:18:02Z",
     "type": "github",
     "visibility": "public"
@@ -490,6 +544,7 @@
     "description": null,
     "url": "https://github.com/PullingStrings/PullingStrings.github.io",
     "language": "JavaScript",
+    "homepage": null,
     "updated_at": "2017-11-16T11:31:39Z",
     "type": "github",
     "visibility": "public"
@@ -499,6 +554,7 @@
     "description": "GitHub Pages",
     "url": "https://github.com/PullingStrings/Youth-product",
     "language": "JavaScript",
+    "homepage": "github.com",
     "updated_at": "2017-11-16T11:31:10Z",
     "type": "github",
     "visibility": "public"
@@ -508,6 +564,7 @@
     "description": null,
     "url": "https://github.com/GuyHarperDay/wdi-project-3",
     "language": "JavaScript",
+    "homepage": null,
     "updated_at": "2017-09-28T10:22:58Z",
     "type": "github",
     "visibility": "public"
@@ -517,6 +574,7 @@
     "description": "GitHub Pages",
     "url": "https://github.com/PullingStrings/carePowerAfrica",
     "language": "JavaScript",
+    "homepage": "github.com",
     "updated_at": "2017-09-26T17:31:53Z",
     "type": "github",
     "visibility": "public"
