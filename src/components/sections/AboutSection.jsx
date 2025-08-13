@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { Button } from "../ui/Button";
 
 const Section = styled.section`
@@ -40,7 +41,7 @@ export default function AboutSection() {
           experiences. With over a decade of experience, I’ve worked on
           projects for leading brands and creative spaces alike.
         </p>
-        <Button href="/resume" style={{ marginTop: "1.5rem" }}>
+        <Button as={Link} to="/resume" style={{ marginTop: "1.5rem" }}>
           View My Resume
         </Button>
       </TextContent>
