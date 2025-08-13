@@ -1,5 +1,6 @@
 // src/App.jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ScrollToTop from "./components/layout/ScrollToTop";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./theme/theme";
 import { GlobalStyles } from "./theme/GlobalStyles";
@@ -15,6 +16,7 @@ export default function App() {
       <GlobalStyles />
       <Router>
         <Navbar />
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/resume" element={<Resume />} />
