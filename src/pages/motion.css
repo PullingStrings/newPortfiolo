@@ -2,11 +2,14 @@
 .project-row__media,
 .project-row__info,
 .project-row__interruption,
-.project-row__secondary-media {
-  will-change: transform;
+.project-row__secondary-media,
+.project-row__motion-dot,
+.project-row__motion-accent {
+  will-change: transform, opacity;
 }
 
 .project-row__media-reveal {
+  position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -18,6 +21,45 @@
   height: 100%;
   display: block;
   object-fit: cover;
+}
+
+.project-row__motion-dot {
+  position: absolute;
+  z-index: 6;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--signal);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.project-row__motion-accent {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  width: 5px;
+  height: 28%;
+  background: var(--signal);
+  pointer-events: none;
+}
+
+.project-row__motion-ghost {
+  position: absolute;
+  right: 2%;
+  top: 4%;
+  z-index: 2;
+  font-family: var(--display);
+  font-size: clamp(120px, 20vw, 320px);
+  font-weight: 600;
+  line-height: .7;
+  color: rgba(17, 17, 17, .08);
+  pointer-events: none;
+}
+
+.project-row[data-motion-archetype='loud'] .project-row__motion-ghost {
+  display: none;
 }
 
 .project-row--dreamzone .project-row__media-reveal > img {
@@ -46,8 +88,23 @@
   object-position: 55% 50%;
 }
 
+.project-row--repair .project-row__motion-ghost {
+  right: 5%;
+  top: 2%;
+}
+
 .project-row--repair .project-row__secondary-media {
   will-change: transform, opacity;
+}
+
+/* Loud-source projects preserve their artwork: the solid number and source image do the work. */
+.project-row[data-motion-archetype='loud'] .project-row__motion-accent {
+  height: 20%;
+}
+
+/* Quiet-source projects allow the Tito system to intervene more strongly. */
+.project-row[data-motion-archetype='quiet'] .project-row__motion-accent {
+  height: 34%;
 }
 
 /* ScrollTrigger pins the complete editorial composition, not individual fragments. */
@@ -60,12 +117,20 @@
   .project-row__media,
   .project-row__info,
   .project-row__interruption,
-  .project-row__secondary-media {
+  .project-row__secondary-media,
+  .project-row__motion-dot,
+  .project-row__motion-accent {
     transform: none !important;
   }
 
   .project-row__media-reveal {
     clip-path: none !important;
+  }
+
+  .project-row__motion-dot,
+  .project-row__motion-ghost,
+  .project-row__motion-accent {
+    display: none;
   }
 
   .project-row--repair .project-row__media-reveal {
@@ -79,11 +144,19 @@
   .project-row__media,
   .project-row__info,
   .project-row__interruption,
-  .project-row__secondary-media {
+  .project-row__secondary-media,
+  .project-row__motion-dot,
+  .project-row__motion-accent {
     transform: none !important;
   }
 
   .project-row__media-reveal {
     clip-path: none !important;
+  }
+
+  .project-row__motion-dot,
+  .project-row__motion-ghost,
+  .project-row__motion-accent {
+    display: none !important;
   }
 }
