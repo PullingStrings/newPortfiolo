@@ -10,9 +10,12 @@ const projects = [
     className: 'project-row--campaign project-row--dreamzone',
     accent: 'Prototype → system → production',
     media: {
-      src: '/projects/dreamzone/cover.svg',
-      alt: 'Volkswagen 50 Years of GTI digital experience',
+      src: '/projects/dreamzone/cover.png',
+      alt: 'A montage of Volkswagen Dreamzone experiences for ID. Cross, ID. Polo and GTI 50',
       label: 'GTI 50 / DREAMZONE',
+      loading: 'eager',
+      width: 1397,
+      height: 785,
     },
   },
   {
@@ -24,9 +27,12 @@ const projects = [
     className: 'project-row--mirror project-row--finance',
     accent: 'Campaign pace. Production finance complexity.',
     media: {
-      src: '/projects/offers-finance/cover.svg',
-      alt: 'Volkswagen finance calculator and offers experience',
+      src: '/projects/offers-finance/cover.png',
+      alt: 'Volkswagen New Car Finance Offers model-selection journey',
       label: 'OFFERS / FINANCE / COMPARE',
+      loading: 'lazy',
+      width: 3338,
+      height: 1996,
     },
   },
   {
@@ -102,7 +108,13 @@ function ProjectRow({ project }) {
       <figure className={`project-row__media ${project.media ? 'project-row__media--real' : ''}`}>
         {project.media ? (
           <>
-            <img src={project.media.src} alt={project.media.alt} loading="lazy" />
+            <img
+              src={project.media.src}
+              alt={project.media.alt}
+              loading={project.media.loading}
+              width={project.media.width}
+              height={project.media.height}
+            />
             <figcaption>{project.media.label}</figcaption>
           </>
         ) : (
