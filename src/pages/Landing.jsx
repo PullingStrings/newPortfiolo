@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import './landing.css';
 
 const projects = [
@@ -9,6 +10,7 @@ const projects = [
     meta: ['Creative development', 'GSAP / ScrollTrigger', 'Video systems', 'Safari / iOS resilience'],
     className: 'project-row--campaign project-row--dreamzone',
     accent: 'Prototype → system → production',
+    motion: 'dreamzone',
     media: {
       src: '/projects/dreamzone/cover.png',
       alt: 'A montage of Volkswagen Dreamzone experiences for ID. Cross, ID. Polo and GTI 50',
@@ -26,6 +28,7 @@ const projects = [
     meta: ['Transactional UI', 'Filtering / comparison', 'Responsive systems', 'Accessibility'],
     className: 'project-row--mirror project-row--finance',
     accent: 'Campaign pace. Production finance complexity.',
+    motion: 'finance',
     media: {
       src: '/projects/offers-finance/cover.png',
       alt: 'Volkswagen New Car Finance Offers model-selection journey',
@@ -43,6 +46,7 @@ const projects = [
     meta: ['AEM', 'Sprinklr', 'Data-driven UI', 'CMP / analytics'],
     className: 'project-row--contact',
     accent: 'Help, made clear.',
+    motion: 'contact',
     interruption: ['HELP', 'MADE', 'CLEAR.'],
     media: {
       src: '/contact-us.png',
@@ -61,6 +65,7 @@ const projects = [
     meta: ['Vanilla JavaScript', 'PHP', 'API-driven availability', 'Legacy systems'],
     className: 'project-row--mirror project-row--repair',
     accent: 'Complex systems made clear.',
+    motion: 'repair',
     media: {
       src: '/projects/samsung-repair/vendor-map.png',
       alt: 'Samsung repair booking map showing nearby repair vendors and booking availability',
@@ -111,6 +116,125 @@ const shipped = [
   },
 ];
 
+const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+const mix = (from, to, progress) => from + (to - from) * progress;
+const phase = (progress, start, end) => clamp((progress - start) / (end - start));
+
+function setMotionVariables(element, profile, progress) {
+  const reveal = phase(progress, 0.05, 0.72);
+  const settle = phase(progress, 0.66, 1);
+  const late = phase(progress, 0.44, 0.88);
+  const direction = element.classList.contains('project-row--mirror') ? -1 : 1;
+
+  let numberX = mix(86 * direction, 0, progress);
+  let numberY = mix(-24, 0, progress);
+  let mediaX = 0;
+  let mediaY = mix(42, 0, reveal);
+  let mediaScale = mix(0.965, 1, reveal);
+  let infoY = mix(34, 0, phase(progress, 0.12, 0.68));
+  let interruptionX = mix(-72, 0, late);
+  let interruptionY = mix(34, 0, late);
+  let secondaryX = mix(-54, 0, late);
+  let secondaryY = mix(58, 0, late);
+  let secondaryRotate = mix(-3, 0, late);
+  let clipRadius = mix(10, 150, reveal);
+
+  if (profile === 'dreamzone') {
+    numberX = mix(112, 18, progress);
+    numberY = mix(-34, 8, progress);
+    mediaX = mix(-14, 0, settle);
+    mediaY = progress < 0.62 ? mix(54, -16, phase(progress, 0, 0.62)) : mix(-16, 0, settle);
+    mediaScale = progress < 0.62 ? mix(0.94, 1.015, phase(progress, 0, 0.62)) : mix(1.015, 1, settle);
+    infoY = mix(42, 0, phase(progress, 0.16, 0.72));
+  }
+
+  if (profile === 'finance') {
+    numberX = mix(-58, 0, progress);
+    numberY = mix(-12, 0, progress);
+    mediaY = mix(22, 0, phase(progress, 0.12, 0.62));
+    mediaScale = mix(0.985, 1, phase(progress, 0.12, 0.62));
+    infoY = mix(18, 0, phase(progress, 0.1, 0.58));
+  }
+
+  if (profile === 'contact') {
+    numberX = mix(104, 16, progress);
+    numberY = mix(-30, 6, progress);
+    mediaY = mix(58, 0, phase(progress, 0.04, 0.72));
+    mediaScale = mix(0.95, 1, phase(progress, 0.04, 0.72));
+    interruptionX = mix(-110, 0, phase(progress, 0.46, 0.9));
+    interruptionY = mix(56, 0, phase(progress, 0.46, 0.9));
+    clipRadius = mix(7, 150, phase(progress, 0.08, 0.7));
+  }
+
+  if (profile === 'repair') {
+    numberX = mix(-92, 0, progress);
+    numberY = mix(-18, 0, progress);
+    mediaX = mix(34, 0, phase(progress, 0.08, 0.66));
+    mediaY = mix(28, 0, phase(progress, 0.08, 0.66));
+    mediaScale = mix(0.975, 1, phase(progress, 0.08, 0.66));
+    secondaryX = mix(-82, 0, phase(progress, 0.4, 0.9));
+    secondaryY = mix(76, 0, phase(progress, 0.4, 0.9));
+    secondaryRotate = mix(-5, 0, phase(progress, 0.4, 0.9));
+    infoY = mix(28, 0, phase(progress, 0.18, 0.7));
+  }
+
+  element.style.setProperty('--motion-number-x', `${numberX.toFixed(2)}px`);
+  element.style.setProperty('--motion-number-y', `${numberY.toFixed(2)}px`);
+  element.style.setProperty('--motion-media-x', `${mediaX.toFixed(2)}px`);
+  element.style.setProperty('--motion-media-y', `${mediaY.toFixed(2)}px`);
+  element.style.setProperty('--motion-media-scale', mediaScale.toFixed(4));
+  element.style.setProperty('--motion-info-y', `${infoY.toFixed(2)}px`);
+  element.style.setProperty('--motion-interruption-x', `${interruptionX.toFixed(2)}px`);
+  element.style.setProperty('--motion-interruption-y', `${interruptionY.toFixed(2)}px`);
+  element.style.setProperty('--motion-secondary-x', `${secondaryX.toFixed(2)}px`);
+  element.style.setProperty('--motion-secondary-y', `${secondaryY.toFixed(2)}px`);
+  element.style.setProperty('--motion-secondary-rotate', `${secondaryRotate.toFixed(2)}deg`);
+  element.style.setProperty('--motion-clip-radius', `${clipRadius.toFixed(2)}%`);
+}
+
+function useProjectMotion(rootRef, profile) {
+  useEffect(() => {
+    const element = rootRef.current;
+    if (!element || !profile) return undefined;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (reducedMotion.matches) {
+      element.dataset.motionReady = 'false';
+      return undefined;
+    }
+
+    let frame = null;
+
+    const update = () => {
+      frame = null;
+      const rect = element.getBoundingClientRect();
+      const viewport = window.innerHeight || 1;
+      const start = viewport * 0.86;
+      const end = viewport * 0.16;
+      const travel = rect.height + start - end;
+      const progress = clamp((start - rect.top) / Math.max(travel, 1));
+
+      setMotionVariables(element, profile, progress);
+      element.dataset.motionReady = 'true';
+    };
+
+    const requestUpdate = () => {
+      if (frame !== null) return;
+      frame = window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+
+    return () => {
+      window.removeEventListener('scroll', requestUpdate);
+      window.removeEventListener('resize', requestUpdate);
+      if (frame !== null) window.cancelAnimationFrame(frame);
+    };
+  }, [profile, rootRef]);
+}
+
 function SectionHeading({ index, eyebrow, title, copy }) {
   return (
     <header className="section-heading">
@@ -125,19 +249,29 @@ function SectionHeading({ index, eyebrow, title, copy }) {
 }
 
 function ProjectRow({ project }) {
+  const rootRef = useRef(null);
+  useProjectMotion(rootRef, project.motion);
+
   return (
-    <article className={`project-row ${project.className}`}>
+    <article
+      ref={rootRef}
+      className={`project-row ${project.className}`}
+      data-motion-profile={project.motion}
+      data-motion-ready="false"
+    >
       <div className="project-row__number" aria-hidden="true">{project.index}</div>
       <figure className={`project-row__media ${project.media ? 'project-row__media--real' : ''}`}>
         {project.media ? (
           <>
-            <img
-              src={project.media.src}
-              alt={project.media.alt}
-              loading={project.media.loading}
-              width={project.media.width}
-              height={project.media.height}
-            />
+            <div className="project-row__media-reveal">
+              <img
+                src={project.media.src}
+                alt={project.media.alt}
+                loading={project.media.loading}
+                width={project.media.width}
+                height={project.media.height}
+              />
+            </div>
             {project.secondaryMedia && (
               <img
                 className="project-row__secondary-media"
