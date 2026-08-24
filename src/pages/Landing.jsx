@@ -3,27 +3,72 @@ import './landing.css';
 const projects = [
   {
     index: '01',
-    title: 'Samsung Support',
-    kicker: 'Samsung UK / Cheil',
-    copy: 'Support, repair and contact journeys shaped into clearer front-end systems for a high-traffic production ecosystem.',
-    meta: ['Front-end development', 'Support / Repair', '2020—2026'],
-    className: '',
+    title: 'Volkswagen Dreamzone',
+    kicker: 'Volkswagen / Dreamzone / 2026',
+    copy: 'Scroll-driven storytelling engineered for production across ID. Polo, GTI 50 and ID. Cross — combining video, animation, product interaction and campaign-specific content.',
+    meta: ['Creative development', 'GSAP / ScrollTrigger', 'Video systems', 'Safari / iOS resilience'],
+    className: 'project-row--campaign',
+    accent: 'Prototype → system → production',
   },
   {
     index: '02',
-    title: 'Galaxy Unpacked',
-    kicker: 'Campaign / Experience',
-    copy: 'A louder visual world where the portfolio system steps back and lets campaign art carry more of the expression.',
-    meta: ['Campaign development', 'Responsive experience', 'Samsung UK'],
-    className: 'project-row--mirror project-row--campaign',
+    title: 'Volkswagen Offers & Finance',
+    kicker: 'Volkswagen / Finance / 2026',
+    copy: 'A responsive finance journey for discovering vehicles, calculating PCP and PCH offers, comparing options and submitting customer enquiries against live vehicle and finance data.',
+    meta: ['Transactional UI', 'Filtering / comparison', 'Responsive systems', 'Accessibility'],
+    className: 'project-row--mirror',
+    accent: 'Campaign pace. Production finance complexity.',
   },
   {
     index: '03',
-    title: 'Selected Systems',
-    kicker: 'Commerce / Product / Platform',
-    copy: 'A home for the broader engineering work: reusable front-end patterns, commerce journeys and production systems.',
-    meta: ['React', 'TypeScript', 'AEM'],
+    title: 'Samsung Contact',
+    kicker: 'Samsung UK / Cheil / 2025',
+    copy: 'A reusable, data-driven contact journey inside Samsung’s AEM ecosystem, orchestrating nested navigation, contact methods, Sprinklr live chat, consent, analytics and accessibility.',
+    meta: ['AEM', 'Sprinklr', 'Data-driven UI', 'CMP / analytics'],
     className: '',
+    accent: 'A small application hiding inside a support page.',
+  },
+  {
+    index: '04',
+    title: 'Samsung Support / Repair',
+    kicker: 'Samsung UK / Cheil / 2024—2025',
+    copy: 'Legacy support and repair journeys made clearer across booking, map and appointment screens, with vendor availability driven by service data across multiple repair types.',
+    meta: ['Vanilla JavaScript', 'PHP', 'API-driven availability', 'Legacy systems'],
+    className: 'project-row--mirror',
+    accent: 'Complex systems made clear.',
+  },
+];
+
+const shipped = [
+  {
+    title: 'Galaxy Unpacked / flagship work',
+    meta: 'Samsung / campaign delivery',
+    copy: 'Responsive campaign and production work within Samsung’s wider flagship and launch ecosystem.',
+  },
+  {
+    title: 'Sprinklr live chat integrations',
+    meta: 'Samsung / support',
+    copy: 'Consent-aware chat routing, conversation state, contextual behaviour and production integration.',
+  },
+  {
+    title: 'Live chat wait-time service',
+    meta: 'Samsung / AWS / Sprinklr',
+    copy: 'A frontend wait-time experience backed by API Gateway and Lambda to safely bridge Sprinklr data into Samsung.com.',
+  },
+  {
+    title: 'Trade-in tooling',
+    meta: 'Samsung / commerce',
+    copy: 'Data-driven comparison UI, SKU mapping, sticky table behaviour and resilient API fallbacks.',
+  },
+  {
+    title: 'KX / Quidini journeys',
+    meta: 'Samsung / retail experience',
+    copy: 'Store-selection and booking integrations built around existing Samsung and third-party systems.',
+  },
+  {
+    title: 'Qualtrics / survey experiences',
+    meta: 'Samsung / optimisation',
+    copy: 'Timed and consent-aware intercept experiences with controlled frequency and production-safe behaviour.',
   },
 ];
 
@@ -44,16 +89,45 @@ function ProjectRow({ project }) {
   return (
     <article className={`project-row ${project.className}`}>
       <div className="project-row__number" aria-hidden="true">{project.index}</div>
-      <div className="project-row__media" aria-label={`${project.title} project media placeholder`} />
+      <div className="project-row__media" aria-label={`${project.title} project media placeholder`}>
+        <span>{project.kicker}</span>
+      </div>
       <div className="project-row__info">
         <div className="project-row__kicker">{project.kicker}</div>
         <h3>{project.title}</h3>
         <p>{project.copy}</p>
+        <strong className="project-row__accent">{project.accent}</strong>
         <div className="project-row__meta">
           {project.meta.map((item) => <span key={item}>{item}</span>)}
         </div>
       </div>
     </article>
+  );
+}
+
+function ShippedArchive() {
+  return (
+    <section className="shipped home-section" id="shipped">
+      <SectionHeading
+        index="02"
+        eyebrow="Archive / smaller work"
+        title="Other things I shipped."
+        copy="Not everything needs a full case study. This is the long tail: integrations, production features, smaller campaigns and systems that still mattered." 
+      />
+      <div className="shipped-list">
+        {shipped.map((item, index) => (
+          <article className="shipped-item" key={item.title}>
+            <span className="shipped-item__index">{String(index + 1).padStart(2, '0')}</span>
+            <div className="shipped-item__title">
+              <span>{item.meta}</span>
+              <h3>{item.title}</h3>
+            </div>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+      <p className="shipped-note">More small projects can live here as we recover them — without turning every shipped feature into a case study.</p>
+    </section>
   );
 }
 
@@ -84,16 +158,18 @@ export default function Landing() {
       <section className="work-index home-section" id="projects">
         <SectionHeading
           index="01"
-          eyebrow="Selected work"
-          title="The work stays clear. The system gets expressive around it."
-          copy="Step 7 is the real homepage skeleton: project rhythm first, then we graduate the approved image treatments and motion into these slots."
+          eyebrow="Featured work"
+          title="Four projects. Four different engineering problems."
+          copy="Recent work first. The visual language stays related, but each project earns its own level of expression based on the source material and the problem underneath it."
         />
         {projects.map((project) => <ProjectRow key={project.index} project={project} />)}
       </section>
 
+      <ShippedArchive />
+
       <section className="about-v2 home-section" id="about">
         <SectionHeading
-          index="02"
+          index="03"
           eyebrow="About / approach"
           title="Code, music and visual culture — without turning the portfolio into a developer cliché."
         />
