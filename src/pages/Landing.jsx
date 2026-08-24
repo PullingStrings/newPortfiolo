@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import './landing.css';
+import './motion.css';
 
 const projects = [
   {
