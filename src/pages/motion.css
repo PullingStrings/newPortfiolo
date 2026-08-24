@@ -1,31 +1,8 @@
-.project-row {
-  --motion-number-x: 0px;
-  --motion-number-y: 0px;
-  --motion-media-x: 0px;
-  --motion-media-y: 0px;
-  --motion-media-scale: 1;
-  --motion-info-y: 0px;
-  --motion-interruption-x: 0px;
-  --motion-interruption-y: 0px;
-  --motion-secondary-x: 0px;
-  --motion-secondary-y: 0px;
-  --motion-secondary-rotate: 0deg;
-  --motion-clip-radius: 150%;
-}
-
-.project-row[data-motion-ready='true'] .project-row__number {
-  transform: translate3d(var(--motion-number-x), var(--motion-number-y), 0);
-  will-change: transform;
-}
-
-.project-row[data-motion-ready='true'] .project-row__media {
-  transform: translate3d(var(--motion-media-x), var(--motion-media-y), 0) scale(var(--motion-media-scale));
-  transform-origin: 50% 50%;
-  will-change: transform;
-}
-
-.project-row[data-motion-ready='true'] .project-row__info {
-  transform: translate3d(0, var(--motion-info-y), 0);
+.project-row__number,
+.project-row__media,
+.project-row__info,
+.project-row__interruption,
+.project-row__secondary-media {
   will-change: transform;
 }
 
@@ -33,35 +10,30 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  will-change: clip-path;
 }
 
 .project-row__media-reveal > img {
   width: 100%;
   height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
-.project-row--dreamzone[data-motion-ready='true'] .project-row__media-reveal {
-  clip-path: circle(var(--motion-clip-radius) at 76% 28%);
-  will-change: clip-path;
+.project-row--dreamzone .project-row__media-reveal > img {
+  object-position: 50% 40%;
+  filter: saturate(1.06) contrast(1.04);
 }
 
-.project-row--contact[data-motion-ready='true'] .project-row__media-reveal {
-  clip-path: circle(var(--motion-clip-radius) at 78% 30%);
-  will-change: clip-path;
+.project-row--finance .project-row__media-reveal > img {
+  object-position: 50% 18%;
 }
 
-.project-row--contact[data-motion-ready='true'] .project-row__interruption {
-  transform: translate3d(var(--motion-interruption-x), var(--motion-interruption-y), 0);
-  will-change: transform;
+.project-row--contact .project-row__media-reveal > img {
+  object-position: 50% 28%;
+  transform: scale(1.13);
 }
 
-.project-row--repair[data-motion-ready='true'] .project-row__secondary-media {
-  transform: translate3d(var(--motion-secondary-x), var(--motion-secondary-y), 0) rotate(var(--motion-secondary-rotate));
-  transform-origin: 50% 50%;
-  will-change: transform;
-}
-
-/* The repair main image now lives inside the reveal wrapper. */
 .project-row--repair .project-row__media-reveal {
   width: 88%;
   height: 78%;
@@ -74,18 +46,26 @@
   object-position: 55% 50%;
 }
 
+.project-row--repair .project-row__secondary-media {
+  will-change: transform, opacity;
+}
+
+/* ScrollTrigger pins the complete editorial composition, not individual fragments. */
+.pin-spacer > .project-row {
+  width: 100%;
+}
+
 @media (max-width: 600px) {
-  .project-row[data-motion-ready='true'] .project-row__number,
-  .project-row[data-motion-ready='true'] .project-row__media,
-  .project-row[data-motion-ready='true'] .project-row__info,
-  .project-row--contact[data-motion-ready='true'] .project-row__interruption,
-  .project-row--repair[data-motion-ready='true'] .project-row__secondary-media {
-    transform: none;
+  .project-row__number,
+  .project-row__media,
+  .project-row__info,
+  .project-row__interruption,
+  .project-row__secondary-media {
+    transform: none !important;
   }
 
-  .project-row--dreamzone[data-motion-ready='true'] .project-row__media-reveal,
-  .project-row--contact[data-motion-ready='true'] .project-row__media-reveal {
-    clip-path: none;
+  .project-row__media-reveal {
+    clip-path: none !important;
   }
 
   .project-row--repair .project-row__media-reveal {
