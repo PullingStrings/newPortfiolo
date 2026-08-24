@@ -41,8 +41,17 @@ const projects = [
     kicker: 'Samsung UK / Cheil / 2025',
     copy: 'A reusable, data-driven contact journey inside Samsung’s AEM ecosystem, orchestrating nested navigation, contact methods, Sprinklr live chat, consent, analytics and accessibility.',
     meta: ['AEM', 'Sprinklr', 'Data-driven UI', 'CMP / analytics'],
-    className: '',
-    accent: 'A small application hiding inside a support page.',
+    className: 'project-row--contact',
+    accent: 'Help, made clear.',
+    interruption: ['HELP', 'MADE', 'CLEAR.'],
+    media: {
+      src: '/contact-us.png',
+      alt: 'Samsung Contact Us support journey with product and contact option tiles',
+      label: 'CONTACT / SUPPORT / SPRINKLR',
+      loading: 'lazy',
+      width: 1600,
+      height: 900,
+    },
   },
   {
     index: '04',
@@ -50,8 +59,22 @@ const projects = [
     kicker: 'Samsung UK / Cheil / 2024—2025',
     copy: 'Legacy support and repair journeys made clearer across booking, map and appointment screens, with vendor availability driven by service data across multiple repair types.',
     meta: ['Vanilla JavaScript', 'PHP', 'API-driven availability', 'Legacy systems'],
-    className: 'project-row--mirror',
+    className: 'project-row--mirror project-row--repair',
     accent: 'Complex systems made clear.',
+    media: {
+      src: '/projects/samsung-repair/vendor-map.png',
+      alt: 'Samsung repair booking map showing nearby repair vendors and booking availability',
+      label: 'VENDOR / AVAILABILITY / BOOKING',
+      loading: 'lazy',
+      width: 1536,
+      height: 1024,
+    },
+    secondaryMedia: {
+      src: '/projects/samsung-repair/repair-options.png',
+      alt: 'Samsung repair journey showing in-home repair and trade-up options',
+      width: 1240,
+      height: 1240,
+    },
   },
 ];
 
@@ -115,6 +138,21 @@ function ProjectRow({ project }) {
               width={project.media.width}
               height={project.media.height}
             />
+            {project.secondaryMedia && (
+              <img
+                className="project-row__secondary-media"
+                src={project.secondaryMedia.src}
+                alt={project.secondaryMedia.alt}
+                loading="lazy"
+                width={project.secondaryMedia.width}
+                height={project.secondaryMedia.height}
+              />
+            )}
+            {project.interruption && (
+              <span className="project-row__interruption" aria-hidden="true">
+                {project.interruption.map((line) => <span key={line}>{line}</span>)}
+              </span>
+            )}
             <figcaption>{project.media.label}</figcaption>
           </>
         ) : (
