@@ -10,7 +10,7 @@ const projects = [
     className: 'project-row--campaign project-row--dreamzone',
     accent: 'Prototype → system → production',
     media: {
-      src: 'https://image.thum.io/get/width/1600/crop/900/noanimate/https://www.volkswagen.co.uk/en/gti-world/50-years-of-gti.html',
+      src: '/projects/dreamzone/cover.svg',
       alt: 'Volkswagen 50 Years of GTI digital experience',
       label: 'GTI 50 / DREAMZONE',
     },
@@ -24,7 +24,7 @@ const projects = [
     className: 'project-row--mirror project-row--finance',
     accent: 'Campaign pace. Production finance complexity.',
     media: {
-      src: 'https://image.thum.io/get/width/1600/crop/900/noanimate/https://www.volkswagen.co.uk/en/finance-offers-and-fleet/finance-calculator.html',
+      src: '/projects/offers-finance/cover.svg',
       alt: 'Volkswagen finance calculator and offers experience',
       label: 'OFFERS / FINANCE / COMPARE',
     },
