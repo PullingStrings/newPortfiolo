@@ -7,8 +7,13 @@ const projects = [
     kicker: 'Volkswagen / Dreamzone / 2026',
     copy: 'Scroll-driven storytelling engineered for production across ID. Polo, GTI 50 and ID. Cross — combining video, animation, product interaction and campaign-specific content.',
     meta: ['Creative development', 'GSAP / ScrollTrigger', 'Video systems', 'Safari / iOS resilience'],
-    className: 'project-row--campaign',
+    className: 'project-row--campaign project-row--dreamzone',
     accent: 'Prototype → system → production',
+    media: {
+      src: 'https://image.thum.io/get/width/1600/crop/900/noanimate/https://www.volkswagen.co.uk/en/gti-world/50-years-of-gti.html',
+      alt: 'Volkswagen 50 Years of GTI digital experience',
+      label: 'GTI 50 / DREAMZONE',
+    },
   },
   {
     index: '02',
@@ -16,8 +21,13 @@ const projects = [
     kicker: 'Volkswagen / Finance / 2026',
     copy: 'A responsive finance journey for discovering vehicles, calculating PCP and PCH offers, comparing options and submitting customer enquiries against live vehicle and finance data.',
     meta: ['Transactional UI', 'Filtering / comparison', 'Responsive systems', 'Accessibility'],
-    className: 'project-row--mirror',
+    className: 'project-row--mirror project-row--finance',
     accent: 'Campaign pace. Production finance complexity.',
+    media: {
+      src: 'https://image.thum.io/get/width/1600/crop/900/noanimate/https://www.volkswagen.co.uk/en/finance-offers-and-fleet/finance-calculator.html',
+      alt: 'Volkswagen finance calculator and offers experience',
+      label: 'OFFERS / FINANCE / COMPARE',
+    },
   },
   {
     index: '03',
@@ -89,9 +99,16 @@ function ProjectRow({ project }) {
   return (
     <article className={`project-row ${project.className}`}>
       <div className="project-row__number" aria-hidden="true">{project.index}</div>
-      <div className="project-row__media" aria-label={`${project.title} project media placeholder`}>
-        <span>{project.kicker}</span>
-      </div>
+      <figure className={`project-row__media ${project.media ? 'project-row__media--real' : ''}`}>
+        {project.media ? (
+          <>
+            <img src={project.media.src} alt={project.media.alt} loading="lazy" />
+            <figcaption>{project.media.label}</figcaption>
+          </>
+        ) : (
+          <span>{project.kicker}</span>
+        )}
+      </figure>
       <div className="project-row__info">
         <div className="project-row__kicker">{project.kicker}</div>
         <h3>{project.title}</h3>
@@ -112,7 +129,7 @@ function ShippedArchive() {
         index="02"
         eyebrow="Archive / smaller work"
         title="Other things I shipped."
-        copy="Not everything needs a full case study. This is the long tail: integrations, production features, smaller campaigns and systems that still mattered." 
+        copy="Not everything needs a full case study. This is the long tail: integrations, production features, smaller campaigns and systems that still mattered."
       />
       <div className="shipped-list">
         {shipped.map((item, index) => (
