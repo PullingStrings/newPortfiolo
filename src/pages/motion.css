@@ -26,6 +26,7 @@
 .project-row__motion-dot {
   position: absolute;
   z-index: 6;
+  bottom: auto;
   width: 14px;
   height: 14px;
   border-radius: 50%;
@@ -97,14 +98,73 @@
   will-change: transform, opacity;
 }
 
+/* Canonical stages use the playground's original media crop and layer geometry. */
+.project-row--canonical .project-row__motion-dot {
+  width: 16px;
+  height: 16px;
+}
+
+.project-row--canonical .project-row__motion-accent {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 8px;
+  height: 100%;
+}
+
+.project-row--canonical.project-row--mirror .project-row__motion-accent {
+  right: auto;
+  left: 0;
+  opacity: .82;
+}
+
+.project-row--canonical .project-row__motion-ghost {
+  right: -7%;
+  top: -18%;
+  z-index: 4;
+  font-size: clamp(320px, 46vw, 700px);
+  color: var(--signal);
+  opacity: .12;
+  mix-blend-mode: multiply;
+}
+
+.project-row--canonical.project-row--mirror .project-row__motion-ghost {
+  right: auto;
+  left: -7%;
+}
+
+.project-row--canonical.project-row--contact .project-row__media-reveal > img {
+  object-position: 50% 23%;
+  transform: scale(1.38);
+}
+
+.project-row--canonical.project-row--dreamzone .project-row__media-reveal > img {
+  object-position: 50% 28%;
+  transform: scale(1.22);
+}
+
+.project-row--canonical.project-row--repair .project-row__media-reveal {
+  width: 100%;
+  height: 100%;
+  margin-left: 0;
+}
+
 /* Loud-source projects preserve their artwork: the solid number and source image do the work. */
 .project-row[data-motion-archetype='loud'] .project-row__motion-accent {
   height: 20%;
 }
 
+.project-row--canonical[data-motion-archetype='loud'] .project-row__motion-accent {
+  height: 100%;
+}
+
 /* Quiet-source projects allow the Tito system to intervene more strongly. */
 .project-row[data-motion-archetype='quiet'] .project-row__motion-accent {
   height: 34%;
+}
+
+.project-row--canonical[data-motion-archetype='quiet'] .project-row__motion-accent {
+  height: 100%;
 }
 
 /* ScrollTrigger pins the complete editorial composition, not individual fragments. */
@@ -137,6 +197,21 @@
     width: 92%;
     height: 75%;
   }
+}
+
+@media (min-width: 601px) and (max-width: 760px) {
+  .project-row--canonical .project-row__pin { min-height: 680px; }
+  .project-row--canonical h3 { white-space: normal; font-size: clamp(72px, 20vw, 108px); max-width: 90%; }
+  .project-row--canonical.project-row--mirror h3 { margin-left: auto; text-align: right; }
+  .project-row--canonical .project-row__stage { min-height: 520px; }
+  .project-row--canonical .project-row__number { right: -12%; top: -4%; left: auto; font-size: 310px; }
+  .project-row--canonical.project-row--mirror .project-row__number { right: auto; left: -12%; }
+  .project-row--canonical .project-row__media { left: 4%; right: auto; top: 18%; width: 93%; height: 66%; margin: 0; }
+  .project-row--canonical.project-row--mirror .project-row__media { left: auto; right: 4%; margin: 0; }
+  .project-row--canonical .project-row__interruption { left: 0 !important; right: auto !important; bottom: 1% !important; width: 46%; }
+  .project-row--canonical .project-row__motion-ghost { font-size: 310px; right: -16%; top: -8%; }
+  .project-row--canonical.project-row--contact .project-row__media-reveal > img { transform: scale(1.82); object-position: 50% 26%; }
+  .project-row--canonical.project-row--dreamzone .project-row__media-reveal > img { transform: scale(1.48); object-position: 50% 30%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
