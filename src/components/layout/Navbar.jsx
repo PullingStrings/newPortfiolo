@@ -1,119 +1,94 @@
-// src/components/layout/Navbar.jsx
-import styled from "styled-components";
-import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import styled from 'styled-components';
+import { Link, useLocation } from 'react-router-dom';
+import { useState } from 'react';
 
 const Nav = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: ${({ theme }) => theme.colors.background};
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.lightGray};
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  min-height: 72px;
+  padding: 0 20px;
+  background: rgba(243, 240, 232, 0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.22);
+  font-family: 'Inter', sans-serif;
 `;
 
-const Logo = styled.div`
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  background-image: url("/profile-pic-animated.png");
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.3s ease;
-  flex-shrink: 0;
+const Wordmark = styled(Link)`
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  width: fit-content;
+  color: #111;
+  text-decoration: none;
+  text-transform: uppercase;
 
-  &:hover {
-    transform: scale(1.05);
+  strong {
+    font-family: 'Antonio', sans-serif;
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: -.02em;
+  }
+
+  span {
+    color: #ff4b12;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .08em;
   }
 `;
 
 const NavLinks = styled.div`
   display: flex;
-  gap: 1.5rem;
-  font-size: 2.5rem;
-  font-weight: 500;
+  align-items: center;
+  gap: 22px;
 
-  /* Mobile dropdown */
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    flex-direction: column;
+  a {
+    color: #111;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+
+  a:hover { color: #ff4b12; }
+
+  @media (max-width: 700px) {
     position: absolute;
-    top: 100%;          /* drop below navbar so it doesn't cover logo */
+    top: 100%;
     left: 0;
     right: 0;
-    background: ${({ theme }) => theme.colors.background};
-    padding: 1rem 1.25rem;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.lightGray};
-
-    /* animation states */
+    display: grid;
+    padding: 18px 20px 24px;
+    background: #f3f0e8;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.22);
     opacity: ${({ $open }) => ($open ? 1 : 0)};
-    transform: translateY(${({ $open }) => ($open ? "0" : "-8px")});
-    visibility: ${({ $open }) => ($open ? "visible" : "hidden")};
-    pointer-events: ${({ $open }) => ($open ? "auto" : "none")};
-    transition:
-      opacity 180ms ease,
-      transform 180ms ease,
-      visibility 0s linear ${({ $open }) => ($open ? "0s" : "180ms")};
+    visibility: ${({ $open }) => ($open ? 'visible' : 'hidden')};
+    transform: translateY(${({ $open }) => ($open ? '0' : '-8px')});
+    transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
 
-    /* reduced motion respect */
-    @media (prefers-reduced-motion: reduce) {
-      transition: none;
-      transform: none;
-    }
-
-    /* optional: slight stagger on links when opening */
-    a, a:visited, a:link {
-      transform: translateY(${({ $open }) => ($open ? "0" : "6px")});
-      opacity: ${({ $open }) => ($open ? 1 : 0)};
-      transition: opacity 200ms ease, transform 200ms ease;
-    }
-    a:nth-child(1) { transition-delay: ${({ $open }) => ($open ? "40ms" : "0ms")}; }
-    a:nth-child(2) { transition-delay: ${({ $open }) => ($open ? "80ms" : "0ms")}; }
-    a:nth-child(3) { transition-delay: ${({ $open }) => ($open ? "120ms" : "0ms")}; }
-    a:nth-child(4) { transition-delay: ${({ $open }) => ($open ? "160ms" : "0ms")}; }
+    a { font-size: 18px; }
   }
 `;
 
 const Burger = styled.button`
   display: none;
-  background: none;
-  border: none;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid rgba(17, 17, 17, .25);
+  background: transparent;
+  color: #111;
   cursor: pointer;
-  padding: 6px;
-  margin-left: 0.5rem;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-
-  /* three bars */
-  .bar {
-    width: 26px;
-    height: 2px;
-    background: ${({ theme }) => theme.colors.text};
-    border-radius: 2px;
-    transition: transform 180ms ease, opacity 160ms ease;
-  }
-  .bar + .bar { margin-top: 6px; }
-
-  /* morph to X when open */
-  &[aria-expanded="true"] .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-  &[aria-expanded="true"] .bar:nth-child(2) {
-    opacity: 0;
-  }
-  &[aria-expanded="true"] .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .bar { transition: none; }
+  @media (max-width: 700px) {
+    display: inline-grid;
+    place-items: center;
   }
 `;
 
@@ -121,41 +96,37 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
-  const handleScroll = (e, target) => {
-    e.preventDefault();
-    if (location.pathname === "/") {
-      const section = document.querySelector(target);
-      if (section) section.scrollIntoView({ behavior: "smooth" });
+  const handleScroll = (event, target) => {
+    event.preventDefault();
+    if (location.pathname === '/') {
+      document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' });
     } else {
       window.location.href = `/${target}`;
     }
     setOpen(false);
   };
 
-  const closeMenu = () => setOpen(false);
-  const toggleMenu = () => setOpen((o) => !o);
-
   return (
     <Nav>
-      <Link to="/" onClick={closeMenu}>
-        <Logo />
-      </Link>
+      <Wordmark to="/" onClick={() => setOpen(false)}>
+        <strong>Tito Zwane</strong>
+        <span>Portfolio / 26</span>
+      </Wordmark>
 
       <Burger
-        onClick={toggleMenu}
-        aria-expanded={open ? "true" : "false"}
-        aria-label={open ? "Close menu" : "Open menu"}
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-expanded={open}
+        aria-label={open ? 'Close navigation' : 'Open navigation'}
       >
-        <span className="bar" />
-        <span className="bar" />
-        <span className="bar" />
+        {open ? '×' : '＋'}
       </Burger>
 
       <NavLinks $open={open}>
-        <a href="#about" onClick={(e) => handleScroll(e, "#about")}>About</a>
-        <a href="#projects" onClick={(e) => handleScroll(e, "#projects")}>Projects</a>
-        <Link to="/resume" onClick={closeMenu}>Resume</Link>
-        <Link to="/contact" onClick={closeMenu}>Contact</Link>
+        <a href="#projects" onClick={(event) => handleScroll(event, '#projects')}>Work</a>
+        <a href="#about" onClick={(event) => handleScroll(event, '#about')}>About</a>
+        <Link to="/resume" onClick={() => setOpen(false)}>Resume</Link>
+        <Link to="/contact" onClick={() => setOpen(false)}>Contact</Link>
       </NavLinks>
     </Nav>
   );
