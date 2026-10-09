@@ -1,6 +1,6 @@
-import { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLayoutEffect, useRef } from 'react';
 import './landing.css';
 import './motion.css';
 
@@ -12,7 +12,7 @@ const projects = [
     copy: 'Scroll-driven storytelling engineered for production across ID. Polo, GTI 50 and ID. Cross — combining video, animation, product interaction and campaign-specific content.',
     meta: ['Creative development', 'GSAP / ScrollTrigger', 'Video systems', 'Safari / iOS resilience'],
     className: 'project-row--campaign project-row--dreamzone', accent: 'Prototype → system → production',
-    motion: { archetype: 'loud', mirror: true, canonical: true, intensity: 1, end: 1800 },
+    motion: { archetype: 'loud', mirror: true, canonical: true, intensity: 1, playback: 'autoplay-hold', completeFrame: true },
     interruption: null, // Intentionally omitted: the loud artwork and oversized number are the intervention.
     media: { src: '/projects/dreamzone/cover.png', alt: 'A montage of Volkswagen Dreamzone experiences for ID. Cross, ID. Polo and GTI 50', label: 'GTI 50 / DREAMZONE', loading: 'eager', width: 1397, height: 785 },
   },
@@ -55,9 +55,17 @@ const shipped = [
 function useProjectMotion(rootRef, motion) {
   useLayoutEffect(() => {
     const root = rootRef.current;
-    if (!root || !motion || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    if (!root || !motion) return undefined;
 
-    const ctx = gsap.context(() => {
+    const matchMedia = gsap.matchMedia();
+    matchMedia.add({
+      desktop: '(min-width: 901px) and (min-height: 720px)',
+      compact: '(max-width: 900px), (max-height: 719px)',
+      reduce: '(prefers-reduced-motion: reduce)',
+    }, ({ conditions }) => {
+      const quietCanonical = motion.canonical && motion.archetype === 'quiet' && motion.playback !== 'autoplay-hold';
+      if (conditions.reduce || (conditions.compact && quietCanonical)) return undefined;
+
       const q = gsap.utils.selector(root);
       const number = q('.project-row__number');
       const media = q('.project-row__media');
@@ -68,7 +76,7 @@ function useProjectMotion(rootRef, motion) {
       const accent = q('.project-row__motion-accent');
       const interruption = q('.project-row__interruption');
       const secondary = q('.project-row__secondary-media');
-      const { archetype, mirror, canonical = false, intensity = 1, finalNumberX = 0, end = 1800, secondaryCue = false } = motion;
+      const { archetype, mirror, canonical = false, intensity = 1, finalNumberX = 0, end = 1800, secondaryCue = false, playback } = motion;
 
       const origin = mirror ? '22% 27%' : '78% 27%';
       const startNumberX = (mirror ? -120 : 120) * intensity;
@@ -84,6 +92,88 @@ function useProjectMotion(rootRef, motion) {
       const smallRadius = canonical ? 36 : 36 + (18 * (1 - quietScale));
       const mediumRadius = canonical ? 140 : 140 * quietScale + 80 * (1 - quietScale);
       const largeRadius = canonical ? 340 : 340 * quietScale + 180 * (1 - quietScale);
+
+      if (playback === 'autoplay-hold') {
+        const matchMedia = gsap.matchMedia();
+
+        matchMedia.add({
+          desktop: '(min-width: 901px) and (min-height: 720px)',
+          reduce: '(prefers-reduced-motion: reduce)',
+        }, ({ conditions }) => {
+          if (!conditions.desktop || conditions.reduce) return undefined;
+
+          gsap.set(title, { yPercent: 112 });
+          gsap.set(number, { x: startNumberX, y: -36, rotation: mirror ? -2 : 2, scale: .92, opacity: 1 });
+          gsap.set(media, { y: 72, scale: .95, x: 0 });
+          gsap.set(reveal, { clipPath: `circle(14px at ${origin})` });
+          gsap.set(dot, { scale: 1, opacity: 1, left: mirror ? '22%' : '78%', top: '27%' });
+          gsap.set(accent, { scaleY: .15, transformOrigin: mirror ? 'left center' : 'right center' });
+
+          const autoplayTimeline = gsap.timeline({ paused: true });
+
+          autoplayTimeline
+            .to(title, { yPercent: 0, duration: .16, ease: 'power2.out' }, 0)
+            .to(number, { x: resolvedNumberX, y: resolvedNumberY, rotation: 0, scale: 1, duration: 1, ease: 'power2.out' }, 0)
+            .to(media, { y: 12, scale: 1, duration: .22, ease: 'power1.out' }, .1)
+            .to(dot, { scale: 1.15, duration: .08, ease: 'power1.out' }, .12)
+            .to(reveal, { clipPath: `circle(36px at ${origin})`, duration: .1, ease: 'power1.inOut' }, .12)
+            .to(reveal, { clipPath: `circle(140px at ${origin})`, duration: .18, ease: 'power1.inOut' }, .22)
+            .to(reveal, { clipPath: `circle(340px at ${origin})`, duration: .22, ease: 'power1.inOut' }, .4)
+            .to(dot, { opacity: 0, duration: .1 }, .5)
+            .to(accent, { scaleY: 1, duration: .2, ease: 'power1.out' }, .52)
+            .to(reveal, { clipPath: `circle(140% at ${origin})`, duration: .22, ease: 'power1.inOut' }, .62)
+            .to(media, { y: -16, duration: .22, ease: 'power1.inOut' }, .7)
+            .to(media, { x: 0, y: 0, scale: 1, duration: .22, ease: 'power2.out' }, .98);
+
+          const trigger = ScrollTrigger.create({
+            trigger: root,
+            start: 'top top+=72px',
+            end: 'bottom top+=72px',
+            invalidateOnRefresh: true,
+            onEnter: () => autoplayTimeline.play(),
+            onLeaveBack: () => {
+              autoplayTimeline.reverse();
+            },
+          });
+
+          if (trigger.progress > 0) autoplayTimeline.play();
+
+          return () => {
+            trigger.kill();
+            autoplayTimeline.kill();
+          };
+        });
+
+        matchMedia.add({
+          compact: '(max-width: 900px), (max-height: 719px)',
+          reduce: '(prefers-reduced-motion: reduce)',
+        }, ({ conditions }) => {
+          if (!conditions.compact || conditions.reduce) return undefined;
+
+          gsap.set([title, number, media], { opacity: 0 });
+          const compactTimeline = gsap.timeline({
+            scrollTrigger: {
+              trigger: root,
+              start: 'top 85%',
+              toggleActions: 'play none none none',
+              once: true,
+            },
+          });
+
+          compactTimeline.to([title, number, media], {
+            opacity: 1,
+            duration: .7,
+            stagger: .06,
+            ease: 'power2.out',
+          });
+
+          return () => compactTimeline.kill();
+        });
+
+        return () => {
+          matchMedia.revert();
+        };
+      }
 
       gsap.set(number, { x: startNumberX, y: -36 * quietScale, rotation: (mirror ? -2 : 2) * quietScale, scale: .92 + (.08 * (1 - quietScale)), opacity: 1 });
       gsap.set(media, { y: 72 * quietScale, scale: 1 - (.05 * quietScale), x: 0 });
@@ -159,10 +249,14 @@ function useProjectMotion(rootRef, motion) {
       if (interruption.length) {
         tl.to(interruption, { x: 0, y: 0, rotation: 0, duration: .18 }, .86);
       }
-    }, root);
+    });
 
-    return () => ctx.revert();
+    return () => matchMedia.revert();
   }, [motion]);
+}
+
+function ProjectDetails({ project }) {
+  return <div className="project-row__canonical-details"><p>{project.copy}</p><div className="project-row__meta">{project.meta.map((item) => <span key={item}>{item}</span>)}</div></div>;
 }
 
 function SectionHeading({ index, eyebrow, title, copy }) {
@@ -174,9 +268,10 @@ function ProjectRow({ project }) {
   useProjectMotion(rootRef, project.motion);
   const showGhost = project.motion?.archetype === 'quiet' && project.motion?.ghost;
   const isCanonical = project.motion?.canonical;
+  const completeFrame = project.motion?.completeFrame;
 
   if (isCanonical) {
-    return <article ref={rootRef} className={`project-row project-row--canonical ${project.className}`} data-motion-archetype={project.motion.archetype}>
+    return <article ref={rootRef} className={`project-row project-row--canonical ${completeFrame ? 'project-row--complete-frame ' : ''}${project.className}`} data-motion-archetype={project.motion.archetype}>
       <div className="project-row__pin">
         <div className="project-row__canonical-kicker"><span>{project.index} / FEATURED WORK</span><span>{project.kicker}</span></div>
         <div className="project-row__title-wrap"><h3 className="project-row__title">{project.title}</h3></div>
@@ -195,8 +290,9 @@ function ProjectRow({ project }) {
           {project.secondaryMedia && <img className="project-row__secondary-media" src={project.secondaryMedia.src} alt={project.secondaryMedia.alt} loading="lazy" width={project.secondaryMedia.width} height={project.secondaryMedia.height} />}
           {project.interruption && <span className="project-row__interruption" aria-hidden="true">{project.interruption.map((line) => <span key={line}>{line}</span>)}</span>}
         </div>
+        {completeFrame && <ProjectDetails project={project} />}
       </div>
-      <div className="project-row__canonical-details"><p>{project.copy}</p><div className="project-row__meta">{project.meta.map((item) => <span key={item}>{item}</span>)}</div></div>
+      {!completeFrame && <ProjectDetails project={project} />}
     </article>;
   }
 

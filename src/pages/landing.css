@@ -124,6 +124,23 @@ a { color: inherit; }
 .project-row__canonical-details p { max-width: 760px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
 .project-row__canonical-details .project-row__meta { justify-content: flex-end; margin-top: 0; }
 
+@media (min-width: 761px) {
+  .project-row--canonical.project-row--finance h3 { font-size: clamp(54px, 9vw, 136px); }
+}
+
+@media (min-width: 901px) and (min-height: 720px) {
+  .project-row--complete-frame { height: calc(100svh - 72px); padding: 16px 0 32px; }
+  .project-row--complete-frame .project-row__pin {
+    display: grid;
+    grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+    height: 100%;
+    min-height: 0;
+  }
+  .project-row--complete-frame .project-row__title-wrap { margin-top: clamp(18px, 3vh, 36px); }
+  .project-row--complete-frame .project-row__stage { min-height: 0; margin-top: clamp(12px, 2vh, 28px); }
+  .project-row--complete-frame .project-row__canonical-details { padding-top: 12px; }
+}
+
 .project-row--campaign .project-row__media { background: #111; color: var(--paper); }
 
 .shipped { padding-top: clamp(100px, 15vw, 210px); }
