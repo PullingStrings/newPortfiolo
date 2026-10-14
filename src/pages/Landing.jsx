@@ -12,7 +12,7 @@ const projects = [
     copy: 'Scroll-driven storytelling engineered for production across ID. Polo, GTI 50 and ID. Cross — combining video, animation, product interaction and campaign-specific content.',
     meta: ['Creative development', 'GSAP / ScrollTrigger', 'Video systems', 'Safari / iOS resilience'],
     className: 'project-row--campaign project-row--dreamzone', accent: 'Prototype → system → production',
-    motion: { archetype: 'loud', mirror: true, canonical: true, intensity: 1, playback: 'autoplay-hold', completeFrame: true },
+    motion: { archetype: 'loud', mirror: true, canonical: true, intensity: 1, completeFrame: true },
     interruption: null, // Intentionally omitted: the loud artwork and oversized number are the intervention.
     media: { src: '/projects/dreamzone/cover.png', alt: 'A montage of Volkswagen Dreamzone experiences for ID. Cross, ID. Polo and GTI 50', label: 'GTI 50 / DREAMZONE', loading: 'eager', width: 1397, height: 785 },
   },
@@ -202,7 +202,7 @@ function useProjectMotion(rootRef, motion) {
           start: 'top top+=8%',
           end: `+=${end}`,
           scrub: 1.1,
-          pin: canonical ? q('.project-row__pin')[0] : true,
+          pin: canonical ? (motion.completeFrame ? root : q('.project-row__pin')[0]) : true,
           pinSpacing: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,
