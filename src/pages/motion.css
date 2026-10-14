@@ -214,6 +214,37 @@
   .project-row--canonical.project-row--dreamzone .project-row__media-reveal > img { transform: scale(1.48); object-position: 50% 30%; }
 }
 
+/* Approved Contact 03: the number sits behind left-aligned media, with a right-hand type interruption. */
+@media (min-width: 901px) and (min-height: 720px) {
+  .project-row--canonical.project-row--contact .project-row__number {
+    left: 1%;
+    right: auto;
+    top: 2%;
+    z-index: 1;
+  }
+
+  .project-row--canonical.project-row--contact .project-row__media {
+    left: 31%;
+    right: auto;
+    top: 10%;
+    width: 64%;
+    height: 76%;
+    z-index: 2;
+  }
+
+  .project-row--canonical.project-row--contact .project-row__interruption {
+    left: auto !important;
+    right: 2% !important;
+    bottom: 2% !important;
+    width: min(28%, 300px);
+    z-index: 5 !important;
+  }
+
+  .project-row--canonical.project-row--contact .project-row__motion-ghost {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .project-row__number,
   .project-row__media,
