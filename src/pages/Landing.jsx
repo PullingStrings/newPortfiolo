@@ -29,7 +29,7 @@ const projects = [
     copy: 'A reusable, data-driven contact journey inside Samsung’s AEM ecosystem, orchestrating nested navigation, contact methods, Sprinklr live chat, consent, analytics and accessibility.',
     meta: ['AEM', 'Sprinklr', 'Data-driven UI', 'CMP / analytics'],
     className: 'project-row--contact', accent: 'Help, made clear.', interruption: ['HELP /', 'MADE', 'CLEAR.'],
-    motion: { archetype: 'quiet', mirror: false, canonical: true, intensity: 1, end: 1800, ghost: true },
+    motion: { archetype: 'quiet', mirror: false, canonical: true, intensity: 1, end: 1800, study: 'contact' },
     media: { src: '/contact-us.png', alt: 'Samsung Contact Us support journey with product and contact option tiles', label: 'CONTACT / SUPPORT / SPRINKLR', loading: 'lazy', width: 1600, height: 900 },
   },
   {
@@ -76,6 +76,50 @@ function useProjectMotion(rootRef, motion) {
       const accent = q('.project-row__motion-accent');
       const interruption = q('.project-row__interruption');
       const secondary = q('.project-row__secondary-media');
+      // Approved 03 motion study: signal → circular reveal → type interruption → editorial resolve.
+      // Isolated from the reusable quiet/loud archetypes until the motion is visually approved.
+      if (motion.study === 'contact') {
+        const frame = q('.project-row__pin')[0];
+        const circleOrigin = '28% 52%';
+        const tl = gsap.timeline({
+          defaults: { ease: 'none' },
+          scrollTrigger: {
+            trigger: root,
+            start: 'top top+=8%',
+            end: `+=${motion.end ?? 1800}`,
+            scrub: 1.1,
+            pin: frame,
+            pinSpacing: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        gsap.set(title, { yPercent: 112 });
+        gsap.set(number, { x: 30, y: 48, rotation: 0, scale: 1 });
+        gsap.set(media, { x: 0, y: 30, scale: 1 });
+        gsap.set(reveal, { clipPath: `circle(0% at ${circleOrigin})` });
+        gsap.set(dot, { left: '28%', top: '52%', xPercent: -50, yPercent: -50, scale: 0.4, opacity: 0 });
+        gsap.set(interruption, { x: 0, y: 35, rotation: 0, opacity: 0 });
+        gsap.set(accent, { scaleY: 0, transformOrigin: 'bottom' });
+
+        tl.to(title, { yPercent: 0, duration: 0.12 }, 0)
+          .to(dot, { opacity: 1, scale: 1.6, duration: 0.12 }, 0.02)
+          .to(reveal, { clipPath: `circle(14px at ${circleOrigin})`, duration: 0.09 }, 0.12)
+          .to(reveal, { clipPath: `circle(36px at ${circleOrigin})`, duration: 0.08 }, 0.21)
+          .to(reveal, { clipPath: `circle(140px at ${circleOrigin})`, duration: 0.13 }, 0.29)
+          .to(dot, { opacity: 0, scale: 2.4, duration: 0.12 }, 0.31)
+          .to(reveal, { clipPath: `circle(175% at ${circleOrigin})`, duration: 0.24 }, 0.42)
+          .to(number, { x: -30, y: 0, duration: 0.52 }, 0.18)
+          .to(media, { y: -12, duration: 0.43 }, 0.20)
+          .to(interruption, { y: 0, opacity: 1, duration: 0.20 }, 0.59)
+          .to(accent, { scaleY: 1, duration: 0.15 }, 0.62)
+          .to(media, { x: 0, y: 0, scale: 1, duration: 0.18 }, 0.82)
+          .to(number, { x: 0, y: 0, duration: 0.18 }, 0.82);
+
+        return () => tl.kill();
+      }
+
       const { archetype, mirror, canonical = false, intensity = 1, finalNumberX = 0, end = 1800, secondaryCue = false, playback } = motion;
 
       const origin = mirror ? '22% 27%' : '78% 27%';
