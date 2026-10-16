@@ -313,3 +313,9 @@
     aspect-ratio: 1;
   }
 }
+
+/* Final desktop overrides: keep the approved Contact study above earlier canonical layout rules. */
+@media (min-width: 901px) and (min-height: 720px) {
+  .project-row--canonical.project-row--contact .project-row__media { left: 31%; top: 10%; width: 64%; height: 76%; }
+  .project-row--canonical.project-row--contact .project-row__number { left: 1%; right: auto; top: 2%; }
+}
