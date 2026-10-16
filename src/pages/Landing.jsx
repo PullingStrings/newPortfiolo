@@ -28,7 +28,7 @@ const projects = [
     index: '03', title: 'Samsung Contact', kicker: 'Samsung UK / Cheil / 2025',
     copy: 'A reusable, data-driven contact journey inside Samsung’s AEM ecosystem, orchestrating nested navigation, contact methods, Sprinklr live chat, consent, analytics and accessibility.',
     meta: ['AEM', 'Sprinklr', 'Data-driven UI', 'CMP / analytics'],
-    className: 'project-row--contact', accent: 'Help, made clear.', interruption: ['HELP /', 'MADE', 'CLEAR.'],
+    className: 'project-row--contact', accent: 'Help, made clear.', interruption: ['HELP', 'MADE', 'CLEAR.'],
     motion: { archetype: 'quiet', mirror: false, canonical: true, intensity: 1, end: 1800, study: 'contact' },
     media: { src: '/contact-us.png', alt: 'Samsung Contact Us support journey with product and contact option tiles', label: 'CONTACT / SUPPORT / SPRINKLR', loading: 'lazy', width: 1600, height: 900 },
   },
