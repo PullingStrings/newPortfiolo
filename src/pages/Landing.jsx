@@ -21,7 +21,7 @@ const projects = [
     copy: 'A responsive finance journey for discovering vehicles, calculating PCP and PCH offers, comparing options and submitting customer enquiries against live vehicle and finance data.',
     meta: ['Transactional UI', 'Filtering / comparison', 'Responsive systems', 'Accessibility'],
     className: 'project-row--mirror project-row--finance', accent: 'Campaign pace. Production finance complexity.',
-    motion: { archetype: 'quiet', mirror: true, canonical: true, intensity: 1, end: 1800, ghost: true },
+    motion: { archetype: 'quiet', mirror: true, canonical: true, intensity: 1, end: 1600, study: 'finance-v1' },
     media: { src: '/projects/offers-finance/cover.png', alt: 'Volkswagen New Car Finance Offers model-selection journey', label: 'OFFERS / FINANCE / COMPARE', loading: 'lazy', width: 3338, height: 1996 },
   },
   {
@@ -76,6 +76,44 @@ function useProjectMotion(rootRef, motion) {
       const accent = q('.project-row__motion-accent');
       const interruption = q('.project-row__interruption');
       const secondary = q('.project-row__secondary-media');
+      // Finance V1: left-to-right rectangular wipe, deliberate hold, one-way 02 entrance.
+      // The interface never translates or bounces; motion is only in the mask and number.
+      if (motion.study === 'finance-v1') {
+        if (!conditions.desktop) return undefined;
+
+        const frame = q('.project-row__pin')[0];
+        gsap.set(title, { yPercent: 0 });
+        gsap.set(media, { x: 0, y: 0, scale: 1 });
+        gsap.set(number, { x: 110, y: 0, rotation: 0, scale: 1, opacity: 1 });
+        gsap.set(reveal, { clipPath: 'inset(0 100% 0 0)' });
+        gsap.set(dot, { opacity: 0 });
+        gsap.set(accent, { opacity: 0 });
+
+        const tl = gsap.timeline({
+          defaults: { ease: 'none' },
+          scrollTrigger: {
+            trigger: root,
+            start: 'top top+=8%',
+            end: `+=${motion.end ?? 1600}`,
+            scrub: 1.1,
+            pin: frame,
+            pinSpacing: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        tl.to(reveal, {
+          clipPath: 'inset(0 0% 0 0)',
+          duration: 0.44,
+          ease: 'power2.inOut',
+        }, 0.08)
+          // 0.52–0.62: pause with the complete product interface visible.
+          .to(number, { x: 0, duration: 0.30, ease: 'power2.out' }, 0.62);
+
+        return () => tl.kill();
+      }
+
       // Dreamzone V2: reveal → hold → one-way number entrance.
       // Keep campaign artwork stationary: no translation, scale animation or bounce.
       if (motion.study === 'dreamzone-v2') {
