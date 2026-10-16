@@ -12,7 +12,7 @@ const projects = [
     copy: 'Scroll-driven storytelling engineered for production across ID. Polo, GTI 50 and ID. Cross — combining video, animation, product interaction and campaign-specific content.',
     meta: ['Creative development', 'GSAP / ScrollTrigger', 'Video systems', 'Safari / iOS resilience'],
     className: 'project-row--campaign project-row--dreamzone', accent: 'Prototype → system → production',
-    motion: { archetype: 'loud', mirror: true, canonical: true, intensity: 1, completeFrame: true },
+    motion: { archetype: 'loud', mirror: true, canonical: true, intensity: 1, completeFrame: true, study: 'dreamzone-v2' },
     interruption: null, // Intentionally omitted: the loud artwork and oversized number are the intervention.
     media: { src: '/projects/dreamzone/cover.png', alt: 'A montage of Volkswagen Dreamzone experiences for ID. Cross, ID. Polo and GTI 50', label: 'GTI 50 / DREAMZONE', loading: 'eager', width: 1397, height: 785 },
   },
@@ -76,6 +76,50 @@ function useProjectMotion(rootRef, motion) {
       const accent = q('.project-row__motion-accent');
       const interruption = q('.project-row__interruption');
       const secondary = q('.project-row__secondary-media');
+      // Dreamzone V2: reveal → hold → one-way number entrance.
+      // Keep campaign artwork stationary: no translation, scale animation or bounce.
+      if (motion.study === 'dreamzone-v2') {
+        if (!conditions.desktop) return undefined;
+
+        const frame = motion.completeFrame ? root : q('.project-row__pin')[0];
+        const origin = '58% 46%';
+        const tl = gsap.timeline({
+          defaults: { ease: 'none' },
+          scrollTrigger: {
+            trigger: root,
+            start: 'top top+=8%',
+            end: `+=${motion.end ?? 1500}`,
+            scrub: 1.1,
+            pin: frame,
+            pinSpacing: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        // Explicit end positions make backward scroll deterministic.
+        gsap.set(title, { yPercent: 0 });
+        gsap.set(media, { x: 0, y: 0, scale: 1 });
+        gsap.set(reveal, { clipPath: `circle(0% at ${origin})` });
+        gsap.set(number, { x: -115, y: 0, rotation: 0, scale: 1, opacity: 1 });
+        gsap.set(dot, { opacity: 0 });
+        gsap.set(accent, { opacity: 0 });
+
+        tl.to(reveal, {
+          clipPath: `circle(150% at ${origin})`,
+          duration: 0.45,
+          ease: 'power2.inOut',
+        }, 0.08)
+          // 0.53–0.60: hold on the fully revealed campaign artwork.
+          .to(number, {
+            x: 0,
+            duration: 0.30,
+            ease: 'power2.out',
+          }, 0.60);
+
+        return () => tl.kill();
+      }
+
       // Approved 03 motion study: signal → circular reveal → type interruption → editorial resolve.
       // Isolated from the reusable quiet/loud archetypes until the motion is visually approved.
       if (motion.study === 'contact') {
