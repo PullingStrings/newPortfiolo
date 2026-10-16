@@ -319,3 +319,26 @@
   .project-row--canonical.project-row--contact .project-row__media { left: 31%; top: 10%; width: 64%; height: 76%; }
   .project-row--canonical.project-row--contact .project-row__number { left: 1%; right: auto; top: 2%; }
 }
+
+/* Finance 02 / approved product study: the interface remains steady beneath a rectangular wipe. */
+@media (min-width: 901px) and (min-height: 720px) {
+  .project-row--canonical.project-row--finance .project-row__number {
+    left: auto;
+    right: 1%;
+    top: 2%;
+    z-index: 1;
+  }
+
+  .project-row--canonical.project-row--finance .project-row__media {
+    left: 6%;
+    right: auto;
+    top: 10%;
+    width: 76%;
+    height: 74%;
+    z-index: 2;
+  }
+
+  .project-row--canonical.project-row--finance .project-row__motion-ghost {
+    display: none;
+  }
+}
