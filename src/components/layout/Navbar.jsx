@@ -35,7 +35,7 @@ const Wordmark = styled(Link)`
   }
 
   span {
-    color: #ff4b12;
+    color: #a92e00;
     font-size: 9px;
     font-weight: 800;
     letter-spacing: .08em;
