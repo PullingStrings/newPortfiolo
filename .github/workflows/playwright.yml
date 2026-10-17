@@ -1,0 +1,33 @@
+name: Responsive Playwright
+
+on:
+  pull_request:
+  push:
+    branches:
+      - redesign/step-7-homepage-skeleton
+  workflow_dispatch:
+
+jobs:
+  responsive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+      - run: yarn install --frozen-lockfile
+      - name: Install browser test runner
+        run: yarn add --dev --no-lockfile @playwright/test
+      - run: yarn playwright install --with-deps chromium
+      - name: Test mobile, tablet, and desktop
+        run: yarn playwright test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7
