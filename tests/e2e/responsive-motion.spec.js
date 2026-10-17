@@ -18,7 +18,7 @@ test('all four project artworks render and the page has no horizontal overflow',
   expect(width.scroll, 'unexpected horizontal overflow').toBeLessThanOrEqual(width.viewport + 2);
 });
 
-test('mobile and tablet reveal each project without desktop pinning', async ({ page, isMobile }) => {
+test('mobile and tablet reveal each project without desktop pinning', async ({ page }) => {
   await page.goto('/');
   const compact = await page.evaluate(() => matchMedia('(max-width: 900px), (max-height: 719px)').matches);
   test.skip(!compact, 'compact-specific assertion');
@@ -27,7 +27,7 @@ test('mobile and tablet reveal each project without desktop pinning', async ({ p
     await project.scrollIntoViewIfNeeded();
     await expect.poll(() => project.locator('.project-row__media-reveal').evaluate(
       (el) => getComputedStyle(el).clipPath,
-    )).toMatch(/inset\\(0(?:px|%)? 0(?:px|%)? 0(?:px|%)? 0(?:px|%)?\\)/);
+    )).toMatch(/^inset\\(0(?:px|%)?(?:\\s+0(?:px|%)?){0,3}\\)$/);
     await expect(project).not.toHaveClass(/pin-spacer/);
     expect(await page.locator('.pin-spacer').count()).toBe(0);
   }
