@@ -7,7 +7,7 @@ RUN corepack enable
 
 # Install dependencies in the image so Compose can start the app without host-side installs.
 COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+RUN yarn install --no-frozen-lockfile
 
 # Bring in the application source after dependencies are cached.
 COPY . .

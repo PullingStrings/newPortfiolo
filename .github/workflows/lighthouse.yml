@@ -1,0 +1,74 @@
+name: Lighthouse baseline
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - 'index.html'
+      - 'vite.config.js'
+      - '.github/workflows/lighthouse.yml'
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        form_factor: [mobile, desktop]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+      - run: yarn install --frozen-lockfile
+      - name: Build production assets
+        run: yarn vite build
+      - name: Start production preview
+        run: |
+          yarn vite preview --host 127.0.0.1 --port 4173 > /tmp/vite-preview.log 2>&1 &
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:4173/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/vite-preview.log
+          exit 1
+      - name: Install Lighthouse
+        run: npm install --no-save lighthouse@12
+      - name: Run Lighthouse
+        env:
+          FORM_FACTOR: ${{ matrix.form_factor }}
+        run: |
+          mkdir -p lighthouse-reports
+          if [ "$FORM_FACTOR" = desktop ]; then EXTRA_FLAGS='--preset=desktop'; else EXTRA_FLAGS=''; fi
+          npx lighthouse http://127.0.0.1:4173/ \
+            --chrome-flags='--headless --no-sandbox --disable-dev-shm-usage' \
+            --output=json --output-path="lighthouse-reports/$FORM_FACTOR.json" \
+            --only-categories=performance,accessibility,best-practices,seo \
+            $EXTRA_FLAGS
+      - name: Print Lighthouse scores and lab Web Vitals
+        env:
+          FORM_FACTOR: ${{ matrix.form_factor }}
+        run: |
+          node -e '
+            const report = require("./lighthouse-reports/" + process.env.FORM_FACTOR + ".json");
+            const scores = Object.fromEntries(
+              Object.entries(report.categories).map(([name, item]) => [
+                name, Math.round(item.score * 100)
+              ])
+            );
+            const metrics = ["largest-contentful-paint", "cumulative-layout-shift", "total-blocking-time"];
+            console.log("Lighthouse", process.env.FORM_FACTOR, scores);
+            metrics.forEach(id => {
+              const audit = report.audits[id];
+              console.log(id, audit?.displayValue ?? audit?.numericValue);
+            });
+          '
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-${{ matrix.form_factor }}
+          path: lighthouse-reports/
+          retention-days: 14
