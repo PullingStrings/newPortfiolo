@@ -407,7 +407,7 @@ function useProjectMotion(rootRef, motion) {
     });
 
     return () => matchMedia.revert();
-  }, [motion]);
+  }, [motion, rootRef]);
 }
 
 function ProjectDetails({ project }) {
