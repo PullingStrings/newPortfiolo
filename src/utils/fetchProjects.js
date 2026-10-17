@@ -1,8 +1,6 @@
 import axios from "axios";
 import fs from "fs";
 
-const username = "PullingStrings";
-// eslint-disable-next-line no-undef
 const token = process.env.VITE_GITHUB_TOKEN;
 const headers = { Authorization: `token ${token}` };
 
@@ -29,7 +27,7 @@ const mergeWithManual = (githubProjects) => {
   let manualProjects = [];
   try {
     manualProjects = JSON.parse(fs.readFileSync("./public/manualProjects.json", "utf8"));
-  } catch (e) {
+  } catch {
     console.warn("No manualProjects.json found — skipping manual merge.");
   }
   return [...manualProjects, ...githubProjects];
