@@ -14,7 +14,7 @@ const Foot = styled.footer`
   letter-spacing: .06em;
   text-transform: uppercase;
 
-  span:last-child { color: #ff4b12; }
+  span:last-child { color: #a92e00; }
 
   @media (max-width: 600px) {
     flex-direction: column;
