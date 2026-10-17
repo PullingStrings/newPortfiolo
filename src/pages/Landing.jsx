@@ -456,61 +456,124 @@ function useProjectMotion(rootRef, motion) {
 }
 
 function ProjectDetails({ project }) {
-  return <div className="project-row__canonical-details"><p>{project.copy}</p><div className="project-row__meta">{project.meta.map((item) => <span key={item}>{item}</span>)}</div></div>;
+  return (
+    <div className="project-row__canonical-details">
+      <p>{project.copy}</p>
+      <div className="project-row__meta">
+        {project.meta.map((item) => (
+          <span key={item}>{item}</span>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 function SectionHeading({ index, eyebrow, title, copy }) {
-  return <header className="section-heading"><div className="section-heading__index">{index}</div><div><div className="section-heading__eyebrow">{eyebrow}</div><h2>{title}</h2>{copy && <p>{copy}</p>}</div></header>;
+  return (
+    <header className="section-heading">
+      <div className="section-heading__index">{index}</div>
+      <div>
+        <div className="section-heading__eyebrow">{eyebrow}</div>
+        <h2>{title}</h2>
+        {copy && <p>{copy}</p>}
+      </div>
+    </header>
+  );
+}
+
+// Each media type has a clear job. The animation lives in useProjectMotion.
+function ProjectMedia({ project, showGhost }) {
+  return (
+    <figure className="project-row__media project-row__media--real">
+      <div className="project-row__media-reveal">
+        <img
+          src={project.media.src}
+          alt={project.media.alt}
+          loading={project.media.loading}
+          width={project.media.width}
+          height={project.media.height}
+        />
+        {showGhost && (
+          <span className="project-row__motion-ghost" aria-hidden="true">
+            {project.index}
+          </span>
+        )}
+        <span className="project-row__motion-accent" aria-hidden="true" />
+      </div>
+      <span className="project-row__motion-dot" aria-hidden="true" />
+      <figcaption>{project.media.label}</figcaption>
+    </figure>
+  );
+}
+
+function SupportingMedia({ project }) {
+  if (!project.secondaryMedia) return null;
+
+  return (
+    <img
+      className="project-row__secondary-media"
+      src={project.secondaryMedia.src}
+      alt={project.secondaryMedia.alt}
+      loading="lazy"
+      width={project.secondaryMedia.width}
+      height={project.secondaryMedia.height}
+    />
+  );
+}
+
+function ProjectInterruption({ lines }) {
+  if (!lines) return null;
+
+  return (
+    <span className="project-row__interruption" aria-hidden="true">
+      {lines.map((line) => <span key={line}>{line}</span>)}
+    </span>
+  );
 }
 
 function ProjectRow({ project }) {
   const rootRef = useRef(null);
   useProjectMotion(rootRef, project.motion);
-  const showGhost = project.motion?.archetype === 'quiet' && project.motion?.ghost;
-  const isCanonical = project.motion?.canonical;
-  const completeFrame = project.motion?.completeFrame;
 
-  if (isCanonical) {
-    return <article ref={rootRef} className={`project-row project-row--canonical ${completeFrame ? 'project-row--complete-frame ' : ''}${project.className}`} data-motion-archetype={project.motion.archetype}>
+  const showGhost = project.motion?.archetype === 'quiet'
+    && project.motion?.ghost;
+  const completeFrame = Boolean(project.motion?.completeFrame);
+
+  // The featured projects share one stage layout.
+  // Desktop and compact motion have separate, explicit timelines.
+  return (
+    <article
+      ref={rootRef}
+      className={[
+        'project-row',
+        'project-row--canonical',
+        completeFrame ? 'project-row--complete-frame' : '',
+        project.className,
+      ].filter(Boolean).join(' ')}
+      data-motion-archetype={project.motion.archetype}
+    >
       <div className="project-row__pin">
-        <div className="project-row__canonical-kicker"><span>{project.index} / FEATURED WORK</span><span>{project.kicker}</span></div>
-        <div className="project-row__title-wrap"><h3 className="project-row__title">{project.title}</h3></div>
+        <div className="project-row__canonical-kicker">
+          <span>{project.index} / FEATURED WORK</span>
+          <span>{project.kicker}</span>
+        </div>
+        <div className="project-row__title-wrap">
+          <h3 className="project-row__title">{project.title}</h3>
+        </div>
         <strong className="project-row__accent">{project.accent}</strong>
         <div className="project-row__stage">
-          <div className="project-row__number" aria-hidden="true">{project.index}</div>
-          <figure className="project-row__media project-row__media--real">
-            <div className="project-row__media-reveal">
-              <img src={project.media.src} alt={project.media.alt} loading={project.media.loading} width={project.media.width} height={project.media.height} />
-              {showGhost && <span className="project-row__motion-ghost" aria-hidden="true">{project.index}</span>}
-              <span className="project-row__motion-accent" aria-hidden="true" />
-            </div>
-            <span className="project-row__motion-dot" aria-hidden="true" />
-            <figcaption>{project.media.label}</figcaption>
-          </figure>
-          {project.secondaryMedia && <img className="project-row__secondary-media" src={project.secondaryMedia.src} alt={project.secondaryMedia.alt} loading="lazy" width={project.secondaryMedia.width} height={project.secondaryMedia.height} />}
-          {project.interruption && <span className="project-row__interruption" aria-hidden="true">{project.interruption.map((line) => <span key={line}>{line}</span>)}</span>}
+          <div className="project-row__number" aria-hidden="true">
+            {project.index}
+          </div>
+          <ProjectMedia project={project} showGhost={showGhost} />
+          <SupportingMedia project={project} />
+          <ProjectInterruption lines={project.interruption} />
         </div>
         {completeFrame && <ProjectDetails project={project} />}
       </div>
       {!completeFrame && <ProjectDetails project={project} />}
-    </article>;
-  }
-
-  return <article ref={rootRef} className={`project-row ${project.className}`} data-motion-archetype={project.motion?.archetype}>
-    <div className="project-row__number" aria-hidden="true">{project.index}</div>
-    <figure className="project-row__media project-row__media--real">
-      <div className="project-row__media-reveal">
-        <img src={project.media.src} alt={project.media.alt} loading={project.media.loading} width={project.media.width} height={project.media.height} />
-        {showGhost && <span className="project-row__motion-ghost" aria-hidden="true">{project.index}</span>}
-        <span className="project-row__motion-accent" aria-hidden="true" />
-      </div>
-      <span className="project-row__motion-dot" aria-hidden="true" />
-      {project.secondaryMedia && <img className="project-row__secondary-media" src={project.secondaryMedia.src} alt={project.secondaryMedia.alt} loading="lazy" width={project.secondaryMedia.width} height={project.secondaryMedia.height} />}
-      {project.interruption && <span className="project-row__interruption" aria-hidden="true">{project.interruption.map((line) => <span key={line}>{line}</span>)}</span>}
-      <figcaption>{project.media.label}</figcaption>
-    </figure>
-    <div className="project-row__info"><div className="project-row__kicker">{project.kicker}</div><div className="project-row__title-wrap"><h3 className="project-row__title">{project.title}</h3></div><p>{project.copy}</p><strong className="project-row__accent">{project.accent}</strong><div className="project-row__meta">{project.meta.map((item) => <span key={item}>{item}</span>)}</div></div>
-  </article>;
+    </article>
+  );
 }
 
 function ShippedArchive() {
