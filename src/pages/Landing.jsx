@@ -65,21 +65,22 @@ function useProjectMotion(rootRef, motion) {
     }, ({ conditions }) => {
       if (conditions.reduce) return undefined;
 
-      // Mobile/tablet: keep motion, but avoid desktop pins and long scroll scrubs.
-      // Reveal each static artwork once as it enters the viewport.
+      // Compact screens: visible artwork, one deliberate number entrance on scroll.
+      // No image wipe, long scroll pin, overshoot or return movement.
       if (conditions.compact && motion.canonical && motion.playback !== 'autoplay-hold') {
         const q = gsap.utils.selector(root);
-        const reveal = q('.project-row__media-reveal');
+        const number = q('.project-row__number');
         const ctx = gsap.context(() => {
-          gsap.fromTo(reveal,
-            { clipPath: 'inset(0 100% 0 0)' },
+          gsap.fromTo(number,
+            { y: 46, opacity: 0 },
             {
-              clipPath: 'inset(0 0% 0 0)',
-              duration: 0.85,
-              ease: 'power2.inOut',
+              y: 0,
+              opacity: 1,
+              duration: 0.75,
+              ease: 'power2.out',
               scrollTrigger: {
                 trigger: root,
-                start: 'top 85%',
+                start: 'top 82%',
                 once: true,
               },
             },
