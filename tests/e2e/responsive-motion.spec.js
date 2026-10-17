@@ -27,7 +27,7 @@ test('mobile and tablet reveal each project without desktop pinning', async ({ p
     await project.scrollIntoViewIfNeeded();
     await expect.poll(() => project.locator('.project-row__media-reveal').evaluate(
       (el) => getComputedStyle(el).clipPath,
-    )).toMatch(/^inset\\(0(?:px|%)?(?:\\s+0(?:px|%)?){0,3}\\)$/);
+    )).toBe('inset(0px 0% 0px 0px)');
     await expect(project).not.toHaveClass(/pin-spacer/);
     expect(await page.locator('.pin-spacer').count()).toBe(0);
   }
