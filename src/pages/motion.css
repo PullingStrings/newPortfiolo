@@ -342,3 +342,44 @@
     display: none;
   }
 }
+
+/* Repair 04 / V2: one dominant map with a smaller supporting repair-options detail. */
+@media (min-width: 901px) and (min-height: 720px) {
+  .project-row--canonical.project-row--repair .project-row__media {
+    left: 15%;
+    right: auto;
+    top: 6%;
+    width: 80%;
+    height: 84%;
+    z-index: 2;
+  }
+
+  .project-row--canonical.project-row--repair .project-row__secondary-media {
+    position: absolute;
+    left: 6%;
+    right: auto;
+    bottom: 3%;
+    top: auto;
+    width: clamp(130px, 19%, 195px);
+    height: auto;
+    aspect-ratio: 1.55 / 1;
+    object-fit: cover;
+    object-position: center 15%;
+    border: 4px solid var(--paper);
+    background: white;
+    z-index: 4;
+  }
+
+  .project-row--canonical.project-row--repair .project-row__number {
+    left: auto;
+    right: -1%;
+    top: auto;
+    bottom: -1%;
+    z-index: 3;
+    text-align: right;
+  }
+
+  .project-row--canonical.project-row--repair .project-row__motion-ghost {
+    display: none;
+  }
+}
