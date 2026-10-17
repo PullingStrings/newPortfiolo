@@ -48,6 +48,24 @@ jobs:
             --output=json --output-path="lighthouse-reports/$FORM_FACTOR.json" \
             --only-categories=performance,accessibility,best-practices,seo \
             $EXTRA_FLAGS
+      - name: Print Lighthouse scores and lab Web Vitals
+        env:
+          FORM_FACTOR: ${{ matrix.form_factor }}
+        run: |
+          node -e '
+            const report = require("./lighthouse-reports/" + process.env.FORM_FACTOR + ".json");
+            const scores = Object.fromEntries(
+              Object.entries(report.categories).map(([name, item]) => [
+                name, Math.round(item.score * 100)
+              ])
+            );
+            const metrics = ["largest-contentful-paint", "cumulative-layout-shift", "total-blocking-time"];
+            console.log("Lighthouse", process.env.FORM_FACTOR, scores);
+            metrics.forEach(id => {
+              const audit = report.audits[id];
+              console.log(id, audit?.displayValue ?? audit?.numericValue);
+            });
+          '
       - uses: actions/upload-artifact@v4
         if: always()
         with:
