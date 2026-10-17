@@ -79,8 +79,10 @@ function useProjectMotion(rootRef, motion) {
               duration: 0.75,
               ease: 'power2.out',
               scrollTrigger: {
-                trigger: root,
-                start: 'top 82%',
+                // Animate when the number itself is comfortably in view,
+                // not when the much taller project section first enters.
+                trigger: number[0],
+                start: 'top 66%',
                 once: true,
               },
             },
