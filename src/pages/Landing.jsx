@@ -37,7 +37,7 @@ const projects = [
     copy: 'Legacy support and repair journeys made clearer across booking, map and appointment screens, with vendor availability driven by service data across multiple repair types.',
     meta: ['Vanilla JavaScript', 'PHP', 'API-driven availability', 'Legacy systems'],
     className: 'project-row--mirror project-row--repair', accent: 'Complex systems made clear.',
-    motion: { archetype: 'quiet', mirror: true, canonical: true, intensity: 1, end: 1800, ghost: true, secondaryCue: true },
+    motion: { archetype: 'quiet', mirror: true, canonical: true, intensity: 1, end: 1700, study: 'repair-v2' },
     media: { src: '/projects/samsung-repair/vendor-map.png', alt: 'Samsung repair booking map showing nearby repair vendors and booking availability', label: 'VENDOR / AVAILABILITY / BOOKING', loading: 'lazy', width: 1536, height: 1024 },
     secondaryMedia: { src: '/projects/samsung-repair/repair-options.png', alt: 'Samsung repair journey showing in-home repair and trade-up options', width: 1240, height: 1240 },
   },
@@ -76,6 +76,55 @@ function useProjectMotion(rootRef, motion) {
       const accent = q('.project-row__motion-accent');
       const interruption = q('.project-row__interruption');
       const secondary = q('.project-row__secondary-media');
+      // Repair V2: reveal the vendor map, hold, uncover a small supporting screen,
+      // then bring 04 into its final place. Screenshots never translate or bounce.
+      if (motion.study === 'repair-v2') {
+        if (!conditions.desktop) return undefined;
+
+        const frame = q('.project-row__pin')[0];
+        gsap.set(title, { yPercent: 0 });
+        gsap.set(media, { x: 0, y: 0, scale: 1 });
+        gsap.set(reveal, { clipPath: 'inset(0 100% 0 0)' });
+        gsap.set(secondary, { x: 0, y: 0, rotation: 0, opacity: 1, clipPath: 'inset(100% 0 0 0)' });
+        gsap.set(number, { x: 95, y: 0, rotation: 0, scale: 1, opacity: 0 });
+        gsap.set(dot, { opacity: 0 });
+        gsap.set(accent, { opacity: 0 });
+
+        const tl = gsap.timeline({
+          defaults: { ease: 'none' },
+          scrollTrigger: {
+            trigger: root,
+            start: 'top top+=8%',
+            end: `+=${motion.end ?? 1700}`,
+            scrub: 1.1,
+            pin: frame,
+            pinSpacing: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        tl.to(reveal, {
+          clipPath: 'inset(0 0% 0 0)',
+          duration: 0.37,
+          ease: 'power2.inOut',
+        }, 0.07)
+          // Hold the map before bringing in the supporting repair-options screen.
+          .to(secondary, {
+            clipPath: 'inset(0% 0 0 0)',
+            duration: 0.20,
+            ease: 'power2.inOut',
+          }, 0.49)
+          .to(number, {
+            x: 0,
+            opacity: 1,
+            duration: 0.21,
+            ease: 'power2.out',
+          }, 0.74);
+
+        return () => tl.kill();
+      }
+
       // Finance V1: left-to-right rectangular wipe, deliberate hold, one-way 02 entrance.
       // The interface never translates or bounces; motion is only in the mask and number.
       if (motion.study === 'finance-v1') {
