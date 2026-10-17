@@ -183,10 +183,6 @@
     transform: none !important;
   }
 
-  .project-row__media-reveal {
-    clip-path: none !important;
-  }
-
   .project-row__motion-dot,
   .project-row__motion-ghost,
   .project-row__motion-accent {
