@@ -514,9 +514,125 @@ function ProjectRow({ project }) {
 }
 
 function ShippedArchive() {
-  return <section className="shipped home-section" id="shipped"><SectionHeading index="02" eyebrow="Archive / smaller work" title="Other things I shipped." copy="Not every project needs a full case study. Here are some smaller features, integrations and production challenges I've worked on." /><div className="shipped-list">{shipped.map((item, index) => <article className="shipped-item" key={item.title}><span className="shipped-item__index">{String(index + 1).padStart(2, '0')}</span><div className="shipped-item__title"><span>{item.meta}</span><h3>{item.title}</h3></div><p>{item.copy}</p></article>)}</div></section>;
+  return (
+    <section className="shipped home-section" id="shipped">
+      <SectionHeading
+        index="02"
+        eyebrow="Archive / smaller work"
+        title="Other things I shipped."
+        copy={
+          "Not every project needs a full case study. " +
+          "Here are some smaller features, integrations and " +
+          "production challenges I've worked on."
+        }
+      />
+      <div className="shipped-list">
+        {shipped.map((item, index) => (
+          <article className="shipped-item" key={item.title}>
+            <span className="shipped-item__index">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <div className="shipped-item__title">
+              <span>{item.meta}</span>
+              <h3>{item.title}</h3>
+            </div>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="hero-v2 home-section" id="top">
+      <div className="hero-v2__meta">
+        <span>Tito Zwane / Front-end developer</span>
+        <span>London / Available for good problems</span>
+      </div>
+      <h1 className="hero-v2__title">
+        <span>Tito</span>
+        <span>Zwane</span>
+      </h1>
+      <div className="hero-v2__bottom">
+        <p className="hero-v2__statement">
+          Make the work clear. <em>Make Tito weird.</em>
+        </p>
+        <p className="hero-v2__intro">
+          I'm a front-end developer with a background in music.
+          I build interactive experiences, practical tools and
+          the systems that make them work in production.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function FeaturedWork() {
+  return (
+    <section className="work-index home-section" id="projects">
+      <SectionHeading
+        index="01"
+        eyebrow="Featured work"
+        title="Selected work."
+        copy={
+          "Campaign experiences, finance tools and customer " +
+          "support journeys I've helped build for Volkswagen and Samsung."
+        }
+      />
+      {projects.map((project) => (
+        <ProjectRow key={project.index} project={project} />
+      ))}
+    </section>
+  );
+}
+
+function About() {
+  return (
+    <section className="about-v2 home-section" id="about">
+      <SectionHeading
+        index="03"
+        eyebrow="About / approach"
+        title="From bass lines to browser windows."
+      />
+      <div className="about-grid">
+        <div className="about-grid__aside">
+          Front-end systems<br />
+          Creative development<br />
+          Interaction<br />
+          Production thinking
+        </div>
+        <p className="about-grid__copy">
+          I used to play bass professionally before I got into coding.
+          These days I build things for the web. Different tools,
+          but I still enjoy figuring things out, working with people
+          and making something feel right.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function ContactSection() {
+  return (
+    <section className="contact-v2 home-section" id="contact">
+      <div className="contact-panel">
+        <h2>Have a good problem?</h2>
+        <a href="/contact">Start a conversation →</a>
+      </div>
+    </section>
+  );
 }
 
 export default function Landing() {
-  return <main className="home-shell"><section className="hero-v2 home-section" id="top"><div className="hero-v2__meta"><span>Tito Zwane / Front-end developer</span><span>London / Available for good problems</span></div><h1 className="hero-v2__title"><span>Tito</span><span>Zwane</span></h1><div className="hero-v2__bottom"><p className="hero-v2__statement">Make the work clear. <em>Make Tito weird.</em></p><p className="hero-v2__intro">I'm a front-end developer with a background in music. I build interactive experiences, practical tools and the systems that make them work in production.</p></div></section><section className="work-index home-section" id="projects"><SectionHeading index="01" eyebrow="Featured work" title="Selected work." copy="Campaign experiences, finance tools and customer support journeys I've helped build for Volkswagen and Samsung." />{projects.map((project) => <ProjectRow key={project.index} project={project} />)}</section><ShippedArchive /><section className="about-v2 home-section" id="about"><SectionHeading index="03" eyebrow="About / approach" title="From bass lines to browser windows." /><div className="about-grid"><div className="about-grid__aside">Front-end systems<br />Creative development<br />Interaction<br />Production thinking</div><p className="about-grid__copy">I used to play bass professionally before I got into coding. These days I build things for the web. Different tools, but I still enjoy figuring things out, working with people and making something feel right.</p></div></section><section className="contact-v2 home-section" id="contact"><div className="contact-panel"><h2>Have a good problem?</h2><a href="/contact">Start a conversation →</a></div></section></main>;
+  return (
+    <main className="home-shell">
+      <Hero />
+      <FeaturedWork />
+      <ShippedArchive />
+      <About />
+      <ContactSection />
+    </main>
+  );
 }
