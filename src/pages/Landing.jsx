@@ -64,7 +64,30 @@ function useProjectMotion(rootRef, motion) {
       reduce: '(prefers-reduced-motion: reduce)',
     }, ({ conditions }) => {
       const quietCanonical = motion.canonical && motion.archetype === 'quiet' && motion.playback !== 'autoplay-hold';
-      if (conditions.reduce || (conditions.compact && quietCanonical)) return undefined;
+      if (conditions.reduce) return undefined;
+
+      // Mobile/tablet: keep motion, but avoid desktop pins and long scroll scrubs.
+      // Reveal each static artwork once as it enters the viewport.
+      if (conditions.compact && quietCanonical) {
+        const q = gsap.utils.selector(root);
+        const reveal = q('.project-row__media-reveal');
+        const ctx = gsap.context(() => {
+          gsap.fromTo(reveal,
+            { clipPath: 'inset(0 100% 0 0)' },
+            {
+              clipPath: 'inset(0 0% 0 0)',
+              duration: 0.85,
+              ease: 'power2.inOut',
+              scrollTrigger: {
+                trigger: root,
+                start: 'top 85%',
+                once: true,
+              },
+            },
+          );
+        }, root);
+        return () => ctx.revert();
+      }
 
       const q = gsap.utils.selector(root);
       const number = q('.project-row__number');
