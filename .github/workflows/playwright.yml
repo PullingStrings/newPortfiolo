@@ -19,7 +19,7 @@ jobs:
           cache: yarn
       - run: yarn install --frozen-lockfile
       - name: Install browser test runner
-        run: yarn add --dev --no-lockfile @playwright/test
+        run: yarn add --dev --no-lockfile @playwright/test @axe-core/playwright
       - run: yarn playwright install --with-deps chromium
       - name: Test mobile, tablet, and desktop
         run: yarn playwright test
