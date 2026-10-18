@@ -1,9 +1,9 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLayoutEffect, useRef } from 'react';
+import { projects, shipped } from '../data/homepage';
 import './landing.css';
 import './motion.css';
-import { projects, shipped } from '../data/homepage';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -575,7 +575,7 @@ function Hero() {
       </h1>
       <div className="hero-v2__bottom">
         <p className="hero-v2__statement">
-          Make the work clear. <em>Make Tito weird.</em>
+          Make the work clear. <em>Make the world weird.</em>
         </p>
         <p className="hero-v2__intro">
           I'm a front-end developer with a background in music.
