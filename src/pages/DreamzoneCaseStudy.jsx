@@ -41,7 +41,7 @@ const recoverySteps = [
 function MediaFigure({ src, alt, name, note, className = '' }) {
   return (
     <figure className={`dz-gallery__figure ${className}`}>
-      <img src={src} alt={alt} loading="lazy" width="960" height="546" />
+      <div className="dz-gallery__crop"><img src={src} alt={alt} loading="lazy" width="960" height="546" /></div>
       <figcaption><strong>{name}</strong><span>{note}</span></figcaption>
     </figure>
   );
@@ -72,7 +72,7 @@ export default function DreamzoneCaseStudy() {
           <span>Fig. 01 / The experience</span>
           <span>ID. Polo / Recorded experience</span>
         </div>
-        <img src={media.hero} alt="Blue Volkswagen ID. Polo captured during a scroll-driven fly-around" width="960" height="546" fetchPriority="high" />
+        <div className="dz-feature__crop"><img src={media.hero} alt="Blue Volkswagen ID. Polo captured during a scroll-driven fly-around" width="960" height="546" fetchPriority="high" /></div>
         <figcaption>
           <span>The work, before the explanation.</span>
           <strong aria-hidden="true">01</strong>
@@ -115,6 +115,10 @@ export default function DreamzoneCaseStudy() {
         <p>Different campaign configurations can supply cue positions, mobile layouts and scrub tuning without rewriting the central fly-around component.</p>
       </Chapter>
       <div className="dz-wrap">
+        <figure className="dz-context">
+          <img src={media.polo} alt="Uncropped ID. Polo screen capture showing the campaign inside a desktop browser" loading="lazy" width="960" height="546" />
+          <figcaption>Fig. 02 / Application context — original browser capture, shown uncropped.</figcaption>
+        </figure>
         <div className="dz-scrub" aria-label="Conceptual mapping from scroll position to video frame">
           <div><span>Scroll progress</span><b>0 → 1</b></div>
           <div className="dz-scrub__line" aria-hidden="true"><i /><i /><i /><i /><i /></div>
