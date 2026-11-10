@@ -33,6 +33,11 @@ export default function CaseStudies() {
           <img src="/projects/offers-finance/vw-offers-model-selection-2026-11-10.png" alt="Volkswagen Offers & Finance model-selection interface" width="1440" height="900" loading="lazy" />
           <span className="dz-index__copy"><small>Volkswagen / 2026 / Product engineering</small><strong>Offers &amp; Finance ↗</strong><span>Model discovery, finance calculations and comparison across a connected customer journey.</span></span>
         </Link>
+        <Link className="dz-index__item" to="/case-studies/samsung-contact">
+          <span className="dz-index__number">03</span>
+          <img src="/contact-us.png" alt="Samsung Contact customer-facing contact tiles" width="1600" height="900" loading="lazy" />
+          <span className="dz-index__copy"><small>Samsung UK / 2025 / Application architecture</small><strong>Samsung Contact ↗</strong><span>Data-driven navigation, client-managed publishing and context-aware Sprinklr support.</span></span>
+        </Link>
         <p className="dz-note">More case studies will appear here as they're completed and reviewed.</p>
       </div>
     </main>
