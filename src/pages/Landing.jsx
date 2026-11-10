@@ -1,4 +1,5 @@
 import { gsap } from 'gsap';
+import { Link } from 'react-router-dom';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLayoutEffect, useRef } from 'react';
 import { projects, shipped } from '../data/homepage';
@@ -513,7 +514,7 @@ function ProjectRow({ project }) {
           <span>{project.kicker}</span>
         </div>
         <div className="project-row__title-wrap">
-          <h3 className="project-row__title">{project.title}</h3>
+          <h3 className="project-row__title">{project.caseStudyPath ? <Link className="project-row__title-link" to={project.caseStudyPath} aria-label={`Read ${project.title} case study`}>{project.title}<span className="project-row__title-arrow" aria-hidden="true">↗</span></Link> : project.title}</h3>
         </div>
         <strong className="project-row__accent">{project.accent}</strong>
         <div className="project-row__stage">
