@@ -77,6 +77,7 @@ export const projects = [
   {
     index: '03',
     title: 'Samsung Contact',
+    caseStudyPath: '/case-studies/samsung-contact',
     kicker: 'Samsung UK / Cheil / 2025',
     copy:
       'A reusable, data-driven contact journey inside Samsung’s AEM ' +
