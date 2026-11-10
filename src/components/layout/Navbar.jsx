@@ -124,6 +124,7 @@ export default function Navbar() {
 
       <NavLinks $open={open}>
         <a href="#projects" onClick={(event) => handleScroll(event, '#projects')}>Work</a>
+        <Link to="/case-studies" onClick={() => setOpen(false)}>Case Studies</Link>
         <a href="#about" onClick={(event) => handleScroll(event, '#about')}>About</a>
         <Link to="/resume" onClick={() => setOpen(false)}>Resume</Link>
         <Link to="/contact" onClick={() => setOpen(false)}>Contact</Link>

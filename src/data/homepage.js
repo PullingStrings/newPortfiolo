@@ -5,6 +5,7 @@ export const projects = [
   {
     index: '01',
     title: 'Volkswagen Dreamzone',
+    caseStudyPath: '/case-studies/volkswagen-dreamzone',
     kicker: 'Volkswagen / Dreamzone / 2026',
     copy:
       'Scroll-driven storytelling engineered for production across ' +
