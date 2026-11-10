@@ -28,6 +28,11 @@ export default function CaseStudies() {
           </video>
           <span className="dz-index__copy"><small>Volkswagen / 2026 / Creative engineering</small><strong>Dreamzone ↗</strong><span>From prototype to production. Video systems, tooling, GSAP and Safari recovery.</span></span>
         </Link>
+        <Link className="dz-index__item" to="/case-studies/volkswagen-offers-finance">
+          <span className="dz-index__number">02</span>
+          <img src="/projects/offers-finance/vw-offers-model-selection-2026-11-10.png" alt="Volkswagen Offers & Finance model-selection interface" width="1440" height="900" loading="lazy" />
+          <span className="dz-index__copy"><small>Volkswagen / 2026 / Product engineering</small><strong>Offers &amp; Finance ↗</strong><span>Model discovery, finance calculations and comparison across a connected customer journey.</span></span>
+        </Link>
         <p className="dz-note">More case studies will appear here as they're completed and reviewed.</p>
       </div>
     </main>
