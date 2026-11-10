@@ -2,6 +2,8 @@ import { test, expect } from '@playwright/test';
 
 test('Case Studies navigation opens the index and Dreamzone case study', async ({ page }) => {
   await page.goto('/');
+  const mobileToggle = page.getByRole('button', { name: 'Open navigation' });
+  if (await mobileToggle.isVisible()) await mobileToggle.click();
   const nav = page.getByRole('navigation');
   await nav.getByRole('link', { name: 'Case Studies' }).click();
   await expect(page).toHaveURL(/\/case-studies\/?$/);
