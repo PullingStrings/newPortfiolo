@@ -11,6 +11,7 @@ import Resume from "./pages/Resume";
 import Contact from "./pages/Contact";
 import CaseStudies from "./pages/CaseStudies";
 import DreamzoneCaseStudy from "./pages/DreamzoneCaseStudy";
+import OffersFinanceCaseStudy from "./pages/OffersFinanceCaseStudy";
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/case-studies/volkswagen-dreamzone" element={<DreamzoneCaseStudy />} />
+          <Route path="/case-studies/volkswagen-offers-finance" element={<OffersFinanceCaseStudy />} />
           {/* Add more routes as needed */}
         </Routes>
         <Footer />

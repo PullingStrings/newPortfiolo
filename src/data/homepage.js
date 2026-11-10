@@ -43,6 +43,7 @@ export const projects = [
   {
     index: '02',
     title: 'Volkswagen Offers & Finance',
+    caseStudyPath: '/case-studies/volkswagen-offers-finance',
     kicker: 'Volkswagen / Finance / 2026',
     copy:
       'A responsive finance journey for discovering vehicles, ' +
