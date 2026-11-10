@@ -13,7 +13,19 @@ export default function CaseStudies() {
         </header>
         <Link className="dz-index__item" to="/case-studies/volkswagen-dreamzone">
           <span className="dz-index__number">01</span>
-          <img src="/projects/dreamzone/id-polo-hero.jpg" alt="Blue Volkswagen ID. Polo in the Dreamzone experience" width="960" height="546" />
+          <video
+            poster="/projects/dreamzone/id-polo-hero.jpeg"
+            aria-label="Blue Volkswagen ID. Polo in the Dreamzone experience"
+            width="960"
+            height="546"
+            autoPlay
+            muted
+            loop
+            playsInline
+          >
+            <source src="/projects/dreamzone/dreamzone-hero-video.mp4" type="video/mp4" />
+            <source src="/projects/dreamzone/dreamzone-hero-video.webm" type="video/webm" />
+          </video>
           <span className="dz-index__copy"><small>Volkswagen / 2026 / Creative engineering</small><strong>Dreamzone ↗</strong><span>From prototype to production. Video systems, tooling, GSAP and Safari recovery.</span></span>
         </Link>
         <p className="dz-note">More case studies will appear here as they're completed and reviewed.</p>

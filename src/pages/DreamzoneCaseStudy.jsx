@@ -1,11 +1,12 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './case-studies.css';
 
 const media = {
   hero: '/projects/dreamzone/id-polo-hero.jpg',
-  cross: '/projects/dreamzone/id-cross-gallery.jpg',
-  polo: '/projects/dreamzone/id-polo-gallery.jpg',
-  tiguan: '/projects/dreamzone/tiguan-gallery.jpg',
+  cross: '/projects/dreamzone/id-cross-gallery.jpeg',
+  polo: '/projects/dreamzone/id-polo-gallery.jpeg',
+  tiguan: '/projects/dreamzone/tiguan-gallery.jpeg',
 };
 
 function Chapter({ number, label, title, children, className = '' }) {
@@ -48,6 +49,17 @@ function MediaFigure({ src, alt, name, note, className = '' }) {
 }
 
 export default function DreamzoneCaseStudy() {
+  const [reduceMotion, setReduceMotion] = useState(() =>
+    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const updateMotionPreference = () => setReduceMotion(mediaQuery.matches);
+    mediaQuery.addEventListener('change', updateMotionPreference);
+    return () => mediaQuery.removeEventListener('change', updateMotionPreference);
+  }, []);
+
   return (
     <main className="dz-case">
       <div className="dz-wrap">
@@ -55,29 +67,34 @@ export default function DreamzoneCaseStudy() {
           <Link to="/case-studies">← All case studies</Link>
           <span>01 — Volkswagen / 2026</span>
         </div>
-        <header className="dz-hero">
-          <p className="dz-eyebrow dz-accent">Case Study 01 / Creative engineering</p>
-          <h1>Volkswagen<br />Dreamzone<span className="dz-accent">.</span></h1>
-          <p className="dz-hero__dek">Turning an existing scroll-driven prototype into a production experience — through video engineering, front-end architecture and browser resilience.</p>
-          <div className="dz-hero__meta">
-            <span>Role / Front-end engineering</span>
-            <span>GSAP · React · AEM · Python · FFmpeg</span>
-            <span>2026</span>
-          </div>
-        </header>
       </div>
 
-      <figure className="dz-feature">
-        <div className="dz-feature__head">
-          <span>Fig. 01 / The experience</span>
-          <span>ID. Polo / Recorded experience</span>
+      <header className="dz-hero">
+        <div className="dz-hero__media" style={{ backgroundImage: `url(${media.hero})` }} aria-hidden="true">
+          {!reduceMotion && (
+            <video poster={media.hero} width="960" height="546" autoPlay muted loop playsInline preload="auto">
+              <source src="/projects/dreamzone/dreamzone-hero-video.mp4" type="video/mp4" />
+              <source src="/projects/dreamzone/dreamzone-hero-video.webm" type="video/webm" />
+            </video>
+          )}
         </div>
-        <div className="dz-feature__crop"><img src={media.hero} alt="Blue Volkswagen ID. Polo captured during a scroll-driven fly-around" width="960" height="546" fetchPriority="high" /></div>
-        <figcaption>
-          <span>The work, before the explanation.</span>
-          <strong aria-hidden="true">01</strong>
-        </figcaption>
-      </figure>
+        <div className="dz-wrap dz-hero__content">
+          <div className="dz-hero__labels">
+            <span>Fig. 01 / The experience</span>
+            <span>ID. Polo / Recorded experience</span>
+          </div>
+          <div className="dz-hero__body">
+            <p className="dz-eyebrow dz-accent">Case Study 01 / Creative engineering</p>
+            <h1>Volkswagen<br />Dreamzone<span className="dz-accent">.</span></h1>
+            <p className="dz-hero__dek">Turning an existing scroll-driven prototype into a production experience — through video engineering, front-end architecture and browser resilience.</p>
+            <div className="dz-hero__meta">
+              <span>Role / Front-end engineering</span>
+              <span>GSAP · React · AEM · Python · FFmpeg</span>
+              <span>2026</span>
+            </div>
+          </div>
+        </div>
+      </header>
 
       <Chapter number="01" label="Context & challenge" title={<>From 2,000+<br />frames to<br />one video.</>}>
         <p>I inherited an existing proof of concept for a scroll-controlled fly-around. The initial idea was an image sequence, but the animation was long enough to require more than two thousand frames.</p>
