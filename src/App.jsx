@@ -13,6 +13,7 @@ import CaseStudies from "./pages/CaseStudies";
 import DreamzoneCaseStudy from "./pages/DreamzoneCaseStudy";
 import OffersFinanceCaseStudy from "./pages/OffersFinanceCaseStudy";
 import SamsungContactCaseStudy from "./pages/SamsungContactCaseStudy";
+import SamsungRepairCaseStudy from "./pages/SamsungRepairCaseStudy";
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="/case-studies/volkswagen-dreamzone" element={<DreamzoneCaseStudy />} />
           <Route path="/case-studies/volkswagen-offers-finance" element={<OffersFinanceCaseStudy />} />
           <Route path="/case-studies/samsung-contact" element={<SamsungContactCaseStudy />} />
+          <Route path="/case-studies/samsung-repair" element={<SamsungRepairCaseStudy />} />
           {/* Add more routes as needed */}
         </Routes>
         <Footer />
