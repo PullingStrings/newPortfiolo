@@ -19,7 +19,7 @@ It’s designed with **modern, minimal, and bold aesthetics** to leave a strong 
 - **React + Vite** – Fast and lightweight SPA setup
 - **Styled Components** – Component-scoped styling with theme support
 - **GitHub API Integration** – Fetches latest public & private repositories (via token)
-- **Formspree** – Contact form with validation + toast notifications
+- **GSAP** – Scroll-driven project motion and subtle page transitions
 - **Responsive & Mobile-Friendly** – Optimized across devices
 
 ---
@@ -29,8 +29,8 @@ It’s designed with **modern, minimal, and bold aesthetics** to leave a strong 
 - **Hero Section** – Bold animated background + tagline
 - **About Section** – Personal story & unique value proposition
 - **Projects Highlight** – Live data from GitHub + JSON for non-repo projects, “Show More” lazy load
-- **Resume Page** – Animated vertical timeline of experience
-- **Contact Page** – Formspree-powered form with feedback messages
+- **Portfolio as resume** – Featured case studies, shipped work and About tell the story
+- **Contact Page** – Editorial direct links to email, LinkedIn and GitHub
 - **Smooth Navigation** – Mobile dropdown with animation, scroll to sections
 
 ---
