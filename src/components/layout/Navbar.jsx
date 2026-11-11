@@ -142,9 +142,6 @@ export default function Navbar() {
         <a href="#about" onClick={(event) => handleScroll(event, '#about')}>
           About
         </a>
-        <Link to="/resume" onClick={() => setOpen(false)}>
-          Resume
-        </Link>
         <Link to="/contact" onClick={() => setOpen(false)}>
           Contact
         </Link>
