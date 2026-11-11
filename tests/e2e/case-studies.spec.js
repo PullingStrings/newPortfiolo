@@ -25,7 +25,7 @@ test('Case Studies navigation opens both Volkswagen case studies', async ({
   ).toBeVisible();
 });
 
-test('featured case study titles link to their pages; unfinished projects remain plain headings', async ({
+test('featured case study titles link to their pages', async ({
   page,
 }) => {
   await page.goto('/');
@@ -39,10 +39,10 @@ test('featured case study titles link to their pages; unfinished projects remain
   ).toHaveAttribute('href', '/case-studies/volkswagen-offers-finance');
   await expect(
     page.locator('.project-row--contact h3.project-row__title a'),
-  ).toHaveCount(0);
+  ).toHaveAttribute('href', '/case-studies/samsung-contact');
   await expect(
     page.locator('.project-row--repair h3.project-row__title a'),
-  ).toHaveCount(0);
+  ).toHaveAttribute('href', '/case-studies/samsung-repair');
 });
 
 test('case study media loads and layout avoids horizontal overflow', async ({
