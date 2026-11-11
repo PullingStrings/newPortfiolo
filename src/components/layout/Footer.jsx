@@ -11,10 +11,12 @@ const Foot = styled.footer`
   font-family: 'Inter', sans-serif;
   font-size: 9px;
   font-weight: 800;
-  letter-spacing: .06em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 
-  span:last-child { color: #a92e00; }
+  span:last-child {
+    color: #a92e00;
+  }
 
   @media (max-width: 600px) {
     flex-direction: column;

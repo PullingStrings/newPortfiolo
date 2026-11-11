@@ -1,18 +1,19 @@
 // src/App.jsx
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ScrollToTop from "./components/layout/ScrollToTop";
-import { ThemeProvider } from "styled-components";
-import { theme } from "./theme/theme";
-import { GlobalStyles } from "./theme/GlobalStyles";
-import Navbar from "./components/layout/Navbar";
-import Footer from "./components/layout/Footer";
-import Landing from "./pages/Landing";
-import Resume from "./pages/Resume";
-import Contact from "./pages/Contact";
-import CaseStudies from "./pages/CaseStudies";
-import DreamzoneCaseStudy from "./pages/DreamzoneCaseStudy";
-import OffersFinanceCaseStudy from "./pages/OffersFinanceCaseStudy";
-import SamsungContactCaseStudy from "./pages/SamsungContactCaseStudy";
+import Footer from '@/components/layout/Footer';
+import Navbar from '@/components/layout/Navbar';
+import ScrollToTop from '@/components/layout/ScrollToTop';
+import DreamzoneCaseStudy from '@/pages/CaseStudies/DreamZone/DreamzoneCaseStudy';
+import OffersFinanceCaseStudy from '@/pages/CaseStudies/OffersFinance/OffersFinanceCaseStudy';
+import SamsungContactCaseStudy from '@/pages/CaseStudies/SamsungContact/SamsungContactCaseStudy';
+import SamsungRepairCaseStudy from '@/pages/CaseStudies/SamsungRepair/SamsungRepairCaseStudy';
+import CaseStudies from '@/pages/CaseStudyLanding/CaseStudies';
+import Contact from '@/pages/Contact/Contact';
+import Landing from '@/pages/Landing/Landing';
+import Resume from '@/pages/Resume/Resume';
+import { GlobalStyles } from '@/theme/GlobalStyles';
+import { theme } from '@/theme/theme';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 
 export default function App() {
   return (
@@ -26,9 +27,22 @@ export default function App() {
           <Route path="/resume" element={<Resume />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/case-studies" element={<CaseStudies />} />
-          <Route path="/case-studies/volkswagen-dreamzone" element={<DreamzoneCaseStudy />} />
-          <Route path="/case-studies/volkswagen-offers-finance" element={<OffersFinanceCaseStudy />} />
-          <Route path="/case-studies/samsung-contact" element={<SamsungContactCaseStudy />} />
+          <Route
+            path="/case-studies/volkswagen-dreamzone"
+            element={<DreamzoneCaseStudy />}
+          />
+          <Route
+            path="/case-studies/volkswagen-offers-finance"
+            element={<OffersFinanceCaseStudy />}
+          />
+          <Route
+            path="/case-studies/samsung-contact"
+            element={<SamsungContactCaseStudy />}
+          />
+          <Route
+            path="/case-studies/samsung-repair"
+            element={<SamsungRepairCaseStudy />}
+          />
           {/* Add more routes as needed */}
         </Routes>
         <Footer />

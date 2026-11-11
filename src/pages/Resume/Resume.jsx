@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { useEffect, useRef, useState } from "react";
+import styled from 'styled-components';
+import { useEffect, useRef, useState } from 'react';
 
-const PageWrapper = styled.section`
+const PageWrapper = styled.main`
   padding: 6rem 5%;
   background: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
@@ -14,7 +14,7 @@ const Timeline = styled.div`
   max-width: 800px;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     left: 20px;
     top: 0;
@@ -48,7 +48,7 @@ const Content = styled.div`
   padding: 0.75rem 1rem;
   background: ${({ theme }) => theme.colors.lightGray};
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   z-index: 1; /* card sits under the timeline line and dot */
 
   /* animation base state */
@@ -91,7 +91,9 @@ const Content = styled.div`
 `;
 
 /* ---------- tiny in-view hook ---------- */
-function useInView(options = { threshold: 0.2, rootMargin: "0px 0px -40px 0px" }) {
+function useInView(
+  options = { threshold: 0.2, rootMargin: '0px 0px -40px 0px' },
+) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
 
@@ -121,12 +123,16 @@ function ResumeItem({ role, company, period, bullets }) {
   return (
     <TimelineItemWrap>
       <Dot />
-      <Content ref={ref} className={inView ? "visible" : ""}>
+      <Content ref={ref} className={inView ? 'visible' : ''}>
         <h3>{role}</h3>
-        <h4>{company} • {period}</h4>
+        <h4>
+          {company} • {period}
+        </h4>
         {Array.isArray(bullets) ? (
           <ul>
-            {bullets.map((b, i) => <li key={i}>{b}</li>)}
+            {bullets.map((b, i) => (
+              <li key={i}>{b}</li>
+            ))}
           </ul>
         ) : (
           <p>{bullets}</p>
@@ -139,53 +145,53 @@ function ResumeItem({ role, company, period, bullets }) {
 export default function Resume() {
   const experiences = [
     {
-      role: "Frontend Developer",
-      company: "Cheil (Samsung Ltd), London, UK",
-      period: "October 2020 - Present",
+      role: 'Frontend Developer',
+      company: 'Cheil (Samsung Ltd), London, UK',
+      period: 'October 2020 - Present',
       bullets: [
         "Led frontend development for Samsung's UK site: merchandising strategies, campaign launches, and promotions.",
-        "Spearheaded performance optimisations using data insights and user feedback to enhance UX.",
-        "Built custom pages for flagship products (e.g., Galaxy Fold4) with Samsung’s in-house and SES teams."
-      ]
+        'Spearheaded performance optimisations using data insights and user feedback to enhance UX.',
+        'Built custom pages for flagship products (e.g., Galaxy Fold4) with Samsung’s in-house and SES teams.',
+      ],
     },
     {
-      role: "Web Developer",
-      company: "Four Communications, London, UK",
-      period: "October 2018 - March 2020",
+      role: 'Web Developer',
+      company: 'Four Communications, London, UK',
+      period: 'October 2018 - March 2020',
       bullets: [
-        "Delivered sites and web apps for Estée Lauder Group, NHS, and The Booker Prize (HTML, CSS, PHP, JS).",
-        "Led legacy platform updates with SEO + cloud hosting, cutting costs for smaller clients by ~50%."
-      ]
+        'Delivered sites and web apps for Estée Lauder Group, NHS, and The Booker Prize (HTML, CSS, PHP, JS).',
+        'Led legacy platform updates with SEO + cloud hosting, cutting costs for smaller clients by ~50%.',
+      ],
     },
     {
-      role: "Freelance Web Developer",
-      company: "Self-Employed, Southern & Eastern Africa",
-      period: "2015 – 2017",
+      role: 'Freelance Web Developer',
+      company: 'Self-Employed, Southern & Eastern Africa',
+      period: '2015 – 2017',
       bullets: [
-        "Designed and built sites for art galleries, music projects, and community radio stations.",
-        "Integrated rich media with frontend frameworks to create interactive experiences."
-      ]
-    }
+        'Designed and built sites for art galleries, music projects, and community radio stations.',
+        'Integrated rich media with frontend frameworks to create interactive experiences.',
+      ],
+    },
   ];
 
   const creative = [
     {
-      role: "Creative Director",
-      company: "Fuse Afrika Project, Johannesburg & Dar es Salaam",
-      period: "2015 - 2016",
+      role: 'Creative Director',
+      company: 'Fuse Afrika Project, Johannesburg & Dar es Salaam',
+      period: '2015 - 2016',
       bullets: [
-        "Directed a collaborative music + art initiative with diverse artists.",
-        "Built digital presence (interactive site, social) doubling event engagement."
-      ]
+        'Directed a collaborative music + art initiative with diverse artists.',
+        'Built digital presence (interactive site, social) doubling event engagement.',
+      ],
     },
     {
-      role: "Projects & Events Coordinator",
-      company: "Nafasi Art Space, Dar es Salaam, Tanzania",
-      period: "2014 - 2015",
+      role: 'Projects & Events Coordinator',
+      company: 'Nafasi Art Space, Dar es Salaam, Tanzania',
+      period: '2014 - 2015',
       bullets: [
-        "Produced exhibitions and visual art projects exploring identity, culture, and tech; showcased locally and online."
-      ]
-    }
+        'Produced exhibitions and visual art projects exploring identity, culture, and tech; showcased locally and online.',
+      ],
+    },
   ];
 
   return (
@@ -197,7 +203,7 @@ export default function Resume() {
         ))}
       </Timeline>
 
-      <h1>Creative & Artistic Experience</h1>
+      <h2>Creative & Artistic Experience</h2>
       <Timeline>
         {creative.map((exp, i) => (
           <ResumeItem key={i} {...exp} />

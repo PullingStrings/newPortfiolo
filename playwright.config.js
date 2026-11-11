@@ -12,11 +12,29 @@ export default defineConfig({
     screenshot: 'only-on-failure',
   },
   projects: [
-    { name: 'mobile-iphone', use: { ...devices['iPhone 13'], browserName: 'chromium' } },
-    { name: 'mobile-android', use: { ...devices['Pixel 7'], browserName: 'chromium' } },
-    { name: 'tablet-ipad', use: { ...devices['iPad (gen 7)'], browserName: 'chromium' } },
-    { name: 'tablet-portrait', use: { ...devices['iPad Mini'], browserName: 'chromium' } },
-    { name: 'desktop', use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 900 } } },
+    {
+      name: 'mobile-iphone',
+      use: { ...devices['iPhone 13'], browserName: 'chromium' },
+    },
+    {
+      name: 'mobile-android',
+      use: { ...devices['Pixel 7'], browserName: 'chromium' },
+    },
+    {
+      name: 'tablet-ipad',
+      use: { ...devices['iPad (gen 7)'], browserName: 'chromium' },
+    },
+    {
+      name: 'tablet-portrait',
+      use: { ...devices['iPad Mini'], browserName: 'chromium' },
+    },
+    {
+      name: 'desktop',
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1440, height: 900 },
+      },
+    },
   ],
   webServer: {
     command: 'yarn dev --host 127.0.0.1 --port 4173 --strictPort',

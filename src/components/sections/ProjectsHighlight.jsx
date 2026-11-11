@@ -1,7 +1,7 @@
 // src/components/sections/ProjectsHighlight.jsx
-import styled, { keyframes } from "styled-components";
-import { useEffect, useState } from "react";
-import { Button } from "../ui/Button";
+import styled, { keyframes } from 'styled-components';
+import { useEffect, useState } from 'react';
+import { Button } from '../ui/Button';
 
 const fadeInUp = keyframes`
   0% {
@@ -29,13 +29,15 @@ const ProjectCard = styled.div`
   background: ${({ theme }) => theme.colors.background};
   border-radius: 10px;
   padding: 1.5rem;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   animation: ${fadeInUp} 0.4s ease forwards;
 
   &:hover {
     transform: translateY(-6px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   }
 
   h3 {
@@ -58,9 +60,9 @@ export default function ProjectsHighlight() {
   const [visibleCount, setVisibleCount] = useState(3);
 
   useEffect(() => {
-    fetch("/projects.json")
-      .then(res => res.json())
-      .then(data => setProjects(data));
+    fetch('/projects.json')
+      .then((res) => res.json())
+      .then((data) => setProjects(data));
   }, []);
 
   const showMore = () => {
@@ -73,17 +75,17 @@ export default function ProjectsHighlight() {
       <ProjectsGrid>
         {projects.slice(0, visibleCount).map((proj, i) => (
           <ProjectCard key={i}>
-            <Tag>{proj.type === "github" ? "From GitHub" : "Client Work"}</Tag>{" "}
+            <Tag>{proj.type === 'github' ? 'From GitHub' : 'Client Work'}</Tag>{' '}
             <Tag>{proj.visibility}</Tag>
             <h3>{proj.name}</h3>
-            <p>{proj.description || "No description available"}</p>
+            <p>{proj.description || 'No description available'}</p>
             {proj.url && (
               <a href={proj.url} target="_blank" rel="noopener noreferrer">
                 View Project on Github →
               </a>
             )}
-            <br/>
-            <br/>
+            <br />
+            <br />
             {proj.homepage && (
               <a href={proj.homepage} target="_blank" rel="noopener noreferrer">
                 View Live Demo →
@@ -94,7 +96,7 @@ export default function ProjectsHighlight() {
       </ProjectsGrid>
 
       {visibleCount < projects.length && (
-        <div style={{ textAlign: "center", marginTop: "2rem" }}>
+        <div style={{ textAlign: 'center', marginTop: '2rem' }}>
           <Button as="button" onClick={showMore}>
             Show More
           </Button>

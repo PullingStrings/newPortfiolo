@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Button = styled.a`
   display: inline-block;
@@ -6,16 +6,16 @@ export const Button = styled.a`
   border-radius: 6px;
   font-weight: bold;
   background: ${({ theme, variant }) =>
-    variant === "secondary" ? "transparent" : theme.colors.primary};
+    variant === 'secondary' ? 'transparent' : theme.colors.primary};
   color: ${({ theme, variant }) =>
-    variant === "secondary" ? theme.colors.primary : "#fff"};
+    variant === 'secondary' ? theme.colors.primary : '#fff'};
   border: ${({ theme, variant }) =>
-    variant === "secondary" ? `2px solid ${theme.colors.primary}` : "none"};
+    variant === 'secondary' ? `2px solid ${theme.colors.primary}` : 'none'};
   transition: all 0.3s ease;
 
   &:hover {
     background: ${({ theme, variant }) =>
-      variant === "secondary" ? theme.colors.primary : "#0051a3"};
+      variant === 'secondary' ? theme.colors.primary : '#0051a3'};
     color: #fff;
   }
 `;

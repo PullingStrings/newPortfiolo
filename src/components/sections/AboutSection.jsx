@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { Button } from "../ui/Button";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { Button } from '../ui/Button';
 
 const Section = styled.section`
   padding: 6rem 5%;
@@ -38,10 +38,10 @@ export default function AboutSection() {
         <p>
           I’m Sibusiso "Tito" Zwane — a Creative Developer passionate about
           blending technology, design, and art to craft meaningful digital
-          experiences. With over a decade of experience, I’ve worked on
-          projects for leading brands and creative spaces alike.
+          experiences. With over a decade of experience, I’ve worked on projects
+          for leading brands and creative spaces alike.
         </p>
-        <Button as={Link} to="/resume" style={{ marginTop: "1.5rem" }}>
+        <Button as={Link} to="/resume" style={{ marginTop: '1.5rem' }}>
           View My Resume
         </Button>
       </TextContent>
