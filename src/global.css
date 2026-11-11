@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&family=League+Gothic&display=swap');
+
+:root {
+  --paper: #f3f0e8;
+  --ink: #111111;
+  --muted: #76736b;
+  --line: rgba(17, 17, 17, 0.2);
+  --signal: #ff4b12;
+  --display: 'Antonio', sans-serif;
+  --system: 'Inter', sans-serif;
+  --loud: 'League Gothic', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--system);
+}
+
+button,
+a {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}

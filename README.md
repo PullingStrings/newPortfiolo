@@ -1,4 +1,3 @@
-````markdown
 # Sibusiso Zwane | Creative Developer
 
 > **Building experiences at the intersection of code, art, and music.**
@@ -17,8 +16,8 @@ It’s designed with **modern, minimal, and bold aesthetics** to leave a strong 
 ## 🖥 Tech Stack
 
 - **React + Vite** – Fast and lightweight SPA setup
-- **Styled Components** – Component-scoped styling with theme support
-- **GitHub API Integration** – Fetches latest public & private repositories (via token)
+- **CSS Modules** – Component and page-scoped styling
+- **GitHub API export** – Separate build-time project-data workflow
 - **GSAP** – Scroll-driven project motion and subtle page transitions
 - **Responsive & Mobile-Friendly** – Optimized across devices
 
@@ -28,10 +27,20 @@ It’s designed with **modern, minimal, and bold aesthetics** to leave a strong 
 
 - **Hero Section** – Bold animated background + tagline
 - **About Section** – Personal story & unique value proposition
-- **Projects Highlight** – Live data from GitHub + JSON for non-repo projects, “Show More” lazy load
+- **Featured work** – Four editorial projects with dedicated case studies
 - **Portfolio as resume** – Featured case studies, shipped work and About tell the story
 - **Contact Page** – Editorial direct links to email, LinkedIn and GitHub
 - **Smooth Navigation** – Mobile dropdown with animation, scroll to sections
+
+---
+
+## Content ownership
+
+- `src/data/homepage.js` owns featured-project IDs, order, routes, homepage summaries, media metadata, motion settings, and the shipped-work archive. Its `featuredProjectsById` lookup supplies the routes and case-study index numbers.
+- `src/pages/CaseStudyLanding/CaseStudies.jsx` owns the index's shorter descriptions and project-specific cards. The four components under `src/pages/CaseStudies/` own their detailed editorial stories and layouts. Homepage About copy lives in `Landing.jsx`; contact details live in `Contact.jsx`.
+- `src/pages/Landing/Landing.jsx` owns GSAP timelines. CSS Modules beside each page own presentation. Keep the project's existing `className` and `motion` values when editing featured content.
+- Put project images and videos under `public/projects/`, then reference them with root-relative paths such as `/projects/dreamzone/cover.png`. Check paths with `docker compose run --rm app yarn content:check`.
+- `src/utils/fetchProjects.js` combines GitHub API results with `public/manualProjects.json` and writes `public/projects.json` during `yarn build` or `yarn fetch-projects`. This export is separate from the four featured case studies and is not currently rendered by the site.
 
 ---
 
@@ -49,26 +58,21 @@ It’s designed with **modern, minimal, and bold aesthetics** to leave a strong 
 
 ## 🚀 Getting Started
 
-**Clone & Install**
+**Start the development server**
 
 ```bash
-git clone https://github.com/PullingStrings/portfolio.git
-cd portfolio
-npm install   # or yarn install
+docker compose up --build
 ```
-````
 
-**Run Development Server**
+**Check content and build**
 
 ```bash
-npm run dev   # or yarn dev
+docker compose run --rm app yarn content:check
+docker compose run --rm app yarn lint
+docker compose run --rm app yarn vite build
 ```
 
-**Build for Production**
-
-```bash
-npm run build
-```
+`yarn build` also runs the GitHub export before Vite; it may update `public/projects.json` when API access is available.
 
 ---
 

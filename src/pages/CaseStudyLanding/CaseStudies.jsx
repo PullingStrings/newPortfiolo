@@ -1,31 +1,33 @@
 import { Link } from 'react-router-dom';
-import './case-studies.css';
+import { featuredProjectsById } from '@/data/homepage';
+import { createClassNames } from '@/utils/cssModules';
+import styles from './case-studies.module.css';
+
+const css = createClassNames(styles);
+const { dreamzone, finance, contact, repair } = featuredProjectsById;
 
 export default function CaseStudies() {
   return (
-    <main className="dz-index">
-      <div className="dz-wrap">
-        <div className="dz-topline">
+    <main className={css('dz-index')}>
+      <div className={css('dz-wrap')}>
+        <div className={css('dz-topline')}>
           <span>TZ / Case studies</span>
           <span>Selected engineering work</span>
         </div>
-        <header className="dz-index__head">
-          <p className="dz-eyebrow dz-accent">Work / In depth</p>
+        <header className={css('dz-index__head')}>
+          <p className={css('dz-eyebrow dz-accent')}>Work / In depth</p>
           <h1>
-            Case studies<span className="dz-accent">.</span>
+            Case studies<span className={css('dz-accent')}>.</span>
           </h1>
           <p>
             A closer look at the decisions, systems and production challenges
             behind the work.
           </p>
         </header>
-        <Link
-          className="dz-index__item"
-          to="/case-studies/volkswagen-dreamzone"
-        >
-          <span className="dz-index__number">01</span>
+        <Link className={css('dz-index__item')} to={dreamzone.caseStudyPath}>
+          <span className={css('dz-index__number')}>{dreamzone.index}</span>
           <video
-            poster="/projects/dreamzone/id-polo-hero.jpeg"
+            poster="/projects/dreamzone/id-polo-hero.jpg"
             aria-label="Blue Volkswagen ID. Polo in the Dreamzone experience"
             width="960"
             height="546"
@@ -43,7 +45,7 @@ export default function CaseStudies() {
               type="video/webm"
             />
           </video>
-          <span className="dz-index__copy">
+          <span className={css('dz-index__copy')}>
             <small>Volkswagen / 2026 / Creative engineering</small>
             <strong>
               Dreamzone <sup>↗</sup>
@@ -54,11 +56,8 @@ export default function CaseStudies() {
             </span>
           </span>
         </Link>
-        <Link
-          className="dz-index__item"
-          to="/case-studies/volkswagen-offers-finance"
-        >
-          <span className="dz-index__number">02</span>
+        <Link className={css('dz-index__item')} to={finance.caseStudyPath}>
+          <span className={css('dz-index__number')}>{finance.index}</span>
           <img
             src="/projects/offers-finance/vw-offers-model-selection-2026-11-10.png"
             alt="Volkswagen Offers & Finance model-selection interface"
@@ -66,7 +65,7 @@ export default function CaseStudies() {
             height="546"
             loading="lazy"
           />
-          <span className="dz-index__copy">
+          <span className={css('dz-index__copy')}>
             <small>Volkswagen / 2026 / Product engineering</small>
             <strong>
               Offers &amp; Finance <sup>↗</sup>
@@ -77,16 +76,16 @@ export default function CaseStudies() {
             </span>
           </span>
         </Link>
-        <Link className="dz-index__item" to="/case-studies/samsung-contact">
-          <span className="dz-index__number">03</span>
+        <Link className={css('dz-index__item')} to={contact.caseStudyPath}>
+          <span className={css('dz-index__number')}>{contact.index}</span>
           <img
-            src="/contact-us.png"
+            src={contact.media.src}
             alt="Samsung Contact customer-facing contact tiles"
             width="960"
             height="546"
             loading="lazy"
           />
-          <span className="dz-index__copy">
+          <span className={css('dz-index__copy')}>
             <small>Samsung UK / 2025 / Application architecture</small>
             <strong>
               Samsung Contact <sup>↗</sup>
@@ -97,16 +96,16 @@ export default function CaseStudies() {
             </span>
           </span>
         </Link>
-        <Link className="dz-index__item" to="/case-studies/samsung-repair">
-          <span className="dz-index__number">04</span>
+        <Link className={css('dz-index__item')} to={repair.caseStudyPath}>
+          <span className={css('dz-index__number')}>{repair.index}</span>
           <img
-            src="/projects/samsung-repair/vendor-map.png"
+            src={repair.media.src}
             alt="Samsung Repair location and booking map"
             width="960"
             height="546"
             loading="lazy"
           />
-          <span className="dz-index__copy">
+          <span className={css('dz-index__copy')}>
             <small>Samsung UK / 2024–2025 / Integration engineering</small>
             <strong>
               Samsung Repair <sup>↗</sup>

@@ -1,21 +1,24 @@
 import { Link } from 'react-router-dom';
-import '../../CaseStudyLanding/case-studies.css';
-import './offers-finance.css';
+import { createClassNames } from '@/utils/cssModules';
+import sharedStyles from '../../CaseStudyLanding/case-studies.module.css';
+import styles from './offers-finance.module.css';
 
 const capture = (name) =>
   `/projects/offers-finance/vw-offers-${name}-2026-11-10.png`;
 
+const css = createClassNames(sharedStyles, styles);
+
 function Chapter({ number, label, title, children }) {
   return (
-    <section className="dz-chapter">
-      <div className="dz-wrap dz-chapter__grid">
+    <section className={css('dz-chapter')}>
+      <div className={css('dz-wrap dz-chapter__grid')}>
         <div>
-          <p className="dz-eyebrow dz-accent">
+          <p className={css('dz-eyebrow dz-accent')}>
             {number} / {label}
           </p>
           <h2>{title}</h2>
         </div>
-        <div className="dz-chapter__copy">{children}</div>
+        <div className={css('dz-chapter__copy')}>{children}</div>
       </div>
     </section>
   );
@@ -23,7 +26,7 @@ function Chapter({ number, label, title, children }) {
 
 function InterfaceFigure({ src, alt, label, note }) {
   return (
-    <figure className="of-figure">
+    <figure className={css('of-figure')}>
       <a
         href={src}
         target="_blank"
@@ -45,33 +48,35 @@ function InterfaceFigure({ src, alt, label, note }) {
 
 export default function OffersFinanceCaseStudy() {
   return (
-    <main className="dz-case of-case">
-      <div className="dz-wrap">
-        <div className="dz-topline">
+    <main className={css('dz-case of-case')}>
+      <div className={css('dz-wrap')}>
+        <div className={css('dz-topline')}>
           <Link to="/case-studies">← All case studies</Link>
           <span>02 — Volkswagen / 2026</span>
         </div>
       </div>
 
-      <header className="of-hero dz-wrap">
-        <div className="of-hero__heading">
-          <span className="of-hero__number" aria-hidden="true">
+      <header className={css('of-hero dz-wrap')}>
+        <div className={css('of-hero__heading')}>
+          <span className={css('of-hero__number')} aria-hidden="true">
             02
           </span>
           <div>
-            <p className="dz-eyebrow dz-accent">
+            <p className={css('dz-eyebrow dz-accent')}>
               Case Study 02 / Product engineering
             </p>
             <h1>
               Offers &amp;
               <br />
-              Finance<span className="dz-accent">.</span>
+              Finance<span className={css('dz-accent')}>.</span>
             </h1>
-            <p className="of-hero__dek">Complex finance. Clearer choices.</p>
+            <p className={css('of-hero__dek')}>
+              Complex finance. Clearer choices.
+            </p>
           </div>
         </div>
-        <div className="of-laptop">
-          <div className="of-laptop__screen">
+        <div className={css('of-laptop')}>
+          <div className={css('of-laptop__screen')}>
             <a
               href={capture('model-selection')}
               target="_blank"
@@ -87,12 +92,12 @@ export default function OffersFinanceCaseStudy() {
               />
             </a>
           </div>
-          <div className="of-laptop__base" aria-hidden="true" />
+          <div className={css('of-laptop__base')} aria-hidden="true" />
         </div>
-        <p className="of-hero__caption">
+        <p className={css('of-hero__caption')}>
           Fig. 01 / Model selection — live interface capture, 10 November 2026
         </p>
-        <div className="of-hero__meta">
+        <div className={css('of-hero__meta')}>
           <span>Role / Front-end development</span>
           <span>React · XState · Responsive UI</span>
           <span>Volkswagen / 2026</span>
@@ -152,7 +157,7 @@ export default function OffersFinanceCaseStudy() {
           progression from vehicle to offer explicit.
         </p>
       </Chapter>
-      <div className="dz-wrap of-media-block">
+      <div className={css('dz-wrap of-media-block')}>
         <InterfaceFigure
           src={capture('select-trim')}
           alt="Polo trim selection with multiple trim options and a next-step control"
@@ -193,9 +198,9 @@ export default function OffersFinanceCaseStudy() {
           current.
         </p>
       </Chapter>
-      <div className="dz-wrap of-media-block">
+      <div className={css('dz-wrap of-media-block')}>
         <ol
-          className="of-state-line"
+          className={css('of-state-line')}
           aria-label="Conceptual relationship between vehicle selection and an offer"
         >
           <li>Model + trim</li>
@@ -204,11 +209,11 @@ export default function OffersFinanceCaseStudy() {
           <li>Calculation</li>
           <li>Comparison</li>
         </ol>
-        <p className="dz-note">
+        <p className={css('dz-note')}>
           Conceptual dependency sequence, not a reproduction of the XState
           machine.
         </p>
-        <div className="of-figure-pair">
+        <div className={css('of-figure-pair')}>
           <InterfaceFigure
             src={capture('pcp-calculator')}
             alt="Polo Life PCP calculator controls alongside a representative finance example"
@@ -248,8 +253,8 @@ export default function OffersFinanceCaseStudy() {
           losing the detail behind each choice.
         </p>
       </Chapter>
-      <div className="dz-wrap of-media-block of-media-block--comparison">
-        <div className="of-figure-pair">
+      <div className={css('dz-wrap of-media-block of-media-block--comparison')}>
+        <div className={css('of-figure-pair')}>
           <InterfaceFigure
             src={capture('comparison')}
             alt="Comparison page showing one Polo Life finance offer and space to add another"
@@ -288,8 +293,8 @@ export default function OffersFinanceCaseStudy() {
           active decision enough room to read and use.
         </p>
       </Chapter>
-      <div className="dz-wrap of-media-block">
-        <div className="of-mobile-pair">
+      <div className={css('dz-wrap of-media-block')}>
+        <div className={css('of-mobile-pair')}>
           <InterfaceFigure
             src={capture('mobile-model-selection')}
             alt="Mobile model selection screen with compact journey navigation and vehicle listings"
@@ -326,7 +331,7 @@ export default function OffersFinanceCaseStudy() {
           the choice the customer actually made.
         </p>
       </Chapter>
-      <div className="dz-wrap of-media-block">
+      <div className={css('dz-wrap of-media-block')}>
         <InterfaceFigure
           src={capture('email-entry')}
           alt="Email my Customised Offer side panel open alongside the selected finance comparison"
@@ -335,12 +340,12 @@ export default function OffersFinanceCaseStudy() {
         />
       </div>
 
-      <section className="dz-closing dz-wrap">
-        <p className="dz-eyebrow dz-accent">06 / Reflection</p>
+      <section className={css('dz-closing dz-wrap')}>
+        <p className={css('dz-eyebrow dz-accent')}>06 / Reflection</p>
         <h2>
           Complex finance.
           <br />
-          Clearer choices<span className="dz-accent">.</span>
+          Clearer choices<span className={css('dz-accent')}>.</span>
         </h2>
         <p>
           This refresh brought together interface design, asynchronous data and
@@ -348,7 +353,7 @@ export default function OffersFinanceCaseStudy() {
           to treat every upstream choice as part of the offer’s context, from
           first selection through comparison and enquiry.
         </p>
-        <div className="dz-closing__end">
+        <div className={css('dz-closing__end')}>
           <span>Volkswagen Offers &amp; Finance / Product engineering</span>
           <Link to="/#projects">Back to selected work ↗</Link>
         </div>

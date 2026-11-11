@@ -4,6 +4,7 @@
 export const projects = [
   {
     index: '01',
+    id: 'dreamzone',
     title: 'Volkswagen Dreamzone',
     caseStudyPath: '/case-studies/volkswagen-dreamzone',
     kicker: 'Volkswagen / Dreamzone / 2026',
@@ -42,6 +43,7 @@ export const projects = [
   },
   {
     index: '02',
+    id: 'finance',
     title: 'Volkswagen Offers & Finance',
     caseStudyPath: '/case-studies/volkswagen-offers-finance',
     kicker: 'Volkswagen / Finance / 2026',
@@ -76,6 +78,7 @@ export const projects = [
   },
   {
     index: '03',
+    id: 'contact',
     title: 'Samsung Contact',
     caseStudyPath: '/case-studies/samsung-contact',
     kicker: 'Samsung UK / Cheil / 2025',
@@ -108,6 +111,7 @@ export const projects = [
   },
   {
     index: '04',
+    id: 'repair',
     title: 'Samsung Support / Repair',
     caseStudyPath: '/case-studies/samsung-repair',
     kicker: 'Samsung UK / Cheil / 2024—2025',
@@ -151,6 +155,10 @@ export const projects = [
     },
   },
 ];
+
+export const featuredProjectsById = Object.fromEntries(
+  projects.map((project) => [project.id, project]),
+);
 
 export const shipped = [
   {

@@ -7,9 +7,9 @@ test('all four project artworks render and the page has no horizontal overflow',
 }) => {
   await page.goto('/');
   for (const name of projectNames) {
-    const project = page.locator(`.project-row--${name}`);
+    const project = page.locator(`[data-project="${name}"]`);
     await expect(project).toHaveCount(1);
-    const image = project.locator('.project-row__media-reveal img');
+    const image = project.getByTestId('project-media-reveal').locator('img');
     await image.scrollIntoViewIfNeeded();
     await expect
       .poll(() => image.evaluate((img) => img.complete && img.naturalWidth > 0))
@@ -33,9 +33,9 @@ test('mobile and tablet animate project numbers without clipping images or pinni
   );
   test.skip(!compact, 'compact-specific assertion');
   for (const name of projectNames) {
-    const project = page.locator(`.project-row--${name}`);
+    const project = page.locator(`[data-project="${name}"]`);
     await project.scrollIntoViewIfNeeded();
-    const number = project.locator('.project-row__number');
+    const number = project.getByTestId('project-number');
     await number.scrollIntoViewIfNeeded();
     await expect
       .poll(() => number.evaluate((el) => Number(getComputedStyle(el).opacity)))
@@ -47,7 +47,7 @@ test('mobile and tablet animate project numbers without clipping images or pinni
         ),
       )
       .toBe(0);
-    await expect(project.locator('.project-row__media-reveal')).toHaveCSS(
+    await expect(project.getByTestId('project-media-reveal')).toHaveCSS(
       'clip-path',
       'none',
     );
@@ -62,9 +62,9 @@ test('reduced motion keeps every project screenshot visible', async ({
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');
   for (const name of projectNames) {
-    const reveal = page.locator(
-      `.project-row--${name} .project-row__media-reveal`,
-    );
+    const reveal = page
+      .locator(`[data-project="${name}"]`)
+      .getByTestId('project-media-reveal');
     await reveal.scrollIntoViewIfNeeded();
     await expect(reveal).toHaveCSS('clip-path', 'none');
   }

@@ -1,12 +1,16 @@
 import { gsap } from 'gsap';
-import { Link } from 'react-router-dom';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLayoutEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { projects, shipped } from '@/data/homepage';
-import './landing.css';
-import './motion.css';
+import { createClassNames } from '@/utils/cssModules';
+import styles from './landing.module.css';
+import motionStyles from './motion.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const css = createClassNames(styles, motionStyles);
+const selector = (name) => `.${styles[name] ?? motionStyles[name]}`;
 
 function useProjectMotion(rootRef, motion) {
   useLayoutEffect(() => {
@@ -31,7 +35,7 @@ function useProjectMotion(rootRef, motion) {
           motion.playback !== 'autoplay-hold'
         ) {
           const q = gsap.utils.selector(root);
-          const number = q('.project-row__number');
+          const number = q(selector('project-row__number'));
           const ctx = gsap.context(() => {
             gsap.fromTo(
               number,
@@ -55,21 +59,21 @@ function useProjectMotion(rootRef, motion) {
         }
 
         const q = gsap.utils.selector(root);
-        const number = q('.project-row__number');
-        const media = q('.project-row__media');
-        const reveal = q('.project-row__media-reveal');
-        const info = q('.project-row__info');
-        const title = q('.project-row__title');
-        const dot = q('.project-row__motion-dot');
-        const accent = q('.project-row__motion-accent');
-        const interruption = q('.project-row__interruption');
-        const secondary = q('.project-row__secondary-media');
+        const number = q(selector('project-row__number'));
+        const media = q(selector('project-row__media'));
+        const reveal = q(selector('project-row__media-reveal'));
+        const info = q(selector('project-row__info'));
+        const title = q('[data-motion-target="title"]');
+        const dot = q(selector('project-row__motion-dot'));
+        const accent = q(selector('project-row__motion-accent'));
+        const interruption = q(selector('project-row__interruption'));
+        const secondary = q(selector('project-row__secondary-media'));
         // Repair V2: reveal the vendor map, hold, uncover a small supporting screen,
         // then bring 04 into its final place. Screenshots never translate or bounce.
         if (motion.study === 'repair-v2') {
           if (!conditions.desktop) return undefined;
 
-          const frame = q('.project-row__pin')[0];
+          const frame = q(selector('project-row__pin'))[0];
           gsap.set(title, { yPercent: 0 });
           gsap.set(media, { x: 0, y: 0, scale: 1 });
           gsap.set(reveal, { clipPath: 'inset(0 100% 0 0)' });
@@ -136,7 +140,7 @@ function useProjectMotion(rootRef, motion) {
         if (motion.study === 'finance-v1') {
           if (!conditions.desktop) return undefined;
 
-          const frame = q('.project-row__pin')[0];
+          const frame = q(selector('project-row__pin'))[0];
           gsap.set(title, { yPercent: 0 });
           gsap.set(media, { x: 0, y: 0, scale: 1 });
           gsap.set(number, { x: 110, y: 0, rotation: 0, scale: 1, opacity: 1 });
@@ -178,7 +182,9 @@ function useProjectMotion(rootRef, motion) {
         if (motion.study === 'dreamzone-v2') {
           if (!conditions.desktop) return undefined;
 
-          const frame = motion.completeFrame ? root : q('.project-row__pin')[0];
+          const frame = motion.completeFrame
+            ? root
+            : q(selector('project-row__pin'))[0];
           const origin = '58% 46%';
           const tl = gsap.timeline({
             defaults: { ease: 'none' },
@@ -234,7 +240,7 @@ function useProjectMotion(rootRef, motion) {
         // Approved 03 motion study: signal → circular reveal → type interruption → editorial resolve.
         // Isolated from the reusable quiet/loud archetypes until the motion is visually approved.
         if (motion.study === 'contact') {
-          const frame = q('.project-row__pin')[0];
+          const frame = q(selector('project-row__pin'))[0];
           const circleOrigin = '28% 52%';
           const tl = gsap.timeline({
             defaults: { ease: 'none' },
@@ -565,7 +571,7 @@ function useProjectMotion(rootRef, motion) {
             pin: canonical
               ? motion.completeFrame
                 ? root
-                : q('.project-row__pin')[0]
+                : q(selector('project-row__pin'))[0]
               : true,
             pinSpacing: true,
             anticipatePin: 1,
@@ -703,9 +709,9 @@ function useProjectMotion(rootRef, motion) {
 
 function ProjectDetails({ project }) {
   return (
-    <div className="project-row__canonical-details">
+    <div className={css('project-row__canonical-details')}>
       <p>{project.copy}</p>
-      <div className="project-row__meta">
+      <div className={css('project-row__meta')}>
         {project.meta.map((item) => (
           <span key={item}>{item}</span>
         ))}
@@ -716,10 +722,10 @@ function ProjectDetails({ project }) {
 
 function SectionHeading({ index, eyebrow, title, copy }) {
   return (
-    <header className="section-heading">
-      <div className="section-heading__index">{index}</div>
+    <header className={css('section-heading')}>
+      <div className={css('section-heading__index')}>{index}</div>
       <div>
-        <div className="section-heading__eyebrow">{eyebrow}</div>
+        <div className={css('section-heading__eyebrow')}>{eyebrow}</div>
         <h2>{title}</h2>
         {copy && <p>{copy}</p>}
       </div>
@@ -730,8 +736,11 @@ function SectionHeading({ index, eyebrow, title, copy }) {
 // Each media type has a clear job. The animation lives in useProjectMotion.
 function ProjectMedia({ project, showGhost }) {
   return (
-    <figure className="project-row__media project-row__media--real">
-      <div className="project-row__media-reveal">
+    <figure className={css('project-row__media project-row__media--real')}>
+      <div
+        className={css('project-row__media-reveal')}
+        data-testid="project-media-reveal"
+      >
         <img
           src={project.media.src}
           alt={project.media.alt}
@@ -740,13 +749,16 @@ function ProjectMedia({ project, showGhost }) {
           height={project.media.height}
         />
         {showGhost && (
-          <span className="project-row__motion-ghost" aria-hidden="true">
+          <span className={css('project-row__motion-ghost')} aria-hidden="true">
             {project.index}
           </span>
         )}
-        <span className="project-row__motion-accent" aria-hidden="true" />
+        <span
+          className={css('project-row__motion-accent')}
+          aria-hidden="true"
+        />
       </div>
-      <span className="project-row__motion-dot" aria-hidden="true" />
+      <span className={css('project-row__motion-dot')} aria-hidden="true" />
       <figcaption>{project.media.label}</figcaption>
     </figure>
   );
@@ -757,7 +769,7 @@ function SupportingMedia({ project }) {
 
   return (
     <img
-      className="project-row__secondary-media"
+      className={css('project-row__secondary-media')}
       src={project.secondaryMedia.src}
       alt={project.secondaryMedia.alt}
       loading="lazy"
@@ -771,7 +783,7 @@ function ProjectInterruption({ lines }) {
   if (!lines) return null;
 
   return (
-    <span className="project-row__interruption" aria-hidden="true">
+    <span className={css('project-row__interruption')} aria-hidden="true">
       {lines.map((line) => (
         <span key={line}>{line}</span>
       ))}
@@ -792,31 +804,37 @@ function ProjectRow({ project }) {
   return (
     <article
       ref={rootRef}
-      className={[
-        'project-row',
-        'project-row--canonical',
-        completeFrame ? 'project-row--complete-frame' : '',
-        project.className,
-      ]
-        .filter(Boolean)
-        .join(' ')}
+      className={css(
+        [
+          'project-row',
+          'project-row--canonical',
+          completeFrame ? 'project-row--complete-frame' : '',
+          project.className,
+        ]
+          .filter(Boolean)
+          .join(' '),
+      )}
+      data-project={project.id}
       data-motion-archetype={project.motion.archetype}
     >
-      <div className="project-row__pin">
-        <div className="project-row__canonical-kicker">
+      <div className={css('project-row__pin')}>
+        <div className={css('project-row__canonical-kicker')}>
           <span>{project.index} / FEATURED WORK</span>
           <span>{project.kicker}</span>
         </div>
-        <div className="project-row__title-wrap">
-          <h3 className="project-row__title">
+        <div className={css('project-row__title-wrap')}>
+          <h3 data-motion-target="title">
             {project.caseStudyPath ? (
               <Link
-                className="project-row__title-link"
+                className={css('project-row__title-link')}
                 to={project.caseStudyPath}
                 aria-label={`Read ${project.title} case study`}
               >
                 {project.title}
-                <span className="project-row__title-arrow" aria-hidden="true">
+                <span
+                  className={css('project-row__title-arrow')}
+                  aria-hidden="true"
+                >
                   ↗
                 </span>
               </Link>
@@ -825,9 +843,13 @@ function ProjectRow({ project }) {
             )}
           </h3>
         </div>
-        <strong className="project-row__accent">{project.accent}</strong>
-        <div className="project-row__stage">
-          <div className="project-row__number" aria-hidden="true">
+        <strong className={css('project-row__accent')}>{project.accent}</strong>
+        <div className={css('project-row__stage')}>
+          <div
+            className={css('project-row__number')}
+            data-testid="project-number"
+            aria-hidden="true"
+          >
             {project.index}
           </div>
           <ProjectMedia project={project} showGhost={showGhost} />
@@ -843,7 +865,7 @@ function ProjectRow({ project }) {
 
 function ShippedArchive() {
   return (
-    <section className="shipped home-section" id="shipped">
+    <section className={css('shipped home-section')} id="shipped">
       <SectionHeading
         index="02"
         eyebrow="Archive / smaller work"
@@ -854,13 +876,13 @@ function ShippedArchive() {
           "production challenges I've worked on."
         }
       />
-      <div className="shipped-list">
+      <div className={css('shipped-list')}>
         {shipped.map((item, index) => (
-          <article className="shipped-item" key={item.title}>
-            <span className="shipped-item__index">
+          <article className={css('shipped-item')} key={item.title}>
+            <span className={css('shipped-item__index')}>
               {String(index + 1).padStart(2, '0')}
             </span>
-            <div className="shipped-item__title">
+            <div className={css('shipped-item__title')}>
               <span>{item.meta}</span>
               <h3>{item.title}</h3>
             </div>
@@ -874,20 +896,20 @@ function ShippedArchive() {
 
 function Hero() {
   return (
-    <section className="hero-v2 home-section" id="top">
-      <div className="hero-v2__meta">
+    <section className={css('hero-v2 home-section')} id="top">
+      <div className={css('hero-v2__meta')}>
         <span>Tito Zwane / Front-end developer</span>
         <span>London / Available for good problems</span>
       </div>
-      <h1 className="hero-v2__title">
+      <h1 className={css('hero-v2__title')}>
         <span>Tito</span>
         <span>Zwane</span>
       </h1>
-      <div className="hero-v2__bottom">
-        <p className="hero-v2__statement">
+      <div className={css('hero-v2__bottom')}>
+        <p className={css('hero-v2__statement')}>
           Make the work clear. <em>Make the world weird.</em>
         </p>
-        <p className="hero-v2__intro">
+        <p className={css('hero-v2__intro')}>
           I'm a front-end developer with a background in music. I build
           interactive experiences, practical tools and the systems that make
           them work in production.
@@ -899,7 +921,7 @@ function Hero() {
 
 function FeaturedWork() {
   return (
-    <section className="work-index home-section" id="projects">
+    <section className={css('work-index home-section')} id="projects">
       <SectionHeading
         index="01"
         eyebrow="Featured work"
@@ -918,14 +940,14 @@ function FeaturedWork() {
 
 function About() {
   return (
-    <section className="about-v2 home-section" id="about">
+    <section className={css('about-v2 home-section')} id="about">
       <SectionHeading
         index="03"
         eyebrow="About / approach"
         title="From bass lines to browser windows."
       />
-      <div className="about-grid">
-        <div className="about-grid__aside">
+      <div className={css('about-grid')}>
+        <div className={css('about-grid__aside')}>
           Front-end systems
           <br />
           Creative development
@@ -934,7 +956,7 @@ function About() {
           <br />
           Production thinking
         </div>
-        <p className="about-grid__copy">
+        <p className={css('about-grid__copy')}>
           I used to play bass professionally before I got into coding. These
           days I build things for the web. Different tools, but I still enjoy
           figuring things out, working with people and making something feel
@@ -947,8 +969,8 @@ function About() {
 
 function ContactSection() {
   return (
-    <section className="contact-v2 home-section" id="contact">
-      <div className="contact-panel">
+    <section className={css('contact-v2 home-section')} id="contact">
+      <div className={css('contact-panel')}>
         <h2>Have a good problem?</h2>
         <a href="/contact">Start a conversation →</a>
       </div>
@@ -958,7 +980,7 @@ function ContactSection() {
 
 export default function Landing() {
   return (
-    <main className="home-shell">
+    <main className={css('home-shell')}>
       <Hero />
       <FeaturedWork />
       <ShippedArchive />

@@ -1,39 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&family=League+Gothic&display=swap');
-
-:root {
-  --paper: #f3f0e8;
-  --ink: #111111;
-  --muted: #76736b;
-  --line: rgba(17, 17, 17, 0.2);
-  --signal: #ff4b12;
-  --display: 'Antonio', sans-serif;
-  --system: 'Inter', sans-serif;
-  --loud: 'League Gothic', sans-serif;
-}
-
-* {
-  box-sizing: border-box;
-}
-html {
-  scroll-behavior: smooth;
-}
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--system);
-}
-button,
-a {
-  font: inherit;
-}
-a {
-  color: inherit;
-}
-
 .home-shell {
   overflow: clip;
 }
+
+.project-row__title-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.12em;
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.project-row__title-link:hover,
+.project-row__title-link:focus-visible {
+  color: var(--signal) !important;
+}
+
+.project-row__title-link:focus-visible {
+  outline: 3px solid var(--signal);
+  outline-offset: 5px;
+}
+
+.project-row__title-arrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.25em;
+  line-height: 1;
+  vertical-align: top;
+  transform: translateY(-0.9em);
+}
+
 .home-section {
   width: min(100% - 40px, 1480px);
   margin: 0 auto;
