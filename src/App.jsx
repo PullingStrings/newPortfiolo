@@ -9,7 +9,6 @@ import SamsungRepairCaseStudy from '@/pages/CaseStudies/SamsungRepair/SamsungRep
 import CaseStudies from '@/pages/CaseStudyLanding/CaseStudies';
 import Contact from '@/pages/Contact/Contact';
 import Landing from '@/pages/Landing/Landing';
-import Resume from '@/pages/Resume/Resume';
 import { GlobalStyles } from '@/theme/GlobalStyles';
 import { theme } from '@/theme/theme';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
@@ -24,7 +23,6 @@ export default function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/resume" element={<Resume />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route
