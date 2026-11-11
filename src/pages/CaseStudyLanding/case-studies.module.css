@@ -203,28 +203,6 @@
   line-height: 1.5;
   color: #635f57;
 }
-.project-row__title-link {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.12em;
-  color: inherit !important;
-  text-decoration: none !important;
-}
-.project-row__title-link:hover,
-.project-row__title-link:focus-visible {
-  color: var(--signal) !important;
-}
-.project-row__title-link:focus-visible {
-  outline: 3px solid var(--signal);
-  outline-offset: 5px;
-}
-.project-row__title-arrow {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.25em;
-  line-height: 1;
-  vertical-align: top;
-  transform: translateY(-0.9em);
-}
 @media (max-width: 850px) {
   .dz-chapter__grid {
     grid-template-columns: 1fr;

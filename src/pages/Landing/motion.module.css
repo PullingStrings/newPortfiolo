@@ -172,7 +172,7 @@
 }
 
 /* ScrollTrigger pins the complete editorial composition, not individual fragments. */
-.pin-spacer > .project-row {
+:global(.pin-spacer) > .project-row {
   width: 100%;
 }
 

@@ -1,23 +1,26 @@
 import { Link } from 'react-router-dom';
-import '../../CaseStudyLanding/case-studies.css';
-import './samsung-repair.css';
+import { createClassNames } from '@/utils/cssModules';
+import sharedStyles from '../../CaseStudyLanding/case-studies.module.css';
+import styles from './samsung-repair.module.css';
 
 const assets = {
   map: '/projects/samsung-repair/vendor-map.png',
   options: '/projects/samsung-repair/repair-options.png',
 };
 
+const css = createClassNames(sharedStyles, styles);
+
 function Chapter({ number, label, title, children }) {
   return (
-    <section className="dz-chapter">
-      <div className="dz-wrap dz-chapter__grid">
+    <section className={css('dz-chapter')}>
+      <div className={css('dz-wrap dz-chapter__grid')}>
         <div>
-          <p className="dz-eyebrow dz-accent">
+          <p className={css('dz-eyebrow dz-accent')}>
             {number} / {label}
           </p>
           <h2>{title}</h2>
         </div>
-        <div className="dz-chapter__copy">{children}</div>
+        <div className={css('dz-chapter__copy')}>{children}</div>
       </div>
     </section>
   );
@@ -25,7 +28,7 @@ function Chapter({ number, label, title, children }) {
 
 function Capture({ src, alt, title, detail }) {
   return (
-    <figure className="sr-capture">
+    <figure className={css('sr-capture')}>
       <a
         href={src}
         target="_blank"
@@ -67,28 +70,28 @@ const booking = [
 
 export default function SamsungRepairCaseStudy() {
   return (
-    <main className="dz-case sr-case">
-      <div className="dz-wrap">
-        <div className="dz-topline">
+    <main className={css('dz-case')}>
+      <div className={css('dz-wrap')}>
+        <div className={css('dz-topline')}>
           <Link to="/case-studies">← All case studies</Link>
           <span>04 — Samsung UK / Repair</span>
         </div>
       </div>
-      <header className="sr-hero dz-wrap">
-        <p className="dz-eyebrow dz-accent">
+      <header className={css('sr-hero dz-wrap')}>
+        <p className={css('dz-eyebrow dz-accent')}>
           Case Study 04 / Integration engineering
         </p>
-        <div className="sr-hero__heading">
-          <span className="sr-hero__number" aria-hidden="true">
+        <div className={css('sr-hero__heading')}>
+          <span className={css('sr-hero__number')} aria-hidden="true">
             04
           </span>
           <div>
             <h1>
               Samsung
               <br />
-              Repair<span className="dz-accent">.</span>
+              Repair<span className={css('dz-accent')}>.</span>
             </h1>
-            <p className="sr-hero__dek">
+            <p className={css('sr-hero__dek')}>
               Making a complex repair network feel simple.
             </p>
           </div>
@@ -99,7 +102,7 @@ export default function SamsungRepairCaseStudy() {
           title="Fig. 01 / Repair locations"
           detail="Existing repair and availability journey"
         />
-        <div className="sr-hero__meta">
+        <div className={css('sr-hero__meta')}>
           <span>Role / One of three primary developers</span>
           <span>JavaScript · PHP · AWS middleware</span>
           <span>Qudini · IGSPN · LikeWise</span>
@@ -133,9 +136,9 @@ export default function SamsungRepairCaseStudy() {
         </p>
       </Chapter>
 
-      <section className="sr-statement">
-        <div className="dz-wrap">
-          <p className="dz-eyebrow">The engineering challenge</p>
+      <section className={css('sr-statement')}>
+        <div className={css('dz-wrap')}>
+          <p className={css('dz-eyebrow')}>The engineering challenge</p>
           <p>
             CHANGE THE JOURNEY.
             <br />
@@ -168,7 +171,7 @@ export default function SamsungRepairCaseStudy() {
           updates without disturbing unrelated repair flows.
         </p>
       </Chapter>
-      <div className="dz-wrap sr-media">
+      <div className={css('dz-wrap sr-media')}>
         <Capture
           src={assets.options}
           alt="Samsung repair options interface showing repair choices"
@@ -201,8 +204,8 @@ export default function SamsungRepairCaseStudy() {
           worked within, not a booking platform I built from scratch.
         </p>
       </Chapter>
-      <div className="dz-wrap sr-flow">
-        <p className="dz-eyebrow dz-accent">
+      <div className={css('dz-wrap sr-flow')}>
+        <p className={css('dz-eyebrow dz-accent')}>
           Booking / Simplified integration sequence
         </p>
         <ol>
@@ -214,7 +217,7 @@ export default function SamsungRepairCaseStudy() {
             </li>
           ))}
         </ol>
-        <p className="dz-note">
+        <p className={css('dz-note')}>
           Conceptual sequence based on the booking-system documentation; not an
           exact endpoint or failure-handling diagram.
         </p>
@@ -250,7 +253,7 @@ export default function SamsungRepairCaseStudy() {
         </p>
       </Chapter>
 
-      <div className="sr-dark">
+      <div className={css('sr-dark')}>
         <Chapter
           number="04"
           label="A focused change"
@@ -283,7 +286,7 @@ export default function SamsungRepairCaseStudy() {
             not independently verify that every proposed change was released.
           </p>
         </Chapter>
-        <div className="dz-wrap sr-dependencies">
+        <div className={css('dz-wrap sr-dependencies')}>
           <div>
             <small>Customer troubleshooting</small>
             <strong>LikeWise</strong>
@@ -299,8 +302,8 @@ export default function SamsungRepairCaseStudy() {
             <strong>Qudini</strong>
           </div>
         </div>
-        <div className="dz-wrap">
-          <p className="sr-dark__note">
+        <div className={css('dz-wrap')}>
+          <p className={css('sr-dark__note')}>
             Simplified feature dependency, not a reproduction of production code
             or API payloads.
           </p>
@@ -339,14 +342,14 @@ export default function SamsungRepairCaseStudy() {
         </p>
       </Chapter>
 
-      <section className="dz-closing dz-wrap sr-closing">
-        <p className="dz-eyebrow dz-accent">06 / Reflection</p>
+      <section className={css('dz-closing dz-wrap sr-closing')}>
+        <p className={css('dz-eyebrow dz-accent')}>06 / Reflection</p>
         <h2>
           Not every
           <br />
           system needs
           <br />
-          rebuilding<span className="dz-accent">.</span>
+          rebuilding<span className={css('dz-accent')}>.</span>
         </h2>
         <p>
           Engineering an established service means understanding what already
@@ -354,7 +357,7 @@ export default function SamsungRepairCaseStudy() {
           up beyond the browser. This project sharpened that discipline through
           booking integrations, vendor QA and collaborative delivery.
         </p>
-        <div className="dz-closing__end">
+        <div className={css('dz-closing__end')}>
           <span>Samsung Repair / Integration engineering</span>
           <Link to="/case-studies">All case studies ↗</Link>
         </div>

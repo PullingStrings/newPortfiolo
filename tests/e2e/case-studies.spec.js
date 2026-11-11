@@ -25,31 +25,32 @@ test('Case Studies navigation opens both Volkswagen case studies', async ({
   ).toBeVisible();
 });
 
-test('featured case study titles link to their pages', async ({
-  page,
-}) => {
+test('featured case study titles link to their pages', async ({ page }) => {
   await page.goto('/');
-  const dreamzone = page.locator('.project-row--dreamzone');
-  await expect(dreamzone.locator('h3.project-row__title a')).toHaveAttribute(
+  const dreamzone = page.locator('[data-project="dreamzone"]');
+  await expect(dreamzone.locator('h3 a')).toHaveAttribute(
     'href',
     '/case-studies/volkswagen-dreamzone',
   );
-  await expect(
-    page.locator('.project-row--finance h3.project-row__title a'),
-  ).toHaveAttribute('href', '/case-studies/volkswagen-offers-finance');
-  await expect(
-    page.locator('.project-row--contact h3.project-row__title a'),
-  ).toHaveAttribute('href', '/case-studies/samsung-contact');
-  await expect(
-    page.locator('.project-row--repair h3.project-row__title a'),
-  ).toHaveAttribute('href', '/case-studies/samsung-repair');
+  await expect(page.locator('[data-project="finance"] h3 a')).toHaveAttribute(
+    'href',
+    '/case-studies/volkswagen-offers-finance',
+  );
+  await expect(page.locator('[data-project="contact"] h3 a')).toHaveAttribute(
+    'href',
+    '/case-studies/samsung-contact',
+  );
+  await expect(page.locator('[data-project="repair"] h3 a')).toHaveAttribute(
+    'href',
+    '/case-studies/samsung-repair',
+  );
 });
 
 test('case study media loads and layout avoids horizontal overflow', async ({
   page,
 }) => {
   await page.goto('/case-studies/volkswagen-dreamzone');
-  const media = page.locator('.dz-context img, .dz-gallery img');
+  const media = page.locator('main figure img');
   await expect(media).toHaveCount(4);
   for (const image of await media.all()) {
     await image.scrollIntoViewIfNeeded();
@@ -72,7 +73,7 @@ test('Offers & Finance screenshots load and layout avoids horizontal overflow', 
   page,
 }) => {
   await page.goto('/case-studies/volkswagen-offers-finance');
-  const media = page.locator('.of-case img');
+  const media = page.locator('main img');
   await expect(media).toHaveCount(9);
   for (const image of await media.all()) {
     await image.scrollIntoViewIfNeeded();

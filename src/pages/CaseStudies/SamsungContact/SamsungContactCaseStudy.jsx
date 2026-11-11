@@ -1,20 +1,23 @@
 import { Link } from 'react-router-dom';
-import '../../CaseStudyLanding/case-studies.css';
-import './samsung-contact.css';
+import { createClassNames } from '@/utils/cssModules';
+import sharedStyles from '../../CaseStudyLanding/case-studies.module.css';
+import styles from './samsung-contact.module.css';
 
 const screenshot = '/contact-us.png';
 
+const css = createClassNames(sharedStyles, styles);
+
 function Chapter({ number, label, title, children }) {
   return (
-    <section className="dz-chapter">
-      <div className="dz-wrap dz-chapter__grid">
+    <section className={css('dz-chapter')}>
+      <div className={css('dz-wrap dz-chapter__grid')}>
         <div>
-          <p className="dz-eyebrow dz-accent">
+          <p className={css('dz-eyebrow dz-accent')}>
             {number} / {label}
           </p>
           <h2>{title}</h2>
         </div>
-        <div className="dz-chapter__copy">{children}</div>
+        <div className={css('dz-chapter__copy')}>{children}</div>
       </div>
     </section>
   );
@@ -42,32 +45,34 @@ const capabilities = [
 
 export default function SamsungContactCaseStudy() {
   return (
-    <main className="dz-case sc-case">
-      <div className="dz-wrap">
-        <div className="dz-topline">
+    <main className={css('dz-case sc-case')}>
+      <div className={css('dz-wrap')}>
+        <div className={css('dz-topline')}>
           <Link to="/case-studies">← All case studies</Link>
           <span>03 — Samsung UK / 2025</span>
         </div>
       </div>
 
-      <header className="sc-hero dz-wrap">
-        <p className="dz-eyebrow dz-accent">
+      <header className={css('sc-hero dz-wrap')}>
+        <p className={css('dz-eyebrow dz-accent')}>
           Case Study 03 / Application architecture
         </p>
-        <div className="sc-hero__heading">
-          <span className="sc-hero__number" aria-hidden="true">
+        <div className={css('sc-hero__heading')}>
+          <span className={css('sc-hero__number')} aria-hidden="true">
             03
           </span>
           <div>
             <h1>
               Samsung
               <br />
-              Contact<span className="dz-accent">.</span>
+              Contact<span className={css('dz-accent')}>.</span>
             </h1>
-            <p className="sc-hero__dek">Support that understood the journey.</p>
+            <p className={css('sc-hero__dek')}>
+              Support that understood the journey.
+            </p>
           </div>
         </div>
-        <figure className="sc-hero__figure">
+        <figure className={css('sc-hero__figure')}>
           <a
             href={screenshot}
             target="_blank"
@@ -89,7 +94,7 @@ export default function SamsungContactCaseStudy() {
             </a>
           </figcaption>
         </figure>
-        <div className="sc-hero__meta">
+        <div className={css('sc-hero__meta')}>
           <span>Role / Primary developer</span>
           <span>JavaScript · Handlebars · SCSS · Webpack</span>
           <span>AEM · Sprinklr</span>
@@ -126,9 +131,9 @@ export default function SamsungContactCaseStudy() {
         </p>
       </Chapter>
 
-      <section className="sc-manifesto" aria-label="Design principle">
-        <div className="dz-wrap">
-          <p className="dz-eyebrow">The engineering principle</p>
+      <section className={css('sc-manifesto')} aria-label="Design principle">
+        <div className={css('dz-wrap')}>
+          <p className={css('dz-eyebrow')}>The engineering principle</p>
           <p>
             CHANGE THE <em>CONTENT.</em>
             <br />
@@ -163,9 +168,9 @@ export default function SamsungContactCaseStudy() {
         </p>
       </Chapter>
 
-      <div className="dz-wrap sc-diagram-section">
+      <div className={css('dz-wrap sc-diagram-section')}>
         <div
-          className="sc-journey"
+          className={css('sc-journey')}
           role="img"
           aria-label="Conceptual support navigation: choose product, choose issue, select chat, then pass context to Sprinklr"
         >
@@ -175,13 +180,13 @@ export default function SamsungContactCaseStudy() {
             ['03 / Choose channel', 'Chat option'],
             ['04 / Carry context', 'Sprinklr chatbot'],
           ].map(([label, title]) => (
-            <div className="sc-journey__step" key={label}>
+            <div className={css('sc-journey__step')} key={label}>
               <small>{label}</small>
               <strong>{title}</strong>
             </div>
           ))}
         </div>
-        <p className="dz-note">
+        <p className={css('dz-note')}>
           Conceptual journey, not an exact reproduction of the original tile
           taxonomy or Sprinklr payload.
         </p>
@@ -218,9 +223,11 @@ export default function SamsungContactCaseStudy() {
         </p>
       </Chapter>
 
-      <div className="dz-wrap sc-capabilities">
-        <p className="dz-eyebrow dz-accent">CMS / Confirmed capabilities</p>
-        <div className="sc-capabilities__grid">
+      <div className={css('dz-wrap sc-capabilities')}>
+        <p className={css('dz-eyebrow dz-accent')}>
+          CMS / Confirmed capabilities
+        </p>
+        <div className={css('sc-capabilities__grid')}>
           {capabilities.map(([number, title, copy]) => (
             <article key={number}>
               <span>{number}</span>
@@ -229,14 +236,14 @@ export default function SamsungContactCaseStudy() {
             </article>
           ))}
         </div>
-        <p className="dz-note">
+        <p className={css('dz-note')}>
           The exact content-delivery mechanism after publishing is not verified;
           these are confirmed user-facing capabilities, not a diagram of the CMS
           internals.
         </p>
       </div>
 
-      <div className="sc-dark">
+      <div className={css('sc-dark')}>
         <Chapter
           number="03"
           label="Sprinklr integration"
@@ -265,7 +272,7 @@ export default function SamsungContactCaseStudy() {
             understand why the customer was there.
           </p>
         </Chapter>
-        <div className="dz-wrap sc-handoff">
+        <div className={css('dz-wrap sc-handoff')}>
           <div>
             <small>Customer experience</small>
             <strong>
@@ -293,8 +300,8 @@ export default function SamsungContactCaseStudy() {
             </strong>
           </div>
         </div>
-        <div className="dz-wrap">
-          <p className="sc-dark__note">
+        <div className={css('dz-wrap')}>
+          <p className={css('sc-dark__note')}>
             Simplified handoff model. Specific routing rules and context fields
             are intentionally not claimed.
           </p>
@@ -331,20 +338,20 @@ export default function SamsungContactCaseStudy() {
         </p>
       </Chapter>
 
-      <section className="dz-closing dz-wrap sc-closing">
-        <p className="dz-eyebrow dz-accent">05 / Reflection</p>
+      <section className={css('dz-closing dz-wrap sc-closing')}>
+        <p className={css('dz-eyebrow dz-accent')}>05 / Reflection</p>
         <h2>
           A support
           <br />
           page became
-          <br />a system<span className="dz-accent">.</span>
+          <br />a system<span className={css('dz-accent')}>.</span>
         </h2>
         <p>
           Good engineering wasn’t about replacing every tool. It was about
           making the experience clearer, the code easier to work with, and the
           day-to-day operation less dependent on developers.
         </p>
-        <div className="dz-closing__end">
+        <div className={css('dz-closing__end')}>
           <span>Samsung Contact / Application architecture</span>
           <Link to="/case-studies">All case studies ↗</Link>
         </div>

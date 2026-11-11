@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../../CaseStudyLanding/case-studies.css';
-import './dreamzone.css';
+import { createClassNames } from '@/utils/cssModules';
+import sharedStyles from '../../CaseStudyLanding/case-studies.module.css';
+import styles from './dreamzone.module.css';
 
 const media = {
   hero: '/projects/dreamzone/id-polo-hero.jpg',
@@ -10,18 +11,20 @@ const media = {
   tiguan: '/projects/dreamzone/tiguan-gallery.jpeg',
 };
 
+const css = createClassNames(sharedStyles, styles);
+
 function Chapter({ number, label, title, children, className = '' }) {
   return (
-    <section className={`dz-chapter ${className}`}>
-      <div className="dz-wrap">
-        <div className="dz-chapter__grid">
+    <section className={css(`dz-chapter ${className}`)}>
+      <div className={css('dz-wrap')}>
+        <div className={css('dz-chapter__grid')}>
           <div>
-            <p className="dz-eyebrow dz-accent">
+            <p className={css('dz-eyebrow dz-accent')}>
               {number} / {label}
             </p>
             <h2>{title}</h2>
           </div>
-          <div className="dz-chapter__copy">{children}</div>
+          <div className={css('dz-chapter__copy')}>{children}</div>
         </div>
       </div>
     </section>
@@ -47,8 +50,8 @@ const recoverySteps = [
 
 function MediaFigure({ src, alt, name, note, className = '' }) {
   return (
-    <figure className={`dz-gallery__figure ${className}`}>
-      <div className="dz-gallery__crop">
+    <figure className={css(`dz-gallery__figure ${className}`)}>
+      <div className={css('dz-gallery__crop')}>
         <img src={src} alt={alt} loading="lazy" width="960" height="546" />
       </div>
       <figcaption>
@@ -75,17 +78,17 @@ export default function DreamzoneCaseStudy() {
   }, []);
 
   return (
-    <main className="dz-case">
-      <div className="dz-wrap">
-        <div className="dz-topline">
+    <main className={css('dz-case')}>
+      <div className={css('dz-wrap')}>
+        <div className={css('dz-topline')}>
           <Link to="/case-studies">← All case studies</Link>
           <span>01 — Volkswagen / 2026</span>
         </div>
       </div>
 
-      <header className="dz-hero">
+      <header className={css('dz-hero')}>
         <div
-          className="dz-hero__media"
+          className={css('dz-hero__media')}
           style={{ backgroundImage: `url(${media.hero})` }}
           aria-hidden="true"
         >
@@ -111,26 +114,26 @@ export default function DreamzoneCaseStudy() {
             </video>
           )}
         </div>
-        <div className="dz-wrap dz-hero__content">
-          <div className="dz-hero__labels">
+        <div className={css('dz-wrap dz-hero__content')}>
+          <div className={css('dz-hero__labels')}>
             <span>Fig. 01 / The experience</span>
             <span>ID. Polo / Recorded experience</span>
           </div>
-          <div className="dz-hero__body">
-            <p className="dz-eyebrow dz-accent">
+          <div className={css('dz-hero__body')}>
+            <p className={css('dz-eyebrow dz-accent')}>
               Case Study 01 / Creative engineering
             </p>
             <h1>
               Volkswagen
               <br />
-              Dreamzone<span className="dz-accent">.</span>
+              Dreamzone<span className={css('dz-accent')}>.</span>
             </h1>
-            <p className="dz-hero__dek">
+            <p className={css('dz-hero__dek')}>
               Turning an existing scroll-driven prototype into a production
               experience — through video engineering, front-end architecture and
               browser resilience.
             </p>
-            <div className="dz-hero__meta">
+            <div className={css('dz-hero__meta')}>
               <span>Role / Front-end engineering</span>
               <span>GSAP · React · AEM · Python · FFmpeg</span>
               <span>2026</span>
@@ -169,13 +172,13 @@ export default function DreamzoneCaseStudy() {
         </p>
       </Chapter>
 
-      <div className="dz-wrap">
+      <div className={css('dz-wrap')}>
         <div
-          className="dz-stats"
+          className={css('dz-stats')}
           aria-label="Chosen production video encoding profile"
         >
           {exportStats.map(([value, label]) => (
-            <div className="dz-stat" key={label}>
+            <div className={css('dz-stat')} key={label}>
               <strong>{value}</strong>
               <span>{label}</span>
             </div>
@@ -214,9 +217,12 @@ export default function DreamzoneCaseStudy() {
         </p>
       </Chapter>
 
-      <div className="dz-wrap">
-        <div className="dz-pipeline" aria-label="Media tool capabilities">
-          <div className="dz-pipeline__node">
+      <div className={css('dz-wrap')}>
+        <div
+          className={css('dz-pipeline')}
+          aria-label="Media tool capabilities"
+        >
+          <div className={css('dz-pipeline__node')}>
             <small>01 / Input</small>
             <strong>
               Source
@@ -224,21 +230,21 @@ export default function DreamzoneCaseStudy() {
               media
             </strong>
           </div>
-          <div className="dz-pipeline__node">
+          <div className={css('dz-pipeline__node')}>
             <small>02 / Runtime</small>
             <strong>
               Python
               <br />+ Docker
             </strong>
           </div>
-          <div className="dz-pipeline__node">
+          <div className={css('dz-pipeline__node')}>
             <small>03 / Optional processing</small>
             <strong>
               OpenCV
               <br />+ Pillow
             </strong>
           </div>
-          <div className="dz-pipeline__node">
+          <div className={css('dz-pipeline__node')}>
             <small>04 / Export</small>
             <strong>
               FFmpeg
@@ -247,7 +253,7 @@ export default function DreamzoneCaseStudy() {
             </strong>
           </div>
         </div>
-        <p className="dz-note">
+        <p className={css('dz-note')}>
           Simplified capability diagram, not a fixed linear pipeline. Video-only
           exports can bypass frame extraction.
         </p>
@@ -283,8 +289,8 @@ export default function DreamzoneCaseStudy() {
           component.
         </p>
       </Chapter>
-      <div className="dz-wrap">
-        <figure className="dz-context">
+      <div className={css('dz-wrap')}>
+        <figure className={css('dz-context')}>
           <img
             src={media.polo}
             alt="Uncropped ID. Polo screen capture showing the campaign inside a desktop browser"
@@ -298,14 +304,14 @@ export default function DreamzoneCaseStudy() {
           </figcaption>
         </figure>
         <div
-          className="dz-scrub"
+          className={css('dz-scrub')}
           aria-label="Conceptual mapping from scroll position to video frame"
         >
           <div>
             <span>Scroll progress</span>
             <b>0 → 1</b>
           </div>
-          <div className="dz-scrub__line" aria-hidden="true">
+          <div className={css('dz-scrub__line')} aria-hidden="true">
             <i />
             <i />
             <i />
@@ -317,25 +323,25 @@ export default function DreamzoneCaseStudy() {
             <b>frame ÷ 30fps → currentTime</b>
           </div>
         </div>
-        <p className="dz-note">
+        <p className={css('dz-note')}>
           Conceptual illustration of the source implementation, not a live
           reproduction of the Volkswagen interaction.
         </p>
       </div>
 
       <section
-        className="dz-gallery dz-wrap"
+        className={css('dz-gallery dz-wrap')}
         aria-labelledby="dz-gallery-title"
       >
-        <p className="dz-eyebrow dz-accent">04 / Campaign media</p>
+        <p className={css('dz-eyebrow dz-accent')}>04 / Campaign media</p>
         <h2 id="dz-gallery-title">
           One system.
           <br />
           Different cars.
         </h2>
-        <div className="dz-gallery__grid">
+        <div className={css('dz-gallery__grid')}>
           <MediaFigure
-            className="dz-gallery__figure--wide"
+            className={css('dz-gallery__figure--wide')}
             src={media.cross}
             alt="Green Volkswagen ID. Cross captured during its fly-around"
             name="ID. Cross"
@@ -354,13 +360,13 @@ export default function DreamzoneCaseStudy() {
             note="Additional supplied example"
           />
         </div>
-        <p className="dz-note">
+        <p className={css('dz-note')}>
           These are images from supplied screen recordings. Tiguan is shown as a
           separate example, not presented as GTI 50 footage.
         </p>
       </section>
 
-      <div className="dz-dark">
+      <div className={css('dz-dark')}>
         <Chapter
           number="05"
           label="Browser resilience"
@@ -389,8 +395,8 @@ export default function DreamzoneCaseStudy() {
             playback system.
           </p>
         </Chapter>
-        <div className="dz-wrap">
-          <ol className="dz-recovery">
+        <div className={css('dz-wrap')}>
+          <ol className={css('dz-recovery')}>
             {recoverySteps.map(([title, detail], index) => (
               <li key={title}>
                 <span>{String(index + 1).padStart(2, '0')}</span>
@@ -402,21 +408,21 @@ export default function DreamzoneCaseStudy() {
         </div>
       </div>
 
-      <section className="dz-closing dz-wrap">
-        <p className="dz-eyebrow dz-accent">06 / Reflection</p>
+      <section className={css('dz-closing dz-wrap')}>
+        <p className={css('dz-eyebrow dz-accent')}>06 / Reflection</p>
         <h2>
           The animation
           <br />
           was only half
           <br />
-          the job<span className="dz-accent">.</span>
+          the job<span className={css('dz-accent')}>.</span>
         </h2>
         <p>
           The important engineering decisions happened beneath the visuals —
           choosing the media format, building the tools to prepare it, and
           addressing the browser behaviour users only notice when it breaks.
         </p>
-        <div className="dz-closing__end">
+        <div className={css('dz-closing__end')}>
           <span>Volkswagen Dreamzone / Creative engineering</span>
           <Link to="/#projects">Back to selected work ↗</Link>
         </div>
