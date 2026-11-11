@@ -41,8 +41,8 @@ export default function AboutSection() {
           experiences. With over a decade of experience, I’ve worked on projects
           for leading brands and creative spaces alike.
         </p>
-        <Button as={Link} to="/resume" style={{ marginTop: '1.5rem' }}>
-          View My Resume
+        <Button as={Link} to="/contact" style={{ marginTop: '1.5rem' }}>
+          Get in Touch
         </Button>
       </TextContent>
     </Section>
