@@ -38,7 +38,11 @@ export default function CaseStudies() {
           <img src="/contact-us.png" alt="Samsung Contact customer-facing contact tiles" width="1600" height="900" loading="lazy" />
           <span className="dz-index__copy"><small>Samsung UK / 2025 / Application architecture</small><strong>Samsung Contact ↗</strong><span>Data-driven navigation, client-managed publishing and context-aware Sprinklr support.</span></span>
         </Link>
-        <p className="dz-note">More case studies will appear here as they're completed and reviewed.</p>
+        <Link className="dz-index__item" to="/case-studies/samsung-repair">
+          <span className="dz-index__number">04</span>
+          <img src="/projects/samsung-repair/vendor-map.png" alt="Samsung Repair location and booking map" width="1536" height="1024" loading="lazy" />
+          <span className="dz-index__copy"><small>Samsung UK / 2024–2025 / Integration engineering</small><strong>Samsung Repair ↗</strong><span>Legacy systems, external booking services, store verification and repair journeys.</span></span>
+        </Link>
       </div>
     </main>
   );
