@@ -31,14 +31,14 @@ const Wordmark = styled(Link)`
     font-size: 24px;
     line-height: 1;
     font-weight: 600;
-    letter-spacing: -.02em;
+    letter-spacing: -0.02em;
   }
 
   span {
     color: #a92e00;
     font-size: 9px;
     font-weight: 800;
-    letter-spacing: .08em;
+    letter-spacing: 0.08em;
   }
 `;
 
@@ -52,11 +52,13 @@ const NavLinks = styled.div`
     text-decoration: none;
     font-size: 10px;
     font-weight: 800;
-    letter-spacing: .05em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
   }
 
-  a:hover { color: #ff4b12; }
+  a:hover {
+    color: #ff4b12;
+  }
 
   @media (max-width: 700px) {
     position: absolute;
@@ -70,9 +72,14 @@ const NavLinks = styled.div`
     opacity: ${({ $open }) => ($open ? 1 : 0)};
     visibility: ${({ $open }) => ($open ? 'visible' : 'hidden')};
     transform: translateY(${({ $open }) => ($open ? '0' : '-8px')});
-    transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
+    transition:
+      opacity 160ms ease,
+      transform 160ms ease,
+      visibility 160ms ease;
 
-    a { font-size: 18px; }
+    a {
+      font-size: 18px;
+    }
   }
 `;
 
@@ -81,7 +88,7 @@ const Burger = styled.button`
   width: 38px;
   height: 38px;
   padding: 0;
-  border: 1px solid rgba(17, 17, 17, .25);
+  border: 1px solid rgba(17, 17, 17, 0.25);
   background: transparent;
   color: #111;
   cursor: pointer;
@@ -123,11 +130,24 @@ export default function Navbar() {
       </Burger>
 
       <NavLinks $open={open}>
-        <a href="#projects" onClick={(event) => handleScroll(event, '#projects')}>Work</a>
-        <Link to="/case-studies" onClick={() => setOpen(false)}>Case Studies</Link>
-        <a href="#about" onClick={(event) => handleScroll(event, '#about')}>About</a>
-        <Link to="/resume" onClick={() => setOpen(false)}>Resume</Link>
-        <Link to="/contact" onClick={() => setOpen(false)}>Contact</Link>
+        <a
+          href="#projects"
+          onClick={(event) => handleScroll(event, '#projects')}
+        >
+          Work
+        </a>
+        <Link to="/case-studies" onClick={() => setOpen(false)}>
+          Case Studies
+        </Link>
+        <a href="#about" onClick={(event) => handleScroll(event, '#about')}>
+          About
+        </a>
+        <Link to="/resume" onClick={() => setOpen(false)}>
+          Resume
+        </Link>
+        <Link to="/contact" onClick={() => setOpen(false)}>
+          Contact
+        </Link>
       </NavLinks>
     </Nav>
   );

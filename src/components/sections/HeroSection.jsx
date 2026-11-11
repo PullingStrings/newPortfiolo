@@ -1,5 +1,5 @@
-import styled, { keyframes } from "styled-components";
-import { Button } from "../ui/Button";
+import styled, { keyframes } from 'styled-components';
+import { Button } from '../ui/Button';
 
 const gradientShift = keyframes`
   0% {
@@ -18,7 +18,11 @@ const TitleText = styled.h1`
   margin-bottom: 0.5rem;
   font-weight: 900;
   color: white;
-  text-shadow: -1px -1px 0 #000, 4px -2px 0 #000, 2px 1px 0 #000, 1px 1px 0 #000;
+  text-shadow:
+    -1px -1px 0 #000,
+    4px -2px 0 #000,
+    2px 1px 0 #000,
+    1px 1px 0 #000;
 `;
 
 const Hero = styled.section`
@@ -32,7 +36,8 @@ const Hero = styled.section`
   color: white;
 
   /* Animated background */
-  background: linear-gradient(-45deg,
+  background: linear-gradient(
+    -45deg,
     ${({ theme }) => theme.colors.primary},
     ${({ theme }) => theme.colors.secondary},
     #ff8c00,
@@ -49,35 +54,39 @@ const Hero = styled.section`
 
 const HeroText = styled.div`
   h2 {
-     font-size: 1.75rem;
-     margin-bottom: 1rem;
-   }
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const HeroImage = styled.div`
- width: 35vw;
- height: 35vw;
- max-width: 500px;
- max-height: 500px;
- min-width: 200px;
- min-height: 200px;
- background: rgba(255, 255, 255, 0.1);
- border-radius: 50%;
- z-index: 2;
- background-image: url('/profile-pic-animated.png'); /* Replace with your image */
- background-size: cover;
+  width: 35vw;
+  height: 35vw;
+  max-width: 500px;
+  max-height: 500px;
+  min-width: 200px;
+  min-height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  z-index: 2;
+  background-image: url('/profile-pic-animated.png'); /* Replace with your image */
+  background-size: cover;
 `;
 
 export default function HeroSection() {
   return (
     <Hero>
       <HeroText>
-       <TitleText>Sibusiso 'Tito' Zwane</TitleText>
+        <TitleText>Sibusiso 'Tito' Zwane</TitleText>
         <h2>Creative Developer</h2>
         <p>Building experiences at the intersection of code, art, and music.</p>
-        <div style={{ marginTop: "1.5rem" }}>
+        <div style={{ marginTop: '1.5rem' }}>
           <Button href="#projects">View My Work</Button>
-          <Button href="#contact" $variant="secondary" style={{ marginLeft: "1rem" }}>
+          <Button
+            href="#contact"
+            $variant="secondary"
+            style={{ marginLeft: '1rem' }}
+          >
             Get in Touch
           </Button>
         </div>

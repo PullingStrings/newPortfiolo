@@ -33,9 +33,12 @@ export default [
       'react-refresh': reactRefresh,
     },
     rules: {
-      'no-unused-vars': ['error', {
-        varsIgnorePattern: '^[A-Z_]',
-      }],
+      'no-unused-vars': [
+        'error',
+        {
+          varsIgnorePattern: '^[A-Z_]',
+        },
+      ],
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
       'react-refresh/only-export-components': 'warn',

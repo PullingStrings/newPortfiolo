@@ -38,9 +38,11 @@ It’s designed with **modern, minimal, and bold aesthetics** to leave a strong 
 ## 📸 Screenshots
 
 ### Hero
+
 ![Hero Screenshot](./public/screenshot-hero.png)
 
 ### Projects
+
 ![Projects Screenshot](./public/screenshot-projects.png)
 
 ---
@@ -48,10 +50,12 @@ It’s designed with **modern, minimal, and bold aesthetics** to leave a strong 
 ## 🚀 Getting Started
 
 **Clone & Install**
+
 ```bash
 git clone https://github.com/PullingStrings/portfolio.git
 cd portfolio
 npm install   # or yarn install
+```
 ````
 
 **Run Development Server**
@@ -78,4 +82,3 @@ npm run build
 
 **© 2025 Sibusiso Zwane**
 Designed & developed with ❤️
-
