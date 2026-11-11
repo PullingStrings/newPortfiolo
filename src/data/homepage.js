@@ -109,6 +109,7 @@ export const projects = [
   {
     index: '04',
     title: 'Samsung Support / Repair',
+    caseStudyPath: '/case-studies/samsung-repair',
     kicker: 'Samsung UK / Cheil / 2024—2025',
     copy:
       'Legacy support and repair journeys made clearer across booking, ' +
