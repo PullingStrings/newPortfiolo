@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Nav = styled.nav`
   position: sticky;
@@ -136,14 +136,11 @@ export default function Navbar() {
         >
           Work
         </a>
-        <Link to="/case-studies" onClick={() => setOpen(false)}>
-          Case Studies
-        </Link>
         <a href="#about" onClick={(event) => handleScroll(event, '#about')}>
           About
         </a>
-        <Link to="/resume" onClick={() => setOpen(false)}>
-          Resume
+        <Link to="/case-studies" onClick={() => setOpen(false)}>
+          Case Studies
         </Link>
         <Link to="/contact" onClick={() => setOpen(false)}>
           Contact
