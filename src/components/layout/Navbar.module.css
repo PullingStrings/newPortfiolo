@@ -32,7 +32,7 @@
 }
 
 .wordmark span {
-  color: #a92e00;
+  color: var(--signal);
   font-size: 9px;
   font-weight: 800;
   letter-spacing: 0.08em;
