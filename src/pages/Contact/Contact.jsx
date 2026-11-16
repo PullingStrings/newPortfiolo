@@ -131,7 +131,7 @@ export default function Contact() {
           <div className={css('contact-page__closing')}>
             <span className={css('contact-page__signal')} aria-hidden="true" />
             <p>
-              Make the work clear. <strong>Make Tito weird.</strong>
+              I build things for the web.<strong> Sometimes differently.</strong>
             </p>
           </div>
         </div>
