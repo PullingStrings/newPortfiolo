@@ -1,9 +1,9 @@
+import { projects, shipped } from '@/data/homepage';
+import { createClassNames } from '@/utils/cssModules';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { projects, shipped } from '@/data/homepage';
-import { createClassNames } from '@/utils/cssModules';
 import styles from './landing.module.css';
 import motionStyles from './motion.module.css';
 
@@ -907,7 +907,7 @@ function Hero() {
       </h1>
       <div className={css('hero-v2__bottom')}>
         <p className={css('hero-v2__statement')}>
-          Make the work clear. <em>Make the world weird.</em>
+          I build things for the web. <em>Sometimes differently.</em>
         </p>
         <p className={css('hero-v2__intro')}>
           I'm a front-end developer with a background in music. I build
@@ -944,7 +944,7 @@ function About() {
       <SectionHeading
         index="03"
         eyebrow="About / approach"
-        title="From bass lines to browser windows."
+        title="From bass lines to browsers."
       />
       <div className={css('about-grid')}>
         <div className={css('about-grid__aside')}>
@@ -957,10 +957,9 @@ function About() {
           Production thinking
         </div>
         <p className={css('about-grid__copy')}>
-          I used to play bass professionally before I got into coding. These
-          days I build things for the web. Different tools, but I still enjoy
-          figuring things out, working with people and making something feel
-          right.
+          I used to play bass professionally before I got into coding. Today I
+          build things for the web. While I'm using different tools, I still
+          enjoy solving problems, working with people and creating experiences.
         </p>
       </div>
     </section>

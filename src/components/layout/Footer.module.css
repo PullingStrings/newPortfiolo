@@ -14,7 +14,7 @@
 }
 
 .footer span:last-child {
-  color: #a92e00;
+  color: var(--signal);
 }
 
 @media (max-width: 600px) {

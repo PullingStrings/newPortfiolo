@@ -572,7 +572,7 @@
 .shipped-item__index {
   font-family: var(--display);
   font-size: 22px;
-  color: #a92e00;
+  color: var(--signal);
 }
 .shipped-item__title > span {
   display: block;
