@@ -1,17 +1,10 @@
-// src/components/layout/Footer.jsx
-import styled from "styled-components";
-
-const Foot = styled.footer`
-  padding: 2rem;
-  text-align: center;
-  background: ${({ theme }) => theme.colors.lightGray};
-  font-size: 0.9rem;
-`;
+import styles from './Footer.module.css';
 
 export default function Footer() {
   return (
-    <Foot>
-      &copy; {new Date().getFullYear()} Sibusiso 'Tito' Zwane — Built with ❤️
-    </Foot>
+    <footer className={styles.footer}>
+      <span>© {new Date().getFullYear()} Tito Zwane</span>
+      <span> I build things for the web. </span>
+    </footer>
   );
 }
